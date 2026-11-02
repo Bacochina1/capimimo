@@ -1,0 +1,48 @@
+CAPIMIMO — OFERTA, FLUXO E ATIVAÇÃO
+Proposta elaborada em 2 de novembro de 2026. Valores para validar com custos e demanda reais.
+
+OFERTA SUGERIDA
+Um Mimo: R$ 14,90 por um cartão, até 3 fotos, mensagem, temas e cartão QR.
+Uma História: R$ 24,90 por um livro de até 8 páginas e 12 fotos, temas e visualização 3D opcional.
+Celebrar Juntos: R$ 39,90 por um convite, data, local e até 100 confirmações de presença.
+Pagamento único por presente/evento, com 12 meses de hospedagem e possibilidade de guardar uma cópia. Não prometer hospedagem eterna. Não cobrar assinatura escondida. Definir renovação opcional e lembrar o cliente antes do vencimento.
+
+As inclusões acima são a proposta comercial, não recursos integralmente liberados na demonstração. O editor atual trabalha com uma foto e uma mensagem, e demonstra a abertura de uma dupla de páginas. Álbum multipágina, várias fotos, publicação durável e confirmações de presença dependem da camada de produto posterior.
+
+POR QUE ESSES VALORES
+A referência LovePanda apresenta ofertas de R$ 19,90, R$ 29,90 e R$ 39,90. A proposta Capimimo cria uma entrada acessível e um plano intermediário para contar uma história. Convites são outro caso de uso, com operação e confirmação de presença próprias; não devem competir somente por serem baratos.
+Fonte da referência: https://lovepanda.com.br/
+
+ECONOMIA — EXEMPLO, NÃO PREVISÃO
+Hipóteses de simulação: processamento de 5% do preço, reserva de 10% para atendimento/reembolsos e operação variável de R$ 2 / R$ 3 / R$ 4. São premissas para testar, não taxas confirmadas da conta nem custos medidos.
+R$ 14,90: saldo de R$ 10,67 antes de anúncio, tributos e despesas fixas.
+R$ 24,90: saldo de R$ 18,17 antes de anúncio, tributos e despesas fixas.
+R$ 39,90: saldo de R$ 29,92 antes de anúncio, tributos e despesas fixas.
+Se o anúncio custar R$ 4 / R$ 7 / R$ 12 por compra, os saldos respectivos seriam R$ 6,67 / R$ 11,17 / R$ 17,92, ainda antes de tributos e despesas fixas. Medir as taxas e custos reais antes de escalar tráfego. Não prometer retorno ou volume de vendas.
+O Mercado Pago informa que as tarifas variam por ferramenta e prazo; conferir a configuração efetiva da conta. Fonte oficial: https://vendedores.mercadolivre.com.br/nota/taxas-do-mercado-pago-quais-sao-e-como-configura-las
+
+FLUXO QUE REDUZ FRICÇÃO
+1. A pessoa conhece um presente de verdade e escolhe ocasião/modelo.
+2. Escreve nome e mensagem; fotos, materiais e estampas ficam em opções claras.
+3. Confere a prévia e experimenta o recebimento. A visualização simples é padrão.
+4. Escolhe plano, vê valor total, limites e duração antes de pagar.
+5. O Mercado Pago hospeda o checkout; nenhuma chave ou dado de cartão passa pelo frontend do Capimimo.
+6. A confirmação precisa vir de consulta autenticada ao pagamento e webhook validado, não da URL de retorno.
+7. Depois da aprovação, um tutorial mostra como continuar a criação, revisar e preparar o cartão QR/link.
+8. O presente fica em rascunho até a pessoa decidir publicar. Não publicar automaticamente fotos durante a edição.
+9. Quem recebe abre o link, pode pular a animação, aumentar texto, ajustar zoom e usar 3D somente se quiser.
+
+ESTRATÉGIA DE LANÇAMENTO
+Começar com uma ocasião e os três formatos já demonstráveis, sem tentar anunciar todas as datas de uma vez. Testar criativos que mostram a abertura e a personalização com clareza. Separar campanhas de presente ao casal e convites criados pelo casal. Não usar reações geradas por IA como depoimentos reais.
+Medir: clique → início de criação → prévia → escolha do plano → checkout → aprovação → publicação → abertura. Corrigir a maior perda do funil antes de aumentar investimento. Não criar contadores, prova social ou descontos falsos.
+
+MERCADO PAGO — ESTADO REAL
+Provedor escolhido pelo usuário. O projeto ainda não tem variáveis de ambiente configuradas.
+Há um adaptador de servidor em server/mercadopago.mjs e testes com respostas simuladas. Ele NÃO está implantado como API do site estático e nenhuma cobrança real foi feita.
+Próximas dependências: credenciais seguras da aplicação Mercado Pago, assinatura de webhook pelo SDK oficial, servidor com banco durável, contas de teste, URL pública acessível ao webhook e fluxo de publicação de presentes. Guardar tokens como segredos do ambiente, nunca no JavaScript servido ao navegador, repositório ou chat.
+Referências oficiais:
+https://www.mercadopago.com.br/developers/pt/docs/checkout-pro-preferences/create-payment-preference
+https://www.mercadopago.com.br/developers/pt/docs/your-integrations/notifications/webhooks
+
+FAIRNESS DO PRODUTO
+Mostrar tudo que entra no plano antes de pagar; permitir corrigir erros; oferecer uma cópia para guardar; usar duração explícita; respeitar movimento reduzido; manter leitura simples em aparelhos sem WebGL; informar o que depende de conexão. Confirmação de presença e várias páginas só podem ser vendidas como ativas depois de implementadas e testadas.

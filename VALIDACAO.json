@@ -1,0 +1,512 @@
+{
+  "status": "PASS",
+  "browserChecks": 59,
+  "paymentAdapterMockTests": 8,
+  "scope": "Frontend and isolated payment adapter; no real charge or hosted backend test",
+  "suites": [
+    {
+      "name": "family-results",
+      "checks": [
+        {
+          "name": "App initializes",
+          "pass": true
+        },
+        {
+          "name": "Simple 2D is default",
+          "pass": true
+        },
+        {
+          "name": "No CSS 3D declarations",
+          "pass": true
+        },
+        {
+          "name": "Four wedding patterns",
+          "pass": true
+        },
+        {
+          "name": "Generated material applied",
+          "pass": true
+        },
+        {
+          "name": "Three theme variations",
+          "pass": true
+        },
+        {
+          "name": "Variation keeps personal content",
+          "pass": true
+        },
+        {
+          "name": "Undistorted 2D livro",
+          "pass": true,
+          "detail": {
+            "w": 760,
+            "h": 1000,
+            "display": 0.7600896860986547,
+            "native": 0.76
+          }
+        },
+        {
+          "name": "Undistorted 2D cartao",
+          "pass": true,
+          "detail": {
+            "w": 1000,
+            "h": 720,
+            "display": 1.3878923766816142,
+            "native": 1.3888888888888888
+          }
+        },
+        {
+          "name": "Undistorted 2D convite",
+          "pass": true,
+          "detail": {
+            "w": 760,
+            "h": 1000,
+            "display": 0.7600896860986547,
+            "native": 0.76
+          }
+        },
+        {
+          "name": "Creator zoom works",
+          "pass": true
+        },
+        {
+          "name": "Fit resets zoom",
+          "pass": true
+        },
+        {
+          "name": "Real QR generated",
+          "pass": true
+        },
+        {
+          "name": "QR contains recipient payload",
+          "pass": true,
+          "detail": "https://capimimo-atelier-lembrancas.marketeam12.chatgpt.site/#receber=eyJyZWNpcGllbnQiOiJM"
+        },
+        {
+          "name": "Advanced preview is Three.js",
+          "pass": true
+        },
+        {
+          "name": "Native Three.js geometry cartao",
+          "pass": true,
+          "detail": {
+            "target": 1,
+            "current": 0.9999999982482052,
+            "recipient": "Lia & Rafa",
+            "person": 0,
+            "version": 4,
+            "inView": true,
+            "format": "cartao",
+            "width": 2.8,
+            "height": 2,
+            "zoom": 1
+          }
+        },
+        {
+          "name": "Native Three.js geometry livro",
+          "pass": true,
+          "detail": {
+            "target": 1,
+            "current": 0.9999999999974165,
+            "recipient": "Lia & Rafa",
+            "person": 0,
+            "version": 5,
+            "inView": true,
+            "format": "livro",
+            "width": 2.15,
+            "height": 2.9,
+            "zoom": 1
+          }
+        },
+        {
+          "name": "Readable entry without animation",
+          "pass": true
+        },
+        {
+          "name": "Larger recipient text",
+          "pass": true
+        },
+        {
+          "name": "Recipient zoom works",
+          "pass": true
+        },
+        {
+          "name": "Recipient optional Three.js",
+          "pass": true
+        },
+        {
+          "name": "Plan summary explicitly demo",
+          "pass": true
+        },
+        {
+          "name": "Post-purchase tutorial starts",
+          "pass": true
+        },
+        {
+          "name": "Tutorial progression",
+          "pass": true
+        },
+        {
+          "name": "No horizontal overflow 1440",
+          "pass": true
+        },
+        {
+          "name": "No horizontal overflow 768",
+          "pass": true
+        },
+        {
+          "name": "No horizontal overflow 390",
+          "pass": true
+        },
+        {
+          "name": "No horizontal overflow 320",
+          "pass": true
+        },
+        {
+          "name": "Mobile reader fits",
+          "pass": true
+        },
+        {
+          "name": "QR route opens received mimo",
+          "pass": true
+        },
+        {
+          "name": "No uncaught exceptions",
+          "pass": true,
+          "detail": []
+        }
+      ]
+    },
+    {
+      "name": "experience-results",
+      "checks": [
+        {
+          "name": "12 distinct templates",
+          "pass": true
+        },
+        {
+          "name": "Invitation filter exposes 3 models",
+          "pass": true
+        },
+        {
+          "name": "Model applies human art, format and occasion",
+          "pass": true
+        },
+        {
+          "name": "12 human character choices",
+          "pass": true
+        },
+        {
+          "name": "Human choice persists",
+          "pass": true
+        },
+        {
+          "name": "No misaligned frame-cycling on illustration sprites",
+          "pass": true
+        },
+        {
+          "name": "Recipient modal opens",
+          "pass": true
+        },
+        {
+          "name": "90-frame 30fps opening completes",
+          "pass": true,
+          "detail": {
+            "targetFps": 30,
+            "totalFrames": 90,
+            "renderedFrames": 90,
+            "frameIndices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75,
+              76,
+              77,
+              78,
+              79,
+              80,
+              81,
+              82,
+              83,
+              84,
+              85,
+              86,
+              87,
+              88,
+              89
+            ],
+            "elapsedMs": 2969.4000000000005,
+            "state": "revealed"
+          }
+        },
+        {
+          "name": "Frame sequence advances to final frame",
+          "pass": true,
+          "detail": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89
+          ]
+        },
+        {
+          "name": "30fps cadence within device tolerance",
+          "pass": true,
+          "detail": {
+            "frames": 90,
+            "time": 2969.4000000000005,
+            "effectiveFps": 30.309153364316018
+          }
+        },
+        {
+          "name": "Personalized recipient message",
+          "pass": true
+        },
+        {
+          "name": "Replay resets frame and state",
+          "pass": true
+        },
+        {
+          "name": "Dialog closes and unlocks page",
+          "pass": true
+        },
+        {
+          "name": "Fits viewport 1440",
+          "pass": true
+        },
+        {
+          "name": "Fits viewport 768",
+          "pass": true
+        },
+        {
+          "name": "Fits viewport 390",
+          "pass": true
+        },
+        {
+          "name": "Fits viewport 320",
+          "pass": true
+        },
+        {
+          "name": "Recipient modal fits mobile",
+          "pass": true
+        },
+        {
+          "name": "Motion-off skips animation accessibly",
+          "pass": true
+        },
+        {
+          "name": "No uncaught JS exceptions",
+          "pass": true,
+          "detail": []
+        }
+      ]
+    },
+    {
+      "name": "qr-text-results",
+      "checks": [
+        {
+          "name": "Downloaded QR is machine-decodable",
+          "pass": true
+        },
+        {
+          "name": "Long-word message preserved in layout",
+          "pass": true,
+          "detail": {
+            "complete": true,
+            "lines": 6,
+            "font": 15
+          }
+        }
+      ]
+    },
+    {
+      "name": "final-edge-results",
+      "checks": [
+        {
+          "name": "Photo still works after simple-preview refactor",
+          "pass": true
+        },
+        {
+          "name": "Card content toggles without CSS fallback",
+          "pass": true
+        },
+        {
+          "name": "Recipient sees uploaded image",
+          "pass": true
+        },
+        {
+          "name": "QR artwork variants visibly change",
+          "pass": true
+        },
+        {
+          "name": "Reset really clears draft and photo",
+          "pass": true
+        },
+        {
+          "name": "No uncaught JS exceptions",
+          "pass": true,
+          "detail": []
+        }
+      ]
+    }
+  ],
+  "failed": []
+}

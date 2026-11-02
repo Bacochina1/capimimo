@@ -1,0 +1,3 @@
+work/
+.openai/*.local.json
+.DS_Store

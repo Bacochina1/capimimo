@@ -1,0 +1,3 @@
+Geradas com image_gen integrada. Materiais usados na capa e nas estampas do editor; atlas de cada ocasião dividido em quatro arquivos WebP de 512x512. Referências de textura originais preservadas no projeto local em work/source-materials.
+
+
