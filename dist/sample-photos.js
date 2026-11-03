@@ -1,0 +1,6 @@
+// Illustrative fictional people. These are sample photos, never customer endorsements.
+const image=id=>'assets/photo-'+id+'.webp';
+export const samplePhotoSets={
+ amizade:['life-friends','friends','family'],aniversario:['life-birthday','friends','life-friends'],aniversario_namoro:['life-anniversary','couple','life-wedding'],mesversario:['mother','family','life-mother'],casamento:['life-wedding','couple','life-anniversary'],bodas:['life-anniversary','life-wedding','couple'],namorados:['couple','life-anniversary','life-wedding'],maes:['life-mother','mother','grandmother'],pais:['life-father','father','family'],avos:['life-easter','grandmother','life-anniversary'],natal:['life-natal','family','grandmother'],anonovo:['life-friends','life-birthday','family'],pascoa:['life-easter','grandmother','family'],formatura:['life-graduation','life-friends','life-mother'],pedido_namoro:['couple','life-wedding','life-anniversary'],desculpas:['life-anniversary','life-mother','couple'],pet:['life-pet'],outro:['life-friends','life-natal','life-anniversary','life-pet']
+};
+export function samplePhotos(occasion,index=0){const set=samplePhotoSets[occasion]||samplePhotoSets.outro,at=Math.max(0,Math.floor(Number(index)||0))%set.length;return [image(set[at]),image(set[(at+1)%set.length])];}
