@@ -29,7 +29,7 @@ export function paintBookCover(canvas,data,{photo=null,photos=[],sprite=null,clo
  else if(layout==='carta'){heading(100);frame(photo,105,402,210,230);foil('Para guardar\npor perto.',360,450,145,24,3,true,'left');line(360,575,58);}
  else if(layout==='jornal'){foil((data.theme?.label||'MEMÓRIAS').toLocaleUpperCase('pt-BR'),68,72,470,13,1,false,'left');foil(name,68,125,465,48,2,true,'left');line(68,267,464);frame(photo,82,319,436,280);foil(title,68,665,465,25,2,true,'left');}
  else if(layout==='faixa'){heading(70);frame(photo,55,370,490,235);}
- else{heading(82);frame(photo,110,375,380,265);if(layout==='lembranca'){line(88,735,424);}else if(appearance.borderStyle==='theme'){for(const c of [ctx,mask])if(c){c.strokeStyle=c===mask?'#fff':gold;c.lineWidth=appearance.borderWidth;c.beginPath();c.roundRect(43,43,514,714,20);c.stroke();}}}
+ else{heading(82);frame(photo,110,375,380,265);if(layout==='lembranca'){line(88,735,424);}}
  if(appearance.borderStyle!=='theme'&&appearance.borderStyle!=='none')paintCustomBorder(ctx,w,h,palette,appearance);if(appearance.showLabels)mimoLabel(ctx,'feito com carinho',214,29,172,31,labelColors(data,'#fff2ce'));if(mask){mask.fillStyle='#000';mask.fillRect(211,26,178,37);}
  foil(design.closing||'Uma história para guardar.',300,720,420,12,2,false);
  if(design.seal!==false&&data.character!=='none'&&sprite){mimoSeal(ctx,sprite,data.theme,553,739,51,{paper:'#fff9f1',ink:'#3a1e14',accent:'#e8473a'});if(mask){mask.fillStyle='#000';mask.fillRect(518,703,70,72);}}

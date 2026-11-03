@@ -43,3 +43,6 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 
 .stories-shell{color:#3a1e14}.stories-top{background:#fff9f1;color:#3a1e14}.stories-top button,.stories-controls button{border-radius:12px;font-weight:800}.stories-controls{background:#fff9f1;color:#3a1e14}.reader-page-count{background:#fff1cd;border:1px solid #c8aa94;border-radius:18px;padding:5px 12px;font-weight:800}.read-message-details{border-radius:18px}.received-memory{border-radius:18px}
 .stories-shell,.stories-stage{background:#fff9f1}.stories-top strong{font-family:Fraunces,Georgia,serif;font-size:22px;letter-spacing:-.02em}.stories-top strong span{color:#e8473a}.stories-top button,.stories-controls button{border:1px solid #3a1e14;box-shadow:0 2px 0 #3a1e14;background:#fffdf8}.stories-progress progress,.stories-progress progress::-webkit-progress-bar{background:#e8d7c4}.stories-progress progress::-webkit-progress-value{background:#e8473a}.stories-progress progress::-moz-progress-bar{background:#e8473a}
+
+/* Keep each phrase of the hero heading intact at every viewport width. */
+.hero-copy{container-type:inline-size;min-width:0}.hero h1{font-size:clamp(28px,12cqw,78px)}.hero h1 em{display:inline-block;white-space:nowrap}

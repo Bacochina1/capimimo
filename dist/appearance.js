@@ -1,4 +1,4 @@
-import {occasionTreatments,occasionDirection,occasionTreatmentName,ornamentChoices,ornamentArtwork} from './gift-identity.js';
+import {occasionTreatments,occasionDirection,occasionTreatmentName,ornamentChoices,ornamentArtwork,drawOccasionMotif} from './gift-identity.js';
 export function giftOpeningSource(data={}){return ['natal','aniversario','casamento','familia','amor','pascoa','conquistas','pet'].includes(data.openingStyle)?'assets/opening-'+data.openingStyle+'-30fps.webp':'assets/gift-opening-30fps.webp';}
 export function giftArtworkSource(data={}){return ['natal','aniversario','casamento','familia','amor','pascoa','conquistas','pet'].includes(data.coverArt)?'assets/cover-art-'+data.coverArt+'.webp':'assets/pattern-'+(data.pattern||'signature-0')+'.webp';}
 export const giftPalettes={
@@ -13,7 +13,7 @@ export const giftPalettes={
  terracota:{label:'Terracota e linho',paper:'#fff4e9',ink:'#4c302a',accent:'#aa4e37',soft:'#f0d7c6'},
  ceu:{label:'Céu e algodão',paper:'#f1f7fc',ink:'#283e55',accent:'#39729d',soft:'#d8e7f2'}
 };
-export const giftBackgrounds={plain:'Papel liso',cotton:'Algodão delicado',linen:'Trama de linho',speckle:'Papel salpicado',lines:'Linhas de caderno',dots:'Poás pequenos',arches:'Arcos nos cantos',ribbon:'Fitas de carinho',confetti:'Festa na borda',frame:'Moldura dupla',postal:'Papel de carta',stars:'Céu discreto',illustrated:'Estampa do tema'};
+export const giftBackgrounds={plain:'Papel liso',cotton:'Algodão delicado',linen:'Trama de linho',speckle:'Papel salpicado',lines:'Linhas de caderno',dots:'Poás pequenos',arches:'Flores de papel',ribbon:'Laços de papel',confetti:'Festa na borda',frame:'Moldura dupla',postal:'Papel de carta',stars:'Céu discreto',illustrated:'Estampa do tema'};
 export const giftScenes={paper:{label:'Ateliê de papel',color:'#f3e7d6'},rose:{label:'Pêssego suave',color:'#f2ded6'},sky:{label:'Luz azul',color:'#e0eaf1'},cocoa:{label:'Cacau profundo',color:'#3c2b26'},violet:{label:'Lavanda calma',color:'#e8e1ee'},studio:{label:'Estúdio claro',color:'#f6f4ef'}};
 export const giftAnimations={classic:'Abertura clássica',gentle:'Revelação suave',spin:'Giro de presente',float:'Flutuar com calma',pop:'Pequena surpresa',confetti:'Celebrar com confetes',none:'Sem animação'};
 const validHex=value=>/^#[0-9a-f]{6}$/i.test(value||'');
@@ -28,8 +28,7 @@ export function drawGiftBackground(ctx,w,h,{palette=giftPalettes.coral,backgroun
  else if(background==='linen'){ctx.globalAlpha=.08*intensity/.25;for(let x=0;x<w;x+=5){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}for(let y=0;y<h;y+=8){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}}
  else if(background==='lines'){for(let y=24;y<h;y+=28){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}}
  else if(background==='dots'){for(let y=16;y<h;y+=27)for(let x=14;x<w;x+=27){ctx.beginPath();ctx.arc(x,y,1.1,0,Math.PI*2);ctx.fill();}}
- else if(background==='arches'){ctx.lineWidth=2;for(const [x,y] of [[0,0],[w,h]])for(let r=35;r<170;r+=31){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.stroke();}}
- else if(background==='ribbon'){ctx.lineWidth=3;for(const y of [15,h-15]){ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(w*.3,y+40,w*.7,y-40,w,y);ctx.stroke();}}
+ else if(background==='arches'||background==='ribbon'){ctx.globalAlpha=.16;const kind=background==='arches'?'flower':'bow',s=Math.min(w,h)*.08;drawOccasionMotif(ctx,kind,w*.925,h*.1,s,.12);drawOccasionMotif(ctx,kind,w*.075,h*.9,s,-.12);}
  else if(background==='confetti'){for(let i=0;i<45;i++){const x=random()*w,y=i%2?random()*46:h-random()*46;ctx.save();ctx.translate(x,y);ctx.rotate(random()*3);ctx.fillStyle=[palette.accent,palette.ink,'#c48a4d'][i%3];ctx.fillRect(-2,-3,3+random()*3,5+random()*3);ctx.restore();}}
  else if(background==='frame'){ctx.lineWidth=1.5;ctx.strokeRect(13,13,w-26,h-26);ctx.lineWidth=.6;ctx.strokeRect(22,22,w-44,h-44);}
  else if(background==='postal'){ctx.setLineDash([7,6]);ctx.strokeRect(15,15,w-30,h-30);}
