@@ -1,0 +1,32 @@
+CAPIMIMO — SITUAÇÃO DE LANÇAMENTO
+03/11/2026
+
+LIBERAÇÃO COMERCIAL: PENDENTE. Não afirmar que está 100% disponível para vendas reais.
+PAYMENT_MODE=test; SALES_ENABLED=false.
+
+VERIFICADO NESTA ENTREGA
+- Compra fictícia do Mercado Pago aprovada com cartão oficial de teste. Nenhum cartão real foi usado e não houve cobrança real.
+- Confirmação por consulta autenticada à API, com validação de conta, aplicação, ambiente, valor e moeda.
+- Simulação oficial de webhook assinada aceita em teste e produção. Segredos sincronizados e guardados somente na Cloudflare.
+- Credencial de produção validada na API como pertencente à conta recebedora esperada. Validar credencial não significa executar uma cobrança real.
+- Publicação efetiva de um presente de homologação no R2. Um navegador independente abriu a foto, o áudio e o livro em Three.js, sem acesso à chave do comprador.
+- Fluxo integrado dos quatro formatos: Stories, cartão simples, livro e convite; acesso pendente, aprovação, publicação, recuperação de compra e dados editáveis. Convidado individual confirma presença e a resposta chega ao painel.
+- Cartão de Natal permanece cartão de Natal depois do pagamento e vai para o plano de R$ 14,90. O modelo escolhido é persistido antes do redirecionamento.
+- Corrigida a resposta de HTML pré-comprimido no Cloudflare: encodeBody manual evita compressão duplicada. Clientes sem gzip recebem HTML descompactado.
+- O upload/armazenamento de áudio aguarda a compressão antes de salvar ou exportar.
+- Conferência interna de até 10 pedidos a cada 10 minutos recupera aprovações e reembolsos em caso de notificações perdidas. Pedidos rodam pela última consulta.
+- Testes persistentes de backend disponíveis em npm test; sintaxe e SEO também verificados. Arquivos de teste e chaves de compra não entram no Git.
+- Exportação real de vídeo validada como MP4/AVC + AAC, 1080x1920. A cadência é de até 30 FPS e depende do aparelho; não é uma garantia de 30 quadros constantes no exportador em tempo real.
+
+FALTA PARA ABERTURA COMERCIAL
+1. Registro.br concluir a transição de DNS. A zona capimimo.com.br ainda estava pending na Cloudflare. Os servidores atribuídos são felipe.ns.cloudflare.com e haley.ns.cloudflare.com.
+2. Depois da ativação, ligar capimimo.com.br e www ao Worker, ajustar SITE_ORIGIN, sitemap/canonical e verificar HTTPS. Manter a URL antiga de webhook funcionando durante a migração.
+3. O proprietário informar nome do responsável e e-mail público de suporte para completar atendimento, termos e privacidade. O CPF informado no chat não foi colocado no repositório nem divulgado no site.
+4. Somente com domínio e informações comerciais finalizados: revisar os documentos e habilitar PAYMENT_MODE=live e SALES_ENABLED=true. Nenhuma compra real deve ser feita automaticamente como teste.
+
+LIMITES E ENTREGA
+- Um pagamento por presente/ocasião. Planos Um Mimo R$14,90; Uma História R$24,90; Celebrar Juntos R$39,90.
+- Arquivo final de até 40 MB; link por 12 meses desde a aprovação. O comprador pode guardar a cópia baixada.
+- Convites: até 100 links individuais por compra; até 10 pessoas em um convite.
+- Chave de acesso da compra fica no navegador e pode ser exportada para recuperação em outro aparelho. O link público não carrega essa chave.
+- Quem possui o link do presente pode abri-lo. Não existe promessa de senha, colaboração simultânea ou envio automático de e-mail. E-mail manual/arquivo de convite é uma função separada.

@@ -5,27 +5,29 @@ Aplicação Capimimo criada com autorização do titular para Checkout Pro e API
 
 PAYMENT_MODE=test
 SALES_ENABLED=false
-Cobranças reais ainda não estão liberadas. Um checkout do ambiente de teste foi criado; ainda falta completar a aprovação no provedor e verificar a entrega por link em outro navegador antes da abertura comercial.
+Cobranças reais ainda não estão liberadas. Compra fictícia aprovada no provedor e reconhecida pela consulta autenticada do servidor. Publicação efetiva no R2 aberta em navegador independente com fotos, áudio e Three.js. Cobrança real continua bloqueada enquanto domínio e dados comerciais são concluídos.
 
 Implementação ativa: server/worker.mjs, billing.mjs e mercadopago-orders.mjs.
 - POST /api/checkout: catálogo de preços no servidor e criação idempotente de Order.
 - GET /api/orders/:id e POST /api/orders/:id/sync: acesso com chave do comprador.
-- Webhooks /api/payments/mercadopago/webhook/test e /live: assinatura validada com SDK oficial e consulta da Order. Retorno do navegador não aprova compra.
+- Webhooks /api/payments/mercadopago/webhook/test e /live: assinatura validada com SDK oficial e consulta da Order. Retorno do navegador não aprova compra. A consulta autenticada à API do provedor recupera aprovações atrasadas.
 - PUT /api/orders/:id/publish: exige aprovação e plano/formato/rascunho correspondentes; arquivo limitado a 40 MB; link por 12 meses desde a aprovação.
 - /g/:publicId: destinatário sem chave de edição; conteúdo em iframe sandbox e fora da indexação.
 - Convites individuais e RSVP com token próprio de cada convidado.
 - Revogação da entrega em reembolso/estorno confirmado.
 
-Os 31 testes locais do backend passaram, cobrindo assinatura inválida, divergência de valor/moeda/conta/aplicação, concorrência, publicação, gzip, RSVP e revogação. São fixtures: não substituem homologação completa no Mercado Pago.
+Os testes locais do backend passaram, cobrindo assinatura inválida, divergência de valor/moeda/conta/aplicação, concorrência, publicação, gzip, RSVP e revogação. São fixtures: não substituem homologação completa no Mercado Pago.
 
 Os adaptadores antigos server/mercadopago.mjs e product-api.mjs não são usados pelo Worker atual.
 
 Antes de liberar vendas:
-1. Completar checkout com dados fictícios oficiais, sem cartão real.
-2. Confirmar webhook assinado e aprovação consultada na API.
-3. Publicar presente de teste e conferir fotos, áudio, abertura e RSVP em outro navegador.
+1. CONCLUÍDO: checkout com dados fictícios oficiais, sem cartão real.
+2. CONCLUÍDO: webhook oficial assinado recebido com sucesso e aprovação consultada na API.
+3. CONCLUÍDO: publicação R2 e abertura 3D, foto e áudio em outro navegador; convites/RSVP verificados no teste integrado isolado.
 4. Verificar recuperação da chave de compra e edição da entrega.
 5. Completar dados reais de atendimento, termos e privacidade.
 6. Só então revisar PAYMENT_MODE=live e SALES_ENABLED=true. Não realizar compra real sem autorização própria.
 
 Não enviar tokens ou segredos em chat, capturas, arquivos públicos ou Git.
+
+Manutenção interna: cron a cada 10 minutos verifica até 10 pedidos, com rotação pela última consulta; recupera confirmações e reembolsos sem depender exclusivamente do webhook. Não há endpoint HTTP para executar essa manutenção.

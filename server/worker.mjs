@@ -22,4 +22,4 @@ export default {async fetch(request,env){
   result.headers.set('Referrer-Policy','no-referrer');
  }
  return result;
-}};
+},async scheduled(event,env,ctx){ctx.waitUntil(createBillingAPI(env).reconcileBatch());}};

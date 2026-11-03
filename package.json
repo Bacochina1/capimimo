@@ -8,7 +8,8 @@
     "check": "node scripts/check.mjs",
     "deploy:cloudflare": "wrangler deploy --config wrangler.jsonc",
     "build:seo": "python scripts/build-seo.py",
-    "check:seo": "node scripts/check-seo.mjs"
+    "check:seo": "node scripts/check-seo.mjs",
+    "test": "node tests/billing.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.5",
@@ -17,5 +18,8 @@
   "dependencies": {
     "mediabunny": "1.65.1",
     "mercadopago": "3.6.1"
+  },
+  "engines": {
+    "node": ">=22.13.0"
   }
 }

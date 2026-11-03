@@ -14,7 +14,7 @@ export function createOrdersAdapter({token,origin,mode,applicationId,fetchImpl=f
  async function request(path,options={}){const response=await fetchImpl('https://api.mercadopago.com'+path,{...options,headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',...options.headers},signal:AbortSignal.timeout(12000)});if(!response.ok)throw Error('Payment provider returned '+response.status);return response.json();}
  return{
   async create({id,planId,email}){
-   const plan=BILLING_PLANS[planId];if(!plan||!/^[a-f0-9]{32}$/.test(id))throw Error('Invalid order');
+   const plan=Object.hasOwn(BILLING_PLANS,planId)?BILLING_PLANS[planId]:null;if(!plan||!/^[a-f0-9]{32}$/.test(id))throw Error('Invalid order');
    const amount=(plan.cents/100).toFixed(2),back=base.origin+'/?compra='+id;
    const data=await request('/v1/orders',{method:'POST',headers:{'X-Idempotency-Key':id},body:JSON.stringify({type:'online',processing_mode:'manual',total_amount:amount,external_reference:id,description:plan.title,expiration_time:'P1D',...(email?{payer:{email}}:{}),items:[{title:plan.title,unit_price:amount,quantity:1}],config:{online:{success_url:back+'&resultado=retorno',pending_url:back+'&resultado=pendente',failure_url:back+'&resultado=erro',auto_return:'all'}}})});
    const url=new URL(data.checkout_url);if(url.protocol!=='https:'||!['mercadopago.com.br','mercadopago.com'].some(host=>url.hostname===host||url.hostname.endsWith('.'+host)))throw Error('Unexpected checkout destination');

@@ -6,11 +6,12 @@ Ateliê de presentes digitais personalizados: livros de memórias, cartões dobr
 
 ## Rodar localmente
 
-Requisitos: Node.js e Python 3 disponíveis no terminal.
+Requisitos: Node.js 22.13 ou superior e Python 3 disponíveis no terminal.
 
 ```sh
 npm ci
 npm run check
+npm test
 npm run dev
 ```
 
@@ -40,9 +41,9 @@ A publicação exige autenticação do Wrangler na conta indicada. Veja [CLOUDFL
 
 - `dist/`: aplicativo, estilos, Three.js, fontes, imagens e animações.
 - `scripts/check.mjs`: verificação de sintaxe dos módulos do frontend.
-- `server/`: módulos preparados para futuras integrações; não são executados pela hospedagem estática atual.
+- `server/`: Worker de pedidos, confirmação no Mercado Pago, publicação R2 e RSVP persistente em D1.
 
-Pagamentos reais, persistência em servidor e envio automático de e-mail ainda dependem da configuração dos serviços correspondentes. O fluxo atual prioriza criação, prévia e entrega de arquivos digitais no navegador.
+O Mercado Pago está em homologação, com cobrança real bloqueada por configuração. A compra fictícia foi aprovada e a entrega publicada no R2 foi aberta em outro navegador com fotos, áudio e Three.js. A conferência agendada de pedidos a cada 10 minutos recupera notificações atrasadas e reembolsos. Envio automático de e-mail não foi contratado nem configurado. Veja INTEGRACAO-MERCADOPAGO.txt para os bloqueios de lançamento.
 
 Credenciais, dependências instaladas, arquivos de trabalho e configurações locais ficam fora do Git.
 
