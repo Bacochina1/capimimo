@@ -25,11 +25,15 @@ VERIFICADO NESTA ENTREGA
 - Testes persistentes de backend disponíveis em npm test; sintaxe e SEO também verificados. Arquivos de teste e chaves de compra não entram no Git.
 - Exportação real de vídeo validada como MP4/AVC + AAC, 1080x1920. A cadência é de até 30 FPS e depende do aparelho; não é uma garantia de 30 quadros constantes no exportador em tempo real.
 
+DOMÍNIO CONECTADO
+- Zona capimimo.com.br ativa na Cloudflare pessoal, com DNS público nos servidores atribuídos.
+- Principal https://capimimo.com.br/ com HTTPS verificado; www redireciona para o principal.
+- SITE_ORIGIN, canonical, sitemap e robots atualizados. Endereço workers.dev e webhooks antigos continuam operacionais.
+- Alguns resolvedores podem manter cache DNS negativo da configuração anterior durante a propagação.
+
 FALTA PARA ABERTURA COMERCIAL
-1. Registro.br concluir a transição de DNS. A zona capimimo.com.br ainda estava pending na Cloudflare. Os servidores atribuídos são felipe.ns.cloudflare.com e haley.ns.cloudflare.com.
-2. Depois da ativação, ligar capimimo.com.br e www ao Worker, ajustar SITE_ORIGIN, sitemap/canonical e verificar HTTPS. Manter a URL antiga de webhook funcionando durante a migração.
-3. O proprietário informar nome do responsável e e-mail público de suporte para completar atendimento, termos e privacidade. O CPF informado no chat não foi colocado no repositório nem divulgado no site.
-4. Somente com domínio e informações comerciais finalizados: revisar os documentos e habilitar PAYMENT_MODE=live e SALES_ENABLED=true. Nenhuma compra real deve ser feita automaticamente como teste.
+1. O proprietário informar nome do responsável e e-mail público de suporte para completar atendimento, termos e privacidade. Dados pessoais informados no chat não foram divulgados no site.
+2. Com os documentos concluídos, revisar a configuração e habilitar PAYMENT_MODE=live e SALES_ENABLED=true. Nenhuma compra real deve ser feita automaticamente como teste.
 
 LIMITES E ENTREGA
 - Um pagamento por presente/ocasião. Planos Um Mimo R$14,90; Uma História R$24,90; Celebrar Juntos R$39,90.

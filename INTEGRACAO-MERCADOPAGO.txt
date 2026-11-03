@@ -5,7 +5,7 @@ Aplicação Capimimo criada com autorização do titular para Checkout Pro e API
 
 PAYMENT_MODE=test
 SALES_ENABLED=false
-Cobranças reais ainda não estão liberadas. Compra fictícia aprovada no provedor e reconhecida pela consulta autenticada do servidor. Publicação efetiva no R2 aberta em navegador independente com fotos, áudio e Three.js. Cobrança real continua bloqueada enquanto domínio e dados comerciais são concluídos.
+Cobranças reais ainda não estão liberadas. Compra fictícia aprovada no provedor e reconhecida pela consulta autenticada do servidor. Publicação efetiva no R2 aberta em navegador independente com fotos, áudio e Three.js. Cobrança real continua bloqueada enquanto os dados comerciais e documentos são concluídos. O domínio https://capimimo.com.br já está conectado; o endereço workers.dev mantém os webhooks existentes.
 
 Implementação ativa: server/worker.mjs, billing.mjs e mercadopago-orders.mjs.
 - POST /api/checkout: catálogo de preços no servidor e criação idempotente de Order.

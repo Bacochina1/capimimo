@@ -15,6 +15,6 @@ export const occasions={
  formatura:{sheet:'seasonal',row:3,label:'Formatura',material:'aniversario'},
  pedido_namoro:{sheet:'classic',row:3,label:'Pedido de namoro',material:'namorados'},
  desculpas:{sheet:'classic',row:0,label:'Pedido de desculpas',material:'amizade'},
- pet:{sheet:'classic',row:0,label:'Aniversário do pet',material:'aniversario'},
+ pet:{sheet:'classic',row:0,label:'Memórias com o pet',material:'aniversario'},
  outro:{sheet:'classic',row:0,label:'Outra ocasião',material:'amizade'}
 };

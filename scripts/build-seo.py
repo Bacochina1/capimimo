@@ -6,7 +6,7 @@ import json, os, re
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / 'dist'
-ORIGIN = os.environ.get('SEO_ORIGIN', 'https://capimimo.matheus-bacochina.workers.dev').rstrip('/')
+ORIGIN = os.environ.get('SEO_ORIGIN', 'https://capimimo.com.br').rstrip('/')
 parsed = urlparse(ORIGIN)
 if parsed.scheme != 'https' or not parsed.hostname or parsed.path or parsed.query or parsed.fragment:
     raise SystemExit('SEO_ORIGIN must be a public HTTPS origin without a path')

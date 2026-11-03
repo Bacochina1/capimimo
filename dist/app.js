@@ -69,8 +69,8 @@ function render(saveChange=true){
  const wedding=state.occasion==='casamento',invite=state.format==='convite';
  $('#wedding-path').hidden=!wedding;$('#invite-fields').hidden=!invite;
  $$('[name=wedding]').forEach(r=>r.checked=r.value===state.wedding);
- $('#recipient-label').textContent=invite?'Nomes de quem vai celebrar':wedding?'Nome do casal':'Para quem é?';
- $('#recipient').placeholder=wedding||invite?'Ex.: Lia & Rafa':'Nome de alguém especial';
+ $('#recipient-label').textContent=state.occasion==='pet'?'Nome de quem vai guardar a lembrança':invite?'Nomes de quem vai celebrar':wedding?'Nome do casal':'Para quem é?';
+ $('#recipient').placeholder=state.occasion==='pet'?'Ex.: Ana, tutora do Bento':wedding||invite?'Ex.: Lia & Rafa':'Nome de alguém especial';
  document.documentElement.style.setProperty('--cover',state.color);
  $('#people-options').hidden=state.character!=='people';
  $$('[data-character]').forEach(b=>{const selected=b.dataset.character===state.character;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});

@@ -3,7 +3,12 @@ import {publicPages} from './seo-routes.mjs';
 const notFound=()=>new Response('<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="robots" content="noindex"><title>Página não encontrada | Capimimo</title><h1>Esta página não foi encontrada.</h1><p><a href="/">Voltar ao Capimimo</a></p></html>',{status:404,headers:{'Content-Type':'text/html; charset=utf-8','X-Robots-Tag':'noindex','Cache-Control':'no-store'}});
 export default {async fetch(request,env){
  const url=new URL(request.url),path=url.pathname;
- if(path.startsWith('/api/'))return createBillingAPI(env)(request);
+ const primary=env.SITE_ORIGIN?new URL(env.SITE_ORIGIN):null;
+ if(primary&&url.hostname==='www.'+primary.hostname)return Response.redirect(primary.origin+url.pathname+url.search,308);
+ // Preserve purchases and browser drafts on the explicitly configured legacy host.
+ // Arbitrary Host/Origin headers cannot choose the provider return address.
+ const billingEnv=env.SITE_LEGACY_ORIGIN&&url.origin===env.SITE_LEGACY_ORIGIN?{...env,SITE_ORIGIN:env.SITE_LEGACY_ORIGIN}:env;
+ if(path.startsWith('/api/'))return createBillingAPI(billingEnv)(request);
  if(path==='/index.html'||path.endsWith('/index.html')&&publicPages.has(path.slice(0,-10)))return Response.redirect(url.origin+(path==='/index.html'?'/':path.slice(0,-10))+url.search,301);
  if(publicPages.has(path+'/'))return Response.redirect(url.origin+path+'/'+url.search,301);
  const privateGift=/^\/g\/[a-f0-9]{32}$/.test(path);

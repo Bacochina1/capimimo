@@ -1,6 +1,6 @@
 # SEO do Capimimo
 
-Implementação de 3 de novembro de 2026. Origem canônica atual: https://capimimo.matheus-bacochina.workers.dev.
+Implementação de 3 de novembro de 2026. Origem canônica atual: https://capimimo.com.br.
 
 ## O que foi aplicado
 
@@ -36,7 +36,7 @@ npm run check
 
 `check:seo` verifica todas as páginas, arquivos de imagem/CSS, canonical, JSON-LD, sitemap, normalização de URLs, 404 e exclusão dos presentes. A conferência visual foi feita em 390, 768 e 1440 px; o acesso do guia de Natal ao ateliê foi testado com o tema e o formato corretos.
 
-Ao mudar para um domínio próprio, defina `SEO_ORIGIN=https://seu-dominio` antes de executar `build:seo`, atualize `SITE_ORIGIN` na configuração do servidor e redirecione a origem antiga para o novo domínio. Não mantenha duas origens concorrentes com canonical diferente do domínio escolhido.
+Em uma futura mudança de domínio, defina `SEO_ORIGIN=https://seu-dominio` antes de executar `build:seo`, atualize `SITE_ORIGIN` na configuração do servidor e revise a compatibilidade dos acessos da origem antiga. Todos os canonical apontam para capimimo.com.br. O workers.dev continua atendendo rascunhos locais e webhooks existentes; www redireciona ao domínio principal.
 
 ## Ainda depende da conta e de tráfego real
 

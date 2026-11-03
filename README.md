@@ -2,7 +2,7 @@
 
 Ateliê de presentes digitais personalizados: livros de memórias, cartões dobráveis, convites e stories, com fotos, mensagens, áudio e música.
 
-[Ver o site](https://capimimo.matheus-bacochina.workers.dev/)
+[Ver o site](https://capimimo.com.br/)
 
 ## Rodar localmente
 
@@ -29,7 +29,7 @@ Abra http://127.0.0.1:4177/. Os arquivos prontos do aplicativo estão em `dist/`
 
 ## Publicação
 
-O site está publicado em Cloudflare Workers Static Assets. `wrangler.jsonc` aponta para o Worker `capimimo` na conta pessoal do Matheus Bacochina.
+O site está publicado em https://capimimo.com.br/ com Cloudflare Workers Static Assets. O www redireciona ao domínio principal. O endereço workers.dev permanece ativo para os acessos existentes e webhooks. `wrangler.jsonc` aponta para o Worker `capimimo` na conta pessoal do Matheus Bacochina.
 
 ```sh
 npm run check

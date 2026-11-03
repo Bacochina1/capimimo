@@ -1,31 +1,30 @@
 # Publicação do Capimimo
 
-O site usa Cloudflare Workers Static Assets, com arquivos prontos em `dist/`.
-O `account_id` em `wrangler.jsonc` fixa a conta pessoal do Matheus Bacochina.
+O Worker `capimimo` está na conta pessoal do Matheus Bacochina, fixada por `account_id` em wrangler.jsonc. Não usa a organização MedCof.
 
-## Publicar uma atualização
+## Domínio
+
+- Principal: https://capimimo.com.br/
+- https://www.capimimo.com.br/ redireciona com 308 para o principal, preservando caminho e parâmetros.
+- Zona Cloudflare ativa; DNS delegado para felipe.ns.cloudflare.com e haley.ns.cloudflare.com.
+- Ambos os nomes vinculados como Custom Domains no Worker; HTTPS verificado. Resolvedores com cache DNS anterior podem demorar a atualizar.
+- Canonical, sitemap e robots usam o domínio principal.
+
+O endereço https://capimimo.matheus-bacochina.workers.dev permanece ativo, incluindo webhooks já configurados. Não há redirecionamento automático dessa origem: rascunhos e chaves de compra ficam no armazenamento do navegador de cada origem. Para voltar a uma compra publicada no novo domínio, importe o arquivo de acesso da compra. As origens são autorizadas explicitamente no Worker; um Origin arbitrário não escolhe o endereço de retorno do pagamento.
+
+## Publicar
 
 ```sh
 npm ci
 npm run check
+npm test
+npm run test:client
+node tests/domain-routing.mjs
+npm run build:seo
+npm run check:seo
 npm run deploy:cloudflare
 ```
 
-## Conectar o repositório depois
+Arquivos prontos em dist/. O repositório pessoal é https://github.com/Bacochina1/capimimo. O deploy atual é feito pelo Wrangler; conectar Workers Builds é uma etapa separada.
 
-Suba o projeto ao repositório pessoal desejado. No painel do Cloudflare, abra o Worker `capimimo`, depois Settings > Builds e conecte o repositório. Use a raiz que contém `package.json` e `wrangler.jsonc`.
-
-- Comando de build: `npm run check`
-- Comando de deploy: `npm run deploy:cloudflare`
-- Nome do Worker: `capimimo`
-- Não é necessário compilar o HTML/JS estático.
-
-Não envie `.env`, `.dev.vars`, tokens ou a pasta `.wrangler` ao repositório.
-
-Esta publicação contém a UI e as funções locais já implementadas. Pagamentos e envio automático por e-mail continuam para a próxima integração.
-
-## Endereço publicado
-
-https://capimimo.matheus-bacochina.workers.dev
-
-Versão: `cdea5dd1-d148-4c87-811e-595c9287a6a7`. Publicado na conta pessoal do Matheus Bacochina. Nenhum repositório foi vinculado nesta etapa.
+Pagamentos permanecem em homologação (`PAYMENT_MODE=test`, `SALES_ENABLED=false`). Nome público do responsável e e-mail de suporte ainda são necessários para concluir atendimento e documentos da loja. Segredos ficam nos Worker Secrets; não envie tokens, .env, .dev.vars ou .wrangler ao Git.
