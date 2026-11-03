@@ -47,8 +47,8 @@ export function createBillingAPI(env,{fetchImpl=fetch,now=()=>Math.floor(Date.no
    try{const mp=await adapterFor(mode).create({id:row.id,planId:row.plan_id,email:row.email});await run('UPDATE purchases SET mp_id=?,mp_user_id=?,checkout_url=?,lease_until=NULL WHERE id=?',mp.id,mp.userId,mp.url,row.id);}catch{await run('UPDATE purchases SET lease_until=NULL WHERE id=?',row.id);throw new BillingError(502,'Não foi possível abrir o Mercado Pago. Tente novamente.');}
    row=await first('SELECT * FROM purchases WHERE id=?',row.id);return json(orderState(row),201);
   }
-  let match=path.match(/^\/api\/orders\/([a-f0-9]{32})(?:\/(sync|publish|guests))?$/);
-  if(match){const id=match[1],action=match[2];let row=await owned(id,request);
+  let match=path.match(/^\/api\/orders\/([a-f0-9]{32})(?:\/(sync|publish|guests)(?:\/([a-f0-9]{32})\/link)?)?$/);
+  if(match){const id=match[1],action=match[2],guestId=match[3];if(guestId&&action!=='guests')throw new BillingError(404,'Não encontrado.');let row=await owned(id,request);
    if(!action&&method==='GET')return json(orderState(row,await first('SELECT * FROM deliveries WHERE purchase_id=?',id)));
    if(action==='sync'&&method==='POST'){await limit(request,'sync',120);if(row.mp_id)await reconcile(row);row=await owned(id,request);return json(orderState(row,await first('SELECT * FROM deliveries WHERE purchase_id=?',id)));}
    if(action==='publish'&&method==='PUT'){
@@ -61,6 +61,13 @@ export function createBillingAPI(env,{fetchImpl=fetch,now=()=>Math.floor(Date.no
    }
    if(action==='guests'){
     row=await paid(id,request);if(row.plan_id!=='celebrar')throw new BillingError(403,'Este plano não inclui convidados.');const delivery=await first('SELECT * FROM deliveries WHERE purchase_id=?',id);if(!delivery)throw new BillingError(409,'Publique o convite primeiro.');
+    if(guestId){
+     if(method!=='POST')throw new BillingError(405,'Use POST para gerar um novo link.');
+     await limit(request,'guest-link:'+id,120);
+     const secret=random(32),changed=await run('UPDATE delivery_guests SET access_hash=?,updated_at=? WHERE id=? AND delivery_id=?',await hash(secret),now(),guestId,delivery.id);
+     if(!changed)throw new BillingError(404,'Convite não encontrado.');
+     return json({id:guestId,url:origin+'/g/'+delivery.public_id+'?convidado='+guestId+'#responder='+secret});
+    }
     if(method==='GET')return json({guests:(await query('SELECT id,name,allowed_count AS allowedCount,status,attending_count AS attendingCount FROM delivery_guests WHERE delivery_id=? ORDER BY name',delivery.id).all()).results});
     if(method==='POST'){const input=await readJSON(request),name=safeText(input.name,80),count=input.allowedCount??1;if(!name||!Number.isInteger(count)||count<1||count>10)throw new BillingError(422,'Confira o nome e o número de pessoas.');const guestId=random(),secret=random(32),changed=await run('INSERT INTO delivery_guests(id,delivery_id,access_hash,name,allowed_count,updated_at) SELECT ?,?,?,?,?,? WHERE (SELECT COUNT(*) FROM delivery_guests WHERE delivery_id=?)<100',guestId,delivery.id,await hash(secret),name,count,now(),delivery.id);if(!changed)throw new BillingError(409,'O limite de 100 convidados foi atingido.');return json({id:guestId,name,url:origin+'/g/'+delivery.public_id+'?convidado='+guestId+'#responder='+secret},201);}
    }

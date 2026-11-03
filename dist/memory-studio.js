@@ -8,7 +8,7 @@ const make=(tag,className,text)=>{const element=document.createElement(tag);if(c
 const cleanPages=value=>Array.isArray(value)?value.map(page=>({id:typeof page?.id==='string'?page.id.slice(0,50):crypto.randomUUID(),title:String(page?.title??'').slice(0,48),message:String(page?.message??'').slice(0,180),photoId:String(page?.photoId??'').slice(0,50)})):[];
 export {cleanPages};
 export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openContent,toast,isIncoming}){
- const $=s=>document.querySelector(s);let gallery=[],selected=null,index=0,epoch=0,queue=Promise.resolve(),restoring=true;
+ const $=s=>document.querySelector(s);let gallery=[],selected=null,index=0,epoch=0,queue=Promise.resolve(),restoring=true;const pendingPhotos=new Set();
  const pagesPanel=make('details','memory-pages');pagesPanel.id='memory-pages';pagesPanel.open=true;
  pagesPanel.innerHTML='<summary>As páginas da sua história <span class="page-total"></span></summary><p class="memory-help">Uma foto, algumas palavras. Monte um momento de cada vez.</p><div class="page-tabs" role="group" aria-label="Escolher página"></div><div class="page-edit" hidden><div class="field"><label for="page-title">Título desta página</label><input id="page-title" maxlength="48" placeholder="Ex.: O dia em que tudo começou"></div><div class="field"><label for="page-message">A história deste momento <span id="page-count">0/180</span></label><textarea id="page-message" maxlength="180" rows="3" placeholder="Conte uma lembrança que merece ficar."></textarea></div><label for="page-photo">Foto desta página</label><select id="page-photo"><option value="">Usar a ilustração</option></select><div class="page-order"><button type="button" class="page-earlier">← Mover antes</button><button type="button" class="page-later">Mover depois →</button><button type="button" class="page-remove">Excluir página</button></div></div><p class="first-page-help">A primeira página usa a mensagem e a foto principal do mimo.</p><button type="button" class="add-memory-page">＋ Adicionar uma página</button><p class="page-limit" role="status"></p>';
  $('#message').closest('.field').after(pagesPanel);
@@ -42,14 +42,15 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
  pagesPanel.querySelector('.page-remove').addEventListener('click',()=>{if(!confirm('Excluir esta página? As fotos continuam na sua biblioteca.'))return;const pages=currentPages();pages.splice(index-1,1);index=Math.max(0,index-1);onChange({pages});render();});
  function move(delta){const pages=currentPages(),at=index-1,to=at+delta;if(at<0||to<0||to>=pages.length)return;[pages[at],pages[to]]=[pages[to],pages[at]];index=to+1;onChange({pages});render();}
  pagesPanel.querySelector('.page-earlier').addEventListener('click',()=>move(-1));pagesPanel.querySelector('.page-later').addEventListener('click',()=>move(1));
- const dropzone=document.querySelector('.photo-upload');dropzone.firstChild.textContent='＋ Escolher ou arrastar fotos';dropzone.addEventListener('dragover',event=>{event.preventDefault();dropzone.classList.add('drag-over');});dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag-over'));dropzone.addEventListener('drop',event=>{event.preventDefault();dropzone.classList.remove('drag-over');if(!event.dataTransfer?.files?.length)return;$('#photo').files=event.dataTransfer.files;$('#photo').dispatchEvent(new Event('change',{bubbles:true}));});
- $('#photo').addEventListener('change',async e=>{
+ const dropzone=document.querySelector('.photo-upload');dropzone.firstChild.textContent='＋ Escolher ou arrastar fotos';dropzone.addEventListener('dragover',event=>{event.preventDefault();dropzone.classList.add('drag-over');});dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag-over'));dropzone.addEventListener('drop',event=>{event.preventDefault();dropzone.classList.remove('drag-over');if(!event.dataTransfer?.files?.length)return;if(pendingPhotos.size){toast('Aguarde a preparação das fotos antes de adicionar outras.');return;}$('#photo').files=event.dataTransfer.files;$('#photo').dispatchEvent(new Event('change',{bubbles:true}));});
+ async function preparePhotos(e){
   const files=[...e.target.files],ownEpoch=++epoch;restoring=false;const limit=Infinity;let added=0;$('#upload-status').textContent='Otimizando suas fotos…';
   for(const file of files){if(gallery.length>=limit){toast('Este formato aceita até '+limit+' fotos. As fotos já escolhidas foram mantidas.');break;}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){toast('Use fotos JPG, PNG ou WebP de até 10 MB.');continue;}
    try{const prepared=await compressPhoto(file);if(epoch!==ownEpoch)return;const photo={id:crypto.randomUUID(),name:file.name.slice(0,60),src:prepared.src,originalBytes:prepared.originalBytes,bytes:prepared.bytes};gallery.push(photo);selected=photo.id;setPhoto(photo.src);added++;}catch{toast('Não foi possível abrir '+file.name+'. Tente outra foto.');}
   }
   if(epoch!==ownEpoch)return;e.target.value='';$('#upload-status').textContent=added?added+(added===1?' foto adicionada.':' fotos adicionadas.')+' Fotos otimizadas para compartilhar.':'Nenhuma nova foto adicionada.';persist();render();
- });
+ }
+ $('#photo').addEventListener('change',event=>{const task=preparePhotos(event);pendingPhotos.add(task);$('#photo').disabled=true;dropzone.setAttribute('aria-busy','true');task.finally(()=>{pendingPhotos.delete(task);$('#photo').disabled=!!pendingPhotos.size;dropzone.setAttribute('aria-busy',String(!!pendingPhotos.size));if(!pendingPhotos.size&&$('#upload-status').textContent.startsWith('Otimizando'))$('#upload-status').textContent='Preparação encerrada. Seu rascunho está atualizado.';}).catch(()=>{$('#upload-status').textContent='Não foi possível preparar as fotos. Tente novamente.';});});
  const loadEpoch=epoch;
  mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
  render();
@@ -59,7 +60,7 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
   reset(){epoch++;index=0;gallery=[];selected=null;restoring=false;setPhoto(null);persist();render();},
   exportMedia(){return {gallery:gallery.map(item=>({...item})),selected};},
   async importMedia(value){epoch++;restoring=false;gallery=Array.isArray(value?.gallery)?value.gallery.filter(item=>item&&typeof item.id==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(item.src)).map(item=>({...item})):[];selected=gallery.some(item=>item.id===value?.selected)?value.selected:gallery[0]?.id??null;index=0;setPhoto(gallery.find(item=>item.id===selected)?.src??null);persist();render();await queue;},
-  flush:()=>queue,
+  flush:async()=>{while(pendingPhotos.size)await Promise.all([...pendingPhotos]);await queue;},
   snapshot:()=>({gallery:gallery.map(({id,name})=>({id,name})),selected,index,pages:currentPages()})
  };
 }

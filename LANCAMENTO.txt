@@ -4,6 +4,13 @@ CAPIMIMO — SITUAÇÃO DE LANÇAMENTO
 LIBERAÇÃO COMERCIAL: PENDENTE. Não afirmar que está 100% disponível para vendas reais.
 PAYMENT_MODE=test; SALES_ENABLED=false.
 
+REVISÃO COM CINCO AUDITORIAS
+- Compra: reutiliza compra aprovada compatível sem induzir outra compra; falha de conexão não libera exportação no domínio público.
+- Editor: salvar e exportar aguardam fotos e áudio; mudança de modelo preserva dedicatória personalizada.
+- Recebimento: respostas e pergunta secreta funcionam no sandbox; carregamento oferece nova tentativa e preserva presentes antigos; leitura ampliada foca a mensagem.
+- Convites: links perdidos podem ser regenerados pelo proprietário, preservando RSVP; o link anterior deixa de funcionar. O arquivo de acesso atualizado guarda o novo link.
+- Acessibilidade: nome do diálogo de recuperação corrigido; foco, teclado e ausência de overflow conferidos de 320 a 1440 px.
+
 VERIFICADO NESTA ENTREGA
 - Compra fictícia do Mercado Pago aprovada com cartão oficial de teste. Nenhum cartão real foi usado e não houve cobrança real.
 - Confirmação por consulta autenticada à API, com validação de conta, aplicação, ambiente, valor e moeda.

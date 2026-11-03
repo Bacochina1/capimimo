@@ -12,6 +12,7 @@ Requisitos: Node.js 22.13 ou superior e Python 3 disponíveis no terminal.
 npm ci
 npm run check
 npm test
+npm run test:client
 npm run dev
 ```
 
@@ -50,3 +51,9 @@ Credenciais, dependências instaladas, arquivos de trabalho e configurações lo
 ## SEO
 
 As páginas por ocasião são geradas por `npm run build:seo` e verificadas por `npm run check:seo`. Veja [SEO.md](SEO.md) para arquitetura, fontes, mudança de domínio e acompanhamento no Search Console.
+
+## Revisão dos fluxos
+
+Cinco auditorias cobriram compra, edição, recebimento, convites e acessibilidade em telas de 320 a 1440 px. Foram corrigidos reuso de compra, processamento de mídia antes de salvar/exportar, preservação de dedicatória, respostas no visualizador isolado, recuperação de links individuais e mensagens de sucesso.
+
+`npm test` verifica a API e a autorização. `npm run test:client` cobre seleção de compra compatível, upgrade, publicação e falhas de conexão sem liberação indevida. A aplicação continua em homologação: veja LANCAMENTO.txt antes de habilitar vendas reais.

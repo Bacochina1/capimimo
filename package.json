@@ -9,7 +9,8 @@
     "deploy:cloudflare": "wrangler deploy --config wrangler.jsonc",
     "build:seo": "python scripts/build-seo.py",
     "check:seo": "node scripts/check-seo.mjs",
-    "test": "node tests/billing.mjs"
+    "test": "node tests/billing.mjs",
+    "test:client": "node tests/billing-client.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.5",
