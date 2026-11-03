@@ -1,30 +1,31 @@
-ETAPA ADIADA POR PEDIDO DO USUÁRIO
-O foco atual é UI local. Não ativar cobrança ou nova hospedagem como parte desta entrega.
+MERCADO PAGO — HOMOLOGAÇÃO EM ANDAMENTO
+Atualizado em 03/11/2026.
 
-ATIVAÇÃO DO MERCADO PAGO
+Aplicação Capimimo criada com autorização do titular para Checkout Pro e API de Orders. Servidor publicado na Cloudflare pessoal de Matheus Bacochina, com D1 e R2 privado. Credenciais de produção/teste e assinaturas de webhook configuradas exclusivamente como Worker Secrets; não estão no frontend ou no repositório.
 
-O site atual é uma demonstração estática privada, com preços propostos, resumo do fluxo e tutorial pós-compra demonstrativo. O adaptador em server/mercadopago.mjs é código de servidor preparado e testado com mocks; não é uma API publicada.
+PAYMENT_MODE=test
+SALES_ENABLED=false
+Cobranças reais ainda não estão liberadas. Um checkout do ambiente de teste foi criado; ainda falta completar a aprovação no provedor e verificar a entrega por link em outro navegador antes da abertura comercial.
 
-Configuração segura necessária:
-MERCADOPAGO_ACCESS_TOKEN — token de teste durante homologação e token de produção apenas na ativação.
-MERCADOPAGO_WEBHOOK_SECRET — segredo da assinatura da aplicação, validada com o SDK oficial.
-MERCADOPAGO_COLLECTOR_ID — identificação esperada da conta recebedora.
-SITE_ORIGIN — origem HTTPS pública da operação comercial.
+Implementação ativa: server/worker.mjs, billing.mjs e mercadopago-orders.mjs.
+- POST /api/checkout: catálogo de preços no servidor e criação idempotente de Order.
+- GET /api/orders/:id e POST /api/orders/:id/sync: acesso com chave do comprador.
+- Webhooks /api/payments/mercadopago/webhook/test e /live: assinatura validada com SDK oficial e consulta da Order. Retorno do navegador não aprova compra.
+- PUT /api/orders/:id/publish: exige aprovação e plano/formato/rascunho correspondentes; arquivo limitado a 40 MB; link por 12 meses desde a aprovação.
+- /g/:publicId: destinatário sem chave de edição; conteúdo em iframe sandbox e fora da indexação.
+- Convites individuais e RSVP com token próprio de cada convidado.
+- Revogação da entrega em reembolso/estorno confirmado.
 
-Não colar esses valores no frontend, em arquivos do repositório ou no chat. Configurá-los como segredos no ambiente do servidor.
+Os 31 testes locais do backend passaram, cobrindo assinatura inválida, divergência de valor/moeda/conta/aplicação, concorrência, publicação, gzip, RSVP e revogação. São fixtures: não substituem homologação completa no Mercado Pago.
 
-Banco e endpoints necessários antes de cobrar:
-POST /api/checkout — cria pedido com identificador aleatório, plano e valor do catálogo de servidor, token de acesso ao pedido e preferência no Mercado Pago.
-POST /api/payments/mercadopago/webhook — valida assinatura com SDK oficial, consulta o pagamento na API, encontra pedido pela external_reference, confere conta, valor e moeda e atualiza estado atomicamente.
-GET /api/orders/:id — exige token do pedido; informa estado real; não expõe pedido pela simples enumeração de ID.
-POST /api/gifts — exige pedido aprovado e acesso do comprador; cria rascunho com limites do plano.
-PUT /api/gifts/:id — exige token de edição e valida fotos, tamanhos e estrutura.
-POST /api/gifts/:id/publish — confirma a publicação e retorna link de leitura/QR; esse link não dá permissão de edição.
-Pedidos e rascunhos em banco durável; fotos em armazenamento de objetos; tratamento de arquivos, cotas e exclusão próprios.
+Os adaptadores antigos server/mercadopago.mjs e product-api.mjs não são usados pelo Worker atual.
 
-O webhook externo precisa alcançar a URL sem o login de visitante da prévia privada. A audiência da prévia não foi tornada pública automaticamente.
+Antes de liberar vendas:
+1. Completar checkout com dados fictícios oficiais, sem cartão real.
+2. Confirmar webhook assinado e aprovação consultada na API.
+3. Publicar presente de teste e conferir fotos, áudio, abertura e RSVP em outro navegador.
+4. Verificar recuperação da chave de compra e edição da entrega.
+5. Completar dados reais de atendimento, termos e privacidade.
+6. Só então revisar PAYMENT_MODE=live e SALES_ENABLED=true. Não realizar compra real sem autorização própria.
 
-Critérios para ativação:
-Compra de teste aprovada, pendente e recusada; repetição idempotente; assinatura inválida rejeitada; valor alterado não libera acesso; retorno de checkout não aprova sozinho; estorno/reembolso revoga o que for cabível; foto realmente publicada sobrevive a outro dispositivo; convite e RSVP funcionam para convidados distintos. Só depois trocar credenciais e remover a indicação de demonstração.
-
-Código adicional preparado, sem implantação: server/product-api.mjs, content.mjs, storage.mjs, local-adapters.mjs e migrations/. Há testes locais de SQLite e arquivos, mas a UI local usa armazenamento do navegador. Antes da ativação comercial, alinhar contratos de páginas, fotos e oito famílias de estampas; conectar autenticação/pedidos, publicação, fotos e RSVP ao servidor; validar assinatura do webhook e homologar pagamento/estorno reais. O adaptador isolado não torna o produto comercialmente ativo.
+Não enviar tokens ou segredos em chat, capturas, arquivos públicos ou Git.

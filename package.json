@@ -6,9 +6,16 @@
   "scripts": {
     "dev": "python -m http.server 4177 --bind 127.0.0.1 --directory dist",
     "check": "node scripts/check.mjs",
-    "deploy:cloudflare": "wrangler deploy --config wrangler.jsonc"
+    "deploy:cloudflare": "wrangler deploy --config wrangler.jsonc",
+    "build:seo": "python scripts/build-seo.py",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "devDependencies": {
+    "sharp": "0.35.5",
     "wrangler": "4.155.0"
+  },
+  "dependencies": {
+    "mediabunny": "1.65.1",
+    "mercadopago": "3.6.1"
   }
 }

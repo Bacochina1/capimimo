@@ -59,7 +59,7 @@ export function paintOccasionBorder(ctx,w,h,data,palette){
 }
 
 // Real transparent illustrations, shared by the selector, canvas textures and offline gifts.
-export const ornamentArtwork=Object.fromEntries('heart tree egg bunny ornament gift star flower rings bow letter balloon cake cap paw branch'.split(' ').map(id=>[id,'assets/ornaments/'+id+'.png']));
+export const ornamentArtwork=Object.fromEntries('heart tree egg bunny ornament gift star flower rings bow letter balloon cake cap paw branch'.split(' ').map(id=>[id,'assets/ornaments/'+id+'.webp']));
 const ornamentImages=new Map(),ornamentLoads=new Map();
 export function ensureOrnamentArtwork(data={}){
  return Promise.all(Object.entries(ornamentArtwork).map(([id,path])=>{

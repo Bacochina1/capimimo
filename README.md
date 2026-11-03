@@ -45,3 +45,7 @@ A publicação exige autenticação do Wrangler na conta indicada. Veja [CLOUDFL
 Pagamentos reais, persistência em servidor e envio automático de e-mail ainda dependem da configuração dos serviços correspondentes. O fluxo atual prioriza criação, prévia e entrega de arquivos digitais no navegador.
 
 Credenciais, dependências instaladas, arquivos de trabalho e configurações locais ficam fora do Git.
+
+## SEO
+
+As páginas por ocasião são geradas por `npm run build:seo` e verificadas por `npm run check:seo`. Veja [SEO.md](SEO.md) para arquitetura, fontes, mudança de domínio e acompanhamento no Search Console.

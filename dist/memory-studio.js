@@ -1,3 +1,4 @@
+import {compressPhoto,mediaSize} from './media-compression.js';
 // Photos remain on this device. IndexedDB keeps image bytes out of localStorage.
 const DATABASE='capimimo-media-v1';
 let connection;
@@ -43,21 +44,21 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
  pagesPanel.querySelector('.page-earlier').addEventListener('click',()=>move(-1));pagesPanel.querySelector('.page-later').addEventListener('click',()=>move(1));
  const dropzone=document.querySelector('.photo-upload');dropzone.firstChild.textContent='＋ Escolher ou arrastar fotos';dropzone.addEventListener('dragover',event=>{event.preventDefault();dropzone.classList.add('drag-over');});dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('drag-over'));dropzone.addEventListener('drop',event=>{event.preventDefault();dropzone.classList.remove('drag-over');if(!event.dataTransfer?.files?.length)return;$('#photo').files=event.dataTransfer.files;$('#photo').dispatchEvent(new Event('change',{bubbles:true}));});
  $('#photo').addEventListener('change',async e=>{
-  const files=[...e.target.files],ownEpoch=++epoch;restoring=false;const limit=Infinity;let added=0;$('#upload-status').textContent='Preparando suas fotos…';
+  const files=[...e.target.files],ownEpoch=++epoch;restoring=false;const limit=Infinity;let added=0;$('#upload-status').textContent='Otimizando suas fotos…';
   for(const file of files){if(gallery.length>=limit){toast('Este formato aceita até '+limit+' fotos. As fotos já escolhidas foram mantidas.');break;}if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>10*1024*1024){toast('Use fotos JPG, PNG ou WebP de até 10 MB.');continue;}
-   try{const bitmap=await createImageBitmap(file);if(epoch!==ownEpoch){bitmap.close();return;}const canvas=document.createElement('canvas'),scale=Math.min(1,1200/Math.max(bitmap.width,bitmap.height));canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();const photo={id:crypto.randomUUID(),name:file.name.slice(0,60),src:canvas.toDataURL('image/jpeg',.85)};gallery.push(photo);selected=photo.id;setPhoto(photo.src);added++;}catch{toast('Não foi possível abrir '+file.name+'. Tente outra foto.');}
+   try{const prepared=await compressPhoto(file);if(epoch!==ownEpoch)return;const photo={id:crypto.randomUUID(),name:file.name.slice(0,60),src:prepared.src,originalBytes:prepared.originalBytes,bytes:prepared.bytes};gallery.push(photo);selected=photo.id;setPhoto(photo.src);added++;}catch{toast('Não foi possível abrir '+file.name+'. Tente outra foto.');}
   }
-  if(epoch!==ownEpoch)return;e.target.value='';$('#upload-status').textContent=added?added+(added===1?' foto adicionada.':' fotos adicionadas.'):'Nenhuma nova foto adicionada.';persist();render();
+  if(epoch!==ownEpoch)return;e.target.value='';$('#upload-status').textContent=added?added+(added===1?' foto adicionada.':' fotos adicionadas.')+' Fotos otimizadas para compartilhar.':'Nenhuma nova foto adicionada.';persist();render();
  });
  const loadEpoch=epoch;
- mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/jpeg;base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
+ mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
  render();
  return {
   render,
   decorate(data){const chapters=data.format==='livro'?currentPages():[];const pages=[{title:data.format==='cartao'?'Sua dedicatória':data.format==='convite'?'Seu convite':'Nossa história.',message:data.message,photo:data.photo},...chapters.map(page=>({title:page.title||'Uma lembrança nossa.',message:page.message,photo:gallery.find(photo=>photo.id===page.photoId)?.src??null}))];const active=data.format==='livro'?pages[Math.min(index,pages.length-1)]:null;return {...data,coverPhoto:data.photo,...(active?{message:active.message,photo:active.photo,pageTitle:active.title}:{}),pages,activePage:index,photos:includedPhotos().map(photo=>({id:photo.id,src:photo.src,name:photo.name,caption:photo.caption||'',fit:photo.fit||'',duration:photo.duration||0}))};},
   reset(){epoch++;index=0;gallery=[];selected=null;restoring=false;setPhoto(null);persist();render();},
   exportMedia(){return {gallery:gallery.map(item=>({...item})),selected};},
-  async importMedia(value){epoch++;restoring=false;gallery=Array.isArray(value?.gallery)?value.gallery.filter(item=>item&&typeof item.id==='string'&&/^data:image\/jpeg;base64,/.test(item.src)).map(item=>({...item})):[];selected=gallery.some(item=>item.id===value?.selected)?value.selected:gallery[0]?.id??null;index=0;setPhoto(gallery.find(item=>item.id===selected)?.src??null);persist();render();await queue;},
+  async importMedia(value){epoch++;restoring=false;gallery=Array.isArray(value?.gallery)?value.gallery.filter(item=>item&&typeof item.id==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(item.src)).map(item=>({...item})):[];selected=gallery.some(item=>item.id===value?.selected)?value.selected:gallery[0]?.id??null;index=0;setPhoto(gallery.find(item=>item.id===selected)?.src??null);persist();render();await queue;},
   flush:()=>queue,
   snapshot:()=>({gallery:gallery.map(({id,name})=>({id,name})),selected,index,pages:currentPages()})
  };

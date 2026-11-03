@@ -4,8 +4,21 @@
   "account_id": "2f712d5c1eb96005389085f87504e834",
   "compatibility_date": "2026-11-03",
   "workers_dev": true,
+  "main": "server/worker.mjs",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "SITE_ORIGIN": "https://capimimo.matheus-bacochina.workers.dev",
+    "PAYMENT_MODE": "test",
+    "SALES_ENABLED": "false",
+    "MERCADOPAGO_APPLICATION_ID": "7351693003774090",
+    "MERCADOPAGO_TEST_APPLICATION_ID": "2530084871450339"
+  },
+  "d1_databases": [{"binding":"BILLING_DB","database_name":"capimimo-payments","database_id":"056612c0-b8a6-4b44-9f1f-097a6926d19f","migrations_dir":"server/billing-migrations"}],
+  "r2_buckets": [{"binding":"GIFTS_BUCKET","bucket_name":"capimimo-gifts"}],
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true,
     "not_found_handling": "single-page-application"
   }
 }
