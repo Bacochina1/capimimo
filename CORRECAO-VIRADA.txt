@@ -1,0 +1,22 @@
+CAPIMIMO — CORREÇÃO DA VIRADA DE PÁGINAS · 03/11/2026
+
+Defeito reproduzido: a foto da próxima página já substituía a atual aos 35 ms,
+antes da folha revelar o verso. A câmera acompanhava a geometria da folha e
+mudava de distância durante a animação.
+
+A nova página é preparada fora da tela. A folha tem frente e verso próprios,
+com UV correto no verso, e a foto antiga continua visível até a passagem da folha.
+Ao terminar, a nova foto e a mensagem são confirmadas juntas. O enquadramento
+reserva o espaço da virada sem mudar de distância enquanto a folha se move.
+Os botões aguardam a conclusão da troca e evitam cliques sobrepostos.
+Fechar a capa durante a virada restaura o conteúdo anterior de forma consistente.
+
+Verificado em livro, cartão e convite; avanço/retorno, cliques rápidos,
+foto com carregamento atrasado, modo sem movimento, edição durante carregamento,
+fechamento no meio da transição, leitor da página e arquivos HTML offline.
+O teste de enquadramento acompanhou 153 amostras em três formatos e três
+proporções de tela. Não houve corte dos vértices projetados da folha.
+
+Evidências: VALIDACAO-VIRADA.json e work/page-turn/.
+Os arquivos HTML exportados antes desta correção precisam ser baixados de novo.
+Prévia: http://127.0.0.1:4177/?v=virada-corrigida#atelier

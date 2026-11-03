@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-03",
+  "method": "Public primary product pages; no purchase or private editor audit. Promotional customer counts were not independently verified or reused.",
+  "sources": [
+    {
+      "name": "LovePanda",
+      "url": "https://lovepanda.com.br/",
+      "observations": [
+        "Digital album and animated retrospective with personal photos, music and letters; recipient opens in browser.",
+        "Live examples and preview before purchase. Public album prices observed: R$19.90 for 24 hours, R$29.90 ongoing access, R$39.90 complete plan."
+      ],
+      "application": "Show real recipient examples and distinguish formats. Keep Capimimo original artwork and family-wide occasions; do not reproduce competitor screens or code."
+    },
+    {
+      "name": "Festino",
+      "url": "https://festino.com.br/",
+      "observations": [
+        "Invitation examples, guided form, individual RSVP/party counts, map and calendar.",
+        "Public one-time price R$99.90; access through event plus 60 days; post-payment access to creation."
+      ],
+      "application": "Separate public demonstration from creator panel. Give each invited family a name, allowed party size, own invitation and email draft. Keep local response import honest until server exists."
+    },
+    {
+      "name": "LovyMemory",
+      "url": "https://www.lovymemory.com/",
+      "observations": [
+        "Four guided screens for name, photos, message and music; preview before checkout.",
+        "Public price R$10 for one year; R$20 for two years."
+      ],
+      "application": "Do not position Capimimo as the cheapest in the market. Compete through readable layouts, full-family themes, offline keepsakes and richer personalization."
+    }
+  ],
+  "decisions": [
+    "Public page: working examples, concise product choice, no full editor by default.",
+    "Post-purchase UI: explicitly simulated access until payment and server authorization exist.",
+    "Thirty options per occasion and core format: ten compositions × three curated color directions. Cover/background art restricted to margins; opaque text zones.",
+    "Keep R$14.90/R$24.90/R$39.90 as a launch proposal, not validated conversion or profit claims.",
+    "Do not promise permanent hosting or automatic email/WhatsApp in this local version."
+  ]
+}

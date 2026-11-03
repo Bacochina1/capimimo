@@ -1,0 +1,32 @@
+{
+  "work/occasion-styles/qa.json": {
+    "passed": 147
+  },
+  "work/personality/art-catalog-qa.json": {
+    "rendered": 2160,
+    "errors": [],
+    "duplicates": [],
+    "pass": true
+  },
+  "work/personality/themed-portable-qa.json": {
+    "passed": 22
+  },
+  "work/page-turn/transition-qa.json": {
+    "passed": 13
+  },
+  "work/soft-gifts/reader-style-qa.json": {
+    "passed": 5
+  },
+  "desktopMatchesSource": true,
+  "filesChanged": [
+    "appearance.js",
+    "book-finish.js",
+    "cover-catalog.js",
+    "digital-export.js",
+    "gift-identity.js",
+    "portable-export.js",
+    "stationery.js",
+    "story-design.js"
+  ],
+  "note": "Static decorative finishes; existing opening and Three.js animations preserved."
+}

@@ -1,0 +1,104 @@
+LIVROS E VITRINE MAIS RECENTES: LIVROS-PAPEL-E-CACAU.txt e VALIDACAO-LIVROS.json.
+
+ESTADO MAIS RECENTE: ATUALIZACAO-COLECOES.txt e VALIDACAO-COLECOES.json.
+Os limites antigos de páginas/fotos abaixo foram substituídos pela atualização.
+
+CAPIMIMO — FUNCIONALIDADES DO HTML CONFERIDAS
+Atualização: 03/11/2026
+
+Produtos digitais; interface e fluxos locais completos. Publicação e pagamentos adiados pelo usuário.
+
+PÚBLICOS E RELACIONAMENTOS
+Amor, mãe, pai, avós, amigos, filhos, pets e outra pessoa; nome, apelido, remetente, data e cidade
+Onde: Começo
+
+OCASIÕES DO HTML
+As 16 ocasiões da referência, mais Páscoa e outra ocasião
+Onde: Começo
+
+STORIES E ÁLBUM
+Stories automáticos e livro 3D manual; cartão e convite adicionais
+Onde: Começo e prévia
+
+FOTOS
+Até 20 nos Stories e no livro; upload múltiplo, arrastar, legendas, capa, ordem, duração e enquadramento; armazenamento durável
+Onde: Fotos
+
+ÁUDIO E MÚSICA
+Trilha, upload, gravação até 90 segundos e links de plataformas; áudio incluído no HTML e vídeo quando aplicável
+Onde: Voz e palavras
+
+CARTA COM LACRE
+Até 2.000 caracteres, ajuda para começar e envelope ilustrado que abre
+Onde: Voz e palavras; recebimento
+
+CONTADOR
+Anos, meses, dias e relógio; calendário com meses curtos e anos bissextos
+Onde: Surpresas
+
+CÉU DA DATA
+Ilustração simbólica por data/cidade com fase lunar aproximada, identificada como tal
+Onde: Surpresas
+
+LINHA DO TEMPO
+Até 12 momentos com data e descrição
+Onde: Surpresas
+
+ROLETA
+Até 12 ideias; sorteio animado e alternativa para movimento reduzido
+Onde: Surpresas
+
+PALAVRA SECRETA
+Pergunta, resposta e mensagem; tolerância a maiúsculas e acentos; brincadeira, sem prometer sigilo
+Onde: Surpresas
+
+ABRA QUANDO
+Até oito cartas personalizadas
+Onde: Surpresas
+
+PRESENTE COLETIVO
+Até 30 recados; convite HTML para escrever e arquivo JSON para devolver/importar
+Onde: Surpresas
+
+QUEM RECEBE RESPONDE
+Resposta escrita, download JSON e importação no presente correto, inclusive outro presente da biblioteca
+Onde: Recebimento; Respostas que chegaram; Meus presentes
+
+ENTREGA AGENDADA
+Preparação e lembrete real em calendário ICS. Envio automático por WhatsApp/e-mail depende da etapa hospedada e não é simulado como realizado
+Onde: Conferir
+
+QUADROS PARA IMPRIMIR
+Três composições, foto e dedicatória; PNG A4 2480x3508 e diálogo de impressão/salvar PDF
+Onde: Conferir
+
+BIBLIOTECA
+Guardar, visualizar, editar, duplicar, baixar e excluir; fotos e áudios incluídos; importação de respostas
+Onde: Meus presentes no topo
+
+PLANOS E COMPRA
+Proposta comercial e fluxo demonstrativo, com tutorial de oito passos. Não cobra; Mercado Pago real adiado
+Onde: Planos
+
+RECEBIMENTO COMPLETO
+HTML independente com fotos, áudio, fontes, animação e interações; Three.js incluído para livro/cartão/convite
+Onde: Conferir; Meus presentes
+
+CONVITES DE CASAMENTO E EVENTOS
+Data, local, mapa, calendário, até 100 convites, limite de acompanhantes, arquivo individual e confirmação JSON importável
+Onde: Começo; Surpresas; recebimento
+
+IDENTIDADE E PERSONALIZAÇÃO
+Capivara na hero, 60 sprites a 30 FPS e fotos ilustrativas ao redor; estampas autorais; Stories com layouts, paletas, tipografia e textos
+Onde: Página; Visual
+
+ADIADO CONFORME O ESCOPO COMBINADO
+Produtos físicos e frete
+Ativação de hospedagem
+Cobrança real
+Mensagens automáticas e sincronização em servidor antes da etapa hospedada
+
+Abrir a versão local: http://127.0.0.1:4177/
+Projeto na Área de Trabalho: C:/Users/Admin/Desktop/Capimimo
+Para iniciar o servidor: npm run dev
+Para validar sintaxe: npm run check

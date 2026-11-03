@@ -1,3 +1,6 @@
+ETAPA ADIADA POR PEDIDO DO USUÁRIO
+O foco atual é UI local. Não ativar cobrança ou nova hospedagem como parte desta entrega.
+
 ATIVAÇÃO DO MERCADO PAGO
 
 O site atual é uma demonstração estática privada, com preços propostos, resumo do fluxo e tutorial pós-compra demonstrativo. O adaptador em server/mercadopago.mjs é código de servidor preparado e testado com mocks; não é uma API publicada.
@@ -23,3 +26,5 @@ O webhook externo precisa alcançar a URL sem o login de visitante da prévia pr
 
 Critérios para ativação:
 Compra de teste aprovada, pendente e recusada; repetição idempotente; assinatura inválida rejeitada; valor alterado não libera acesso; retorno de checkout não aprova sozinho; estorno/reembolso revoga o que for cabível; foto realmente publicada sobrevive a outro dispositivo; convite e RSVP funcionam para convidados distintos. Só depois trocar credenciais e remover a indicação de demonstração.
+
+Código adicional preparado, sem implantação: server/product-api.mjs, content.mjs, storage.mjs, local-adapters.mjs e migrations/. Há testes locais de SQLite e arquivos, mas a UI local usa armazenamento do navegador. Antes da ativação comercial, alinhar contratos de páginas, fotos e oito famílias de estampas; conectar autenticação/pedidos, publicação, fotos e RSVP ao servidor; validar assinatura do webhook e homologar pagamento/estorno reais. O adaptador isolado não torna o produto comercialmente ativo.

@@ -1,0 +1,31 @@
+{
+  "work/card-structure/ui-qa.json": {
+    "pass": true,
+    "checks": 15
+  },
+  "work/card-structure/export-qa.json": {
+    "pass": true,
+    "checks": 32
+  },
+  "work/personality/themed-portable-qa.json": {
+    "pass": true,
+    "checks": 24
+  },
+  "work/page-turn/transition-qa.json": {
+    "pass": true,
+    "checks": 13
+  },
+  "work/personality/expanded-refresh.json": {
+    "pass": true,
+    "checks": 22
+  },
+  "date": "2026-11-03T15:16:36.330575",
+  "desktopMatchesSource": true,
+  "deployment": {
+    "url": "https://capimimo.matheus-bacochina.workers.dev",
+    "version": "cdea5dd1-d148-4c87-811e-595c9287a6a7",
+    "account_id": "2f712d5c1eb96005389085f87504e834",
+    "verifiedFiles": 164,
+    "pass": true
+  }
+}

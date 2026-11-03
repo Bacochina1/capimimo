@@ -1,0 +1,46 @@
+CAPIMIMO — LIVROS PAPEL & CACAU · 03/11/2026
+
+VITRINE PARA VENDAS
+http://127.0.0.1:4177/?v=livros#livros-design
+Nova seção Livros com objeto real em Three.js, seis amostras de acabamento,
+abertura de exemplo, zoom/foco e acesso ao fluxo de personalização.
+No celular, o produto aparece logo depois do título, antes do texto longo.
+Os modelos da coleção também tiveram as imagens 3D refeitas.
+
+MATERIAIS ORIGINAIS
+Quatro texturas geradas com a ferramenta de imagem integrada: linho, trama
+de encadernação, couro vegano fino e papel de algodão. A preparação técnica
+gera mapas de cor, normal e rugosidade de 512 × 512 para cada material.
+Seis acabamentos: marfim, cacau, azul noite, amora, terracota e algodão.
+O cliente pode escolher título champagne, prata ou tinta fosca e ligar a fita.
+Prompts e caminhos: work/premium-book/MATERIAIS-E-PROMPTS.json
+Texturas aplicadas: dist/assets/book-*-albedo.webp, *-normal.png e *-roughness.webp
+Originais preservados: work/premium-book/originals/
+
+MODELO 3D
+Capa rígida com cantos e bordas arredondados, lombada revestida, 22 lâminas
+visuais no miolo, cabeceados, fita acetinada e título sobreposto em material
+metalizado. A iluminação de estúdio e os mapas de normal/rugosidade atuam
+na capa. As páginas mantêm as cores de impressão e o texto nítido.
+Fotos inteiras ajustam a própria moldura à proporção original; preencher
+recorta dentro da moldura quando o usuário escolhe essa opção.
+
+CONSISTÊNCIA
+As 30 opções de livro por ocasião continuam distintas: dez composições
+em três direções de acabamento. Todas as 540 capas de livro foram renderizadas.
+O acabamento fica salvo no rascunho e no HTML offline recebido pela pessoa.
+O cartão, o convite e seus fluxos foram verificados após a alteração no motor 3D.
+O QR local preserva o acabamento, mas continua sendo uma prévia local; fotos,
+áudio e capítulos completos são guardados no HTML exportado.
+
+REFERÊNCIAS DE ACABAMENTO
+Artifact Uprising: https://www.artifactuprising.com/photo-books/layflat-photo-album
+MILK Books: https://www.milkbooks.com/photo-books/premium-photo-books/
+Pesquisa das páginas públicas de encadernação. Nenhuma arte, modelo ou código
+dessas empresas foi copiado. O produto Capimimo continua exclusivamente digital.
+
+VALIDAÇÃO
+VALIDACAO-LIVROS.json agrega as verificações desta atualização: materiais,
+540 capas distintas, seis acabamentos, criador, arquivo offline, páginas/foco,
+convites e e-mails locais, UI em 320/390/768/1440 pixels e revisão de screenshots.
+Pagamento, hospedagem e envio automático permanecem para a integração posterior.

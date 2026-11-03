@@ -1,0 +1,74 @@
+{
+  "date": "2026-11-03T03:46:40.697154+00:00",
+  "scope": "Produtos digitais; interface e fluxos locais completos. Publicação e pagamentos adiados pelo usuário.",
+  "suites": {
+    "interface": {
+      "evidence": "work/reference-refresh/qa.json",
+      "passed": 22,
+      "total": 22,
+      "success": true
+    },
+    "portable_objects": {
+      "evidence": "work/reference-completion/portable-qa.json",
+      "passed": 18,
+      "total": 18,
+      "success": true
+    },
+    "complete_digital_flow": {
+      "evidence": "work/reference-completion/flow-qa.json",
+      "passed": 21,
+      "total": 21,
+      "success": true
+    },
+    "story_variants": {
+      "evidence": "work/reference-completion/design-qa.json",
+      "passed": 4,
+      "total": 4,
+      "success": true
+    },
+    "exports_and_extras": {
+      "evidence": "work/reference-refresh/export-qa.json",
+      "passed": 9,
+      "total": 9,
+      "success": true
+    },
+    "object_fit": {
+      "evidence": "work/reference-refresh/fit-qa.json",
+      "passed": 24,
+      "total": 24,
+      "success": true
+    }
+  },
+  "runtime_files": {
+    "app.js": "046cd6024918237605b2b17f88aea58d2b4e0cf49579f63ccf91b4b3ee970f64",
+    "audio-studio.js": "f2fd162f07e83828c67a5761be6af34025c4c80566bfab9097abd3c2c582707f",
+    "book.js": "47f210e01355fd9ef4846947f2b6c0f6a10f76eb098769d450c977b9a567e751",
+    "collection.js": "63d809d5942b5a5452ef52c7a674f37b78e4bc437edcaf60b124f7ea6d4a7966",
+    "commerce.js": "7d5be6fa804138f245f1828b2ad1a7a1c59266bf1b4aff99e43a8f6932c34bde",
+    "creator-flow.js": "9452e33f02b51004811538f2149905ee88a02f2f79cc88b53de51d94392c5de7",
+    "delivery-tools.js": "3290caa9175cec43f79dffdb3c1592b207ae05dc047308504069f564acb1e90d",
+    "digital-export.js": "df19abd6bf727b633aa39f7a29b38f8cec233c9384bd211976226856a03e1730",
+    "experience-editor.js": "9bcfdb1c950267a99501c9e67d37d926ed46ac46d3ddfc032775c8f7e3c8c204",
+    "experience.js": "b8ecfc4281b47655b7b6531cafde801832e64257f59808f9051cb93a9000746f",
+    "gift-library.js": "afd820e02ad0248c3fdae441e34cf7108dfbc018268eb148bc8c052ec77d3184",
+    "guests.js": "265b15aea8f8f083d2454944d8fb809bb4f757ae8de915b328b1de53a885b61b",
+    "hero-motion.js": "36c8034eba50890ac1f81bc370c7b8eda11db92c0073c9437ee1abcd2723d5e4",
+    "hero-sprites.js": "7fceaf5393664344a9f78a26ef6fb7dd565460f8180abc4d6de2a969223debe7",
+    "keepsake.js": "d5c5e0879ee1e42d8b7f74786afdd0624c3ff463b13b270e4dc5bef698c136a9",
+    "materials.js": "f1f8fe29329545c2c5f1b3f76e57abdb82971d87cc8a0840581b51fd07972da1",
+    "memory-studio.js": "0864eb28b61329aec53e8d7d91135ddfc11393987f0f32b86e0b530bf6bc871a",
+    "mobile-studio.js": "67463715b64532caa37d2ce77843c07e79383cfd2bc459c3d17fa80789972136",
+    "occasions.js": "82705af05c2646449c4200e6f27b2cc69107ac2c93d1b4bed04f1afa4a469427",
+    "paper.js": "e803ff837679273e2a673f3f1b6dca99bb1c2e0a3936c6c8c023d14313730ed5",
+    "portable-export.js": "864de1538887e5885ad3f86dde446dd5e8ed5d49794658637df12e53ccb9a800",
+    "portable-reader.js": "fb440adac7a7b96b157a117c4b64a16f3e4cc818bbb664741efb1dc10ba4135d",
+    "qr.js": "9d95ff0b33f75f18d2dbc9857dc25c7301055cc251215064a8b1ae26dee67962",
+    "receiving.js": "dfd8a0b68431260f7154d800961ff550a756b664866621cd9af284cfea35fe5f",
+    "responses.js": "8599b2780626e846e49af4e0ed1d71ef4e5184bc7e5e3f6039d1fb1cb331c3b5",
+    "stories.js": "40cf2707da20100058c237863f8fd618b222a9f723d1a95e05fc4a913ba034c9",
+    "story-design.js": "bea0c1cb4a15cd7f48574387867ecb222b138cb3c3b52a9027a3f03810392cad",
+    "story-export.js": "0b2fa695f88dcbe3ec819a9d0e505c9e35bb723e08503bcbf8b2d894250a37b0",
+    "text-layout.js": "49bfc0a71908e078dae4518398db710983ee8d0658bb305c7ab482c88a73c856"
+  },
+  "success": true
+}

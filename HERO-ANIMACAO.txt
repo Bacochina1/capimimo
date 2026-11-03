@@ -1,0 +1,7 @@
+Modo: ferramenta integrada image_gen; referência: dist/assets/hero.webp.
+Prompt 1: decompor a arte aprovada em folha 2x2 transparente: cenário sem personagem, capivara com presente, envelope com coração, pétalas e acentos. Preservar personagem, cores, formas e contornos. Sem texto, sombras difusas ou elementos extras.
+Prompt 2: preservar posições e desenhos e remover haze/glow e vazamento de cor para obter contornos limpos em transparência.
+Produção: limpeza de alfa do material gerado, isolamento do componente principal da capivara e composição determinística dos 60 quadros com âncora fixa. Nenhum quadro é regenerado isoladamente, evitando mudanças de proporção.
+Arquivos de runtime: dist/assets/hero-motion-60.webp e .json; hero-motion-environment.webp, hero-motion-envelope.webp, hero-motion-petal.webp; dist/hero-motion.js.
+Reprodutor: 60 quadros a 30 fps, loop de 2 segundos. Cenário em maior resolução separado do atlas para reduzir memória decodificada de aproximadamente 105 MB para 25 MB.
+Script de produção: work/build-hero-atlas.mjs. Teste: work/qa-hero-receiver.mjs.

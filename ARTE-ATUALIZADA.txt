@@ -1,0 +1,31 @@
+Assets gerados pelo imagegen integrado, sem API externa configurada.
+
+FOTOGRAFIAS
+Seis fotografias de pessoas inteiramente fictícias, estilo espontâneo
+brasileiro, luz natural, pele realista, sem logos nem texto:
+couple: casal adulto compartilhando uma lembrança no celular;
+mother: mãe e filha; grandmother: avó e neto; friends: três amigas;
+father: pai e filha com fotografias; family: mulher e cachorro caramelo.
+Originais em work/source-people; WebP de até 1200 px em dist/assets.
+Uso apenas como exemplos ilustrativos, sem inventar depoimentos.
+
+ESTAMPAS
+Referência visual: assets/hero-motion-poster.webp, personagem caramelo,
+traço arredondado cacau. Novas superfícies quadradas de papel, sem textos,
+mockups, bordas ou marca d'água. Motivos pequenos, espaçados, em ritmo
+alternado, fundo creme, grão sutil de algodão, preenchimentos chapados.
+carinho: rostinhos sorridentes de capivara, laços coral, pequenos corações;
+cartinhas: envelopes creme, selos de coração, laços e selos de capivara;
+festa: capivaras com pequenos chapéus, fitas azul/coral e estrelas douradas;
+jardim: capivaras, flores pêssego e azul, laços e pequenas folhas caramelo.
+Originais em work/source-patterns; quatro WebP de 1000 px em
+dist/assets/pattern-signature-0.webp a pattern-signature-3.webp.
+
+FONTES
+Fraunces e Nunito distribuídas localmente para manter o desenho no HTML
+offline. Licenças OFL ao lado das fontes em dist/assets/fonts.
+
+ANIMAÇÃO
+O atlas existente de 60 frames é reproduzido por células fixas a 30 FPS.
+Não foi regenerado um atlas irregular. O poster é a composição exata
+do frame zero; fotinhos são camadas separadas sincronizadas pelo relógio.

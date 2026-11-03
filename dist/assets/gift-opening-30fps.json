@@ -11,5 +11,5 @@
     "y": 292
   },
   "source": "gift-parts.png",
-  "method": "Fixed-anchor composition of four illustrated parts; smooth transforms baked into each frame."
+  "method": "Fixed-anchor composition of four illustrated parts; smooth transforms baked into each frame. Layer order: box, lid, emerging letter clipped at box rim, bow."
 }

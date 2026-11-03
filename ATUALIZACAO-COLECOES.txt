@@ -1,0 +1,62 @@
+CAPIMIMO — COLEÇÕES E EXPERIÊNCIA ATUALIZADAS · 03/11/2026
+
+EXPERIMENTAR
+http://127.0.0.1:4177/#atelier
+Na página pública: escolher formato e ocasião, explorar 30 capas, experimentar
+o resultado. “Quero criar a minha versão” mostra o resumo de compra demonstrativo.
+“Testar o tutorial pós-compra” abre a coleção e o editor. Nenhum pagamento é feito.
+O acesso por sessão é uma demonstração de UI, não autorização comercial segura.
+
+COLEÇÕES
+18 ocasiões × 4 formatos × 30 opções = 2.160 configurações do catálogo principal.
+São 10 composições por formato com 3 direções de cor por ocasião; não são
+2.160 ilustrações independentes. Há 8 novas artes discretas de borda, por família
+de temas. Fotos e textos autorais são preservados ao trocar uma capa.
+Quadros A4 e cartões QR também têm 30 acabamentos coordenados por ocasião,
+além das composições rápidas anteriores.
+
+CRIAÇÃO
+Editor em seis etapas. Detalhes visuais avançados ficam em menus recolhidos.
+Livro, cartão e convite aceitam adicionar, editar, excluir e reordenar páginas
+sem a antiga trava de 20. Fotos e capítulos não são truncados ao recarregar.
+Stories também não são mais cortados em 20 fotos. O aparelho e o tamanho dos
+arquivos são os limites práticos; exportações grandes podem demorar mais.
+A foto da capa permanece independente da página que estiver sendo editada.
+
+RECEBIMENTO E MOVIMENTO
+Objetos, abertura física e câmera são Three.js. Clique no objeto para focar
+um detalhe; ou use “Focar mensagem”, “Focar foto” e “Ver inteiro”.
+O foco aproxima suavemente a câmera e o ajuste volta a enquadrar o objeto inteiro.
+Os mesmos controles funcionam no HTML recebido, sem conexão.
+8 aberturas temáticas por sprites: 90 frames cada, 30 FPS, duração de 3 segundos.
+720 frames compostos de partes ilustradas com âncoras fixas e trajetórias diferentes;
+não são 720 desenhos independentes. Há também 6 perfis de movimento em Three.js
+e opção sem movimento. A animação pode ser pulada; o texto fica acessível em leitura simples.
+
+CONVITES INDIVIDUAIS E E-MAIL
+Cada convidado/família tem nome, e-mail opcional e quantidade de pessoas permitida.
+O convite individual inclui os próprios dados, evento e confirmação de presença.
+“Preparar e-mail” baixa um rascunho .eml com o convite HTML personalizado anexado.
+Importe/abra em um programa de e-mail compatível para revisar e enviar.
+Nenhuma mensagem é transmitida pelo app local. Envio automático depende de
+hospedagem, serviço de e-mail e configuração do remetente, adiados nesta etapa.
+Respostas/RSVP são baixados e devolvidos em JSON para importação no painel local.
+
+QUALIDADE E EXPORTAÇÃO
+2.160 opções renderizadas sem imagem ausente, com 30 resultados distintos por grupo.
+Animações: 90 frames distintos em cada atlas, sem corte na borda das células.
+Arquivos HTML testados offline nos 3 formatos 3D, incluindo 31 páginas,
+abertura temática, foco da câmera, navegação e convite individual.
+QR de teste decodificado de volta ao endereço correto; o QR local continua sendo
+uma prévia neste computador, não um link público com fotos e páginas hospedadas.
+Stories: HTML, PNG e vídeo a 30 FPS. Quadros: PNG A4 2480 × 3508 e impressão/PDF.
+Fontes locais e animações suspensas quando a visualização fica fora de tela.
+Testes de UI em 320, 390, 768 e 1440 pixels.
+
+FORA DESTA ETAPA, CONFORME ESCOPO ACORDADO
+Cobrança Mercado Pago, autorização real após pagamento, publicação/hospedagem,
+links públicos de mídia, respostas sincronizadas e disparo automático de e-mail.
+Nenhuma publicação Cloudflare foi feita nesta atualização.
+
+Pesquisa e decisões: PESQUISA-CONCORRENTES.json
+Evidências: VALIDACAO-COLECOES.json e work/personality/

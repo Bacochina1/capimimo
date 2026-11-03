@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-03T12:04:10.410496",
+  "checks": {
+    "work/text-repair/typography.json": {
+      "pass": true,
+      "checks": 20,
+      "rendered": 0
+    },
+    "work/text-repair/canvas-after.json": {
+      "pass": true,
+      "checks": 0,
+      "rendered": 3600
+    },
+    "work/text-repair/catalog-render.json": {
+      "pass": true,
+      "checks": 0,
+      "rendered": 2160
+    },
+    "work/text-repair/catalog-ui.json": {
+      "pass": true,
+      "checks": 0,
+      "rendered": 0
+    },
+    "work/text-repair/dom-after.json": {
+      "pass": true,
+      "checks": 0,
+      "rendered": 0
+    },
+    "work/personality/parity-qa.json": {
+      "pass": true,
+      "checks": 9,
+      "rendered": 0
+    },
+    "work/personality/expanded-refresh.json": {
+      "pass": true,
+      "checks": 22,
+      "rendered": 0
+    },
+    "work/personality/themed-portable-qa.json": {
+      "pass": true,
+      "checks": 22,
+      "rendered": 0
+    },
+    "work/page-turn/transition-qa.json": {
+      "pass": true,
+      "checks": 13,
+      "rendered": 0
+    },
+    "work/soft-gifts/reader-style-qa.json": {
+      "pass": true,
+      "checks": 5,
+      "rendered": 0
+    },
+    "work/personality/extra-output-qa.json": {
+      "pass": true,
+      "checks": 0,
+      "rendered": 0
+    }
+  },
+  "desktopMatchesSource": true,
+  "changes": [
+    "Whole-word fitting before character wrapping",
+    "Bounded heading/name/caption areas",
+    "Complete Stories text without discarded lines",
+    "Shared typography in PNG and offline exports",
+    "12 Three.js storefront previews refreshed"
+  ],
+  "validatorNote": "Page-turn pixel fixture now isolates saturated red photograph pixels from coral decorations. Exhaustive art test is split by collection to avoid a single browser-evaluation timeout."
+}

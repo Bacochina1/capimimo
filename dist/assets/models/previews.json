@@ -1,0 +1,62 @@
+[
+  {
+    "id": "memorias",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "historia",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "album-casal",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "natal",
+    "width": 360,
+    "height": 259
+  },
+  {
+    "id": "maes",
+    "width": 360,
+    "height": 259
+  },
+  {
+    "id": "pais",
+    "width": 360,
+    "height": 259
+  },
+  {
+    "id": "aniversario",
+    "width": 360,
+    "height": 259
+  },
+  {
+    "id": "saudade",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "convite-casamento",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "convite-festa",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "formatura",
+    "width": 360,
+    "height": 474
+  },
+  {
+    "id": "pascoa",
+    "width": 360,
+    "height": 259
+  }
+]

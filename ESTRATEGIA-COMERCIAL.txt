@@ -2,12 +2,12 @@ CAPIMIMO — OFERTA, FLUXO E ATIVAÇÃO
 Proposta elaborada em 2 de novembro de 2026. Valores para validar com custos e demanda reais.
 
 OFERTA SUGERIDA
-Um Mimo: R$ 14,90 por um cartão, até 3 fotos, mensagem, temas e cartão QR.
-Uma História: R$ 24,90 por um livro de até 8 páginas e 12 fotos, temas e visualização 3D opcional.
+Um Mimo: R$ 14,90 por Stories de fotos, voz, mensagem e temas.
+Uma História: R$ 24,90 por um livro com páginas adicionáveis e fotos, temas, edição simples e recebimento em 3D.
 Celebrar Juntos: R$ 39,90 por um convite, data, local e até 100 confirmações de presença.
 Pagamento único por presente/evento, com 12 meses de hospedagem e possibilidade de guardar uma cópia. Não prometer hospedagem eterna. Não cobrar assinatura escondida. Definir renovação opcional e lembrar o cliente antes do vencimento.
 
-As inclusões acima são a proposta comercial, não recursos integralmente liberados na demonstração. O editor atual trabalha com uma foto e uma mensagem, e demonstra a abertura de uma dupla de páginas. Álbum multipágina, várias fotos, publicação durável e confirmações de presença dependem da camada de produto posterior.
+A interface local permite adicionar páginas e fotos, revisão, cópia para guardar e lista/RSVP de prévia para até 100 convites. Cobrança, hospedagem comercial, publicação durável e respostas entre aparelhos continuam adiadas por pedido do usuário. Não vender a prévia local como serviço online ativado.
 
 POR QUE ESSES VALORES
 A referência LovePanda apresenta ofertas de R$ 19,90, R$ 29,90 e R$ 39,90. A proposta Capimimo cria uma entrada acessível e um plano intermediário para contar uma história. Convites são outro caso de uso, com operação e confirmação de presença próprias; não devem competir somente por serem baratos.
@@ -24,13 +24,13 @@ O Mercado Pago informa que as tarifas variam por ferramenta e prazo; conferir a 
 FLUXO QUE REDUZ FRICÇÃO
 1. A pessoa conhece um presente de verdade e escolhe ocasião/modelo.
 2. Escreve nome e mensagem; fotos, materiais e estampas ficam em opções claras.
-3. Confere a prévia e experimenta o recebimento. A visualização simples é padrão.
+3. Confere a prévia e experimenta o recebimento. A criação simples é padrão; o recebimento abre em Three.js.
 4. Escolhe plano, vê valor total, limites e duração antes de pagar.
 5. O Mercado Pago hospeda o checkout; nenhuma chave ou dado de cartão passa pelo frontend do Capimimo.
 6. A confirmação precisa vir de consulta autenticada ao pagamento e webhook validado, não da URL de retorno.
 7. Depois da aprovação, um tutorial mostra como continuar a criação, revisar e preparar o cartão QR/link.
 8. O presente fica em rascunho até a pessoa decidir publicar. Não publicar automaticamente fotos durante a edição.
-9. Quem recebe abre o link, pode pular a animação, aumentar texto, ajustar zoom e usar 3D somente se quiser.
+9. Quem recebe abre o link, pode pular a animação, aumentar texto, ajustar zoom e ver o objeto em Three.js automaticamente, com leitura simples se WebGL não estiver disponível.
 
 ESTRATÉGIA DE LANÇAMENTO
 Começar com uma ocasião e os três formatos já demonstráveis, sem tentar anunciar todas as datas de uma vez. Testar criativos que mostram a abertura e a personalização com clareza. Separar campanhas de presente ao casal e convites criados pelo casal. Não usar reações geradas por IA como depoimentos reais.
@@ -45,4 +45,10 @@ https://www.mercadopago.com.br/developers/pt/docs/checkout-pro-preferences/creat
 https://www.mercadopago.com.br/developers/pt/docs/your-integrations/notifications/webhooks
 
 FAIRNESS DO PRODUTO
-Mostrar tudo que entra no plano antes de pagar; permitir corrigir erros; oferecer uma cópia para guardar; usar duração explícita; respeitar movimento reduzido; manter leitura simples em aparelhos sem WebGL; informar o que depende de conexão. Confirmação de presença e várias páginas só podem ser vendidas como ativas depois de implementadas e testadas.
+Mostrar tudo que entra no plano antes de pagar; permitir corrigir erros; oferecer uma cópia para guardar; usar duração explícita; respeitar movimento reduzido; manter leitura simples em aparelhos sem WebGL; informar o que depende de conexão. A publicação online e a confirmação de presença entre aparelhos só podem ser vendidas como ativas depois da integração e homologação comercial.
+
+ATUALIZAÇÃO DE PESQUISA · 03/11/2026
+LovyMemory anuncia R$10 por um ano; Festino anuncia convite por R$99,90.
+Capimimo não deve anunciar ser o mais barato. Os valores sugeridos precisam de
+validação de custos de armazenamento, processamento, pagamento e suporte.
+Fontes e aplicações de UX estão em PESQUISA-CONCORRENTES.json.

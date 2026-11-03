@@ -1,0 +1,1090 @@
+{
+  "url": "https://capimimo.matheus-bacochina.workers.dev",
+  "account_id": "2f712d5c1eb96005389085f87504e834",
+  "worker": "capimimo",
+  "version": "10adc3ad-7de2-4428-add2-53e39c02c42e",
+  "date": "2026-11-03T15:41:59.562822",
+  "assets": [
+    {
+      "file": "app.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "appearance.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "audio-studio.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "book-finish.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "book-showcase.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "book-showcase.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "book.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "collection.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "collections.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "commerce.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "cover-catalog.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "creator-flow.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "delivery-tools.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "digital-export.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "digital.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "experience-editor.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "experience.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "fonts.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "gift-identity.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "gift-library.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "guests.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "hero-motion.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "hero-sprites.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "index.html",
+      "status": 200,
+      "matches": true,
+      "type": "text/html"
+    },
+    {
+      "file": "invitation-email.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "keepsake.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "materials.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "memory-studio.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "mobile-studio.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "model-data.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "motion-3d.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "occasions.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "paper.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "portable-export.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "portable-reader.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "portable.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "qr.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "receiving.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "responses.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "stationery.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "stories.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "story-design.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "story-export.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "styles.css",
+      "status": 200,
+      "matches": true,
+      "type": "text/css"
+    },
+    {
+      "file": "text-layout.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "assets/book-buckram-albedo.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-buckram-normal.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/book-buckram-roughness.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-cotton-albedo.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-cotton-normal.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/book-cotton-roughness.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-leather-albedo.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-leather-normal.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/book-leather-roughness.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-linen-albedo.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/book-linen-normal.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/book-linen-roughness.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/classic.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-amor.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-aniversario.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-casamento.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-conquistas.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-familia.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-natal.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-pascoa.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/cover-art-pet.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/favicon.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/gift-opening-30fps.json",
+      "status": 200,
+      "matches": true,
+      "type": "application/json"
+    },
+    {
+      "file": "assets/gift-opening-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/gift-parts.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/hero-motion-60.json",
+      "status": 200,
+      "matches": true,
+      "type": "application/json"
+    },
+    {
+      "file": "assets/hero-motion-60.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/hero-motion-envelope.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/hero-motion-environment.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/hero-motion-petal.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/hero-motion-poster.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/hero-parts-clean.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/hero-parts-v2.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/hero.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/material-algodao.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/material-kraft.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/material-linho.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-amor-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-aniversario-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-casamento-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-conquistas-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-familia-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-natal-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-pascoa-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/opening-pet-30fps.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/openings.json",
+      "status": 200,
+      "matches": true,
+      "type": "application/json"
+    },
+    {
+      "file": "assets/pattern-amizade-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-amizade-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-amizade-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-amizade-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-aniversario-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-aniversario-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-aniversario-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-aniversario-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-casamento-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-casamento-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-casamento-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-casamento-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-familias-source.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/pattern-maes-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-maes-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-maes-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-maes-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-namorados-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-namorados-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-namorados-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-namorados-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-natal-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-natal-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-natal-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-natal-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pais-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pais-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pais-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pais-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pascoa-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pascoa-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pascoa-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-pascoa-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-signature-0.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-signature-1.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-signature-2.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/pattern-signature-3.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/people.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-couple.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-family.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-father.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-friends.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-grandmother.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/photo-mother.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/seasonal.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/fonts/fraunces-400-italic.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-400.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-500.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-600.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-700.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-800.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/fraunces-OFL.txt",
+      "status": 200,
+      "matches": true,
+      "type": "text/plain"
+    },
+    {
+      "file": "assets/fonts/nunito-400.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/nunito-600.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/nunito-700.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/nunito-800.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/nunito-900.ttf",
+      "status": 200,
+      "matches": true,
+      "type": "font/ttf"
+    },
+    {
+      "file": "assets/fonts/nunito-OFL.txt",
+      "status": 200,
+      "matches": true,
+      "type": "text/plain"
+    },
+    {
+      "file": "assets/models/album-casal.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/aniversario.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/convite-casamento.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/convite-festa.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/formatura.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/historia.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/maes.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/memorias.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/natal.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/pais.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/pascoa.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/models/previews.json",
+      "status": 200,
+      "matches": true,
+      "type": "application/json"
+    },
+    {
+      "file": "assets/models/saudade.webp",
+      "status": 200,
+      "matches": true,
+      "type": "image/webp"
+    },
+    {
+      "file": "assets/ornaments/balloon.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/bow.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/branch.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/bunny.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/cake.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/cap.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/egg.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/flower.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/gift.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/heart.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/letter.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/ornament.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/paw.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/rings.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/star.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/ornaments/tree.png",
+      "status": 200,
+      "matches": true,
+      "type": "image/png"
+    },
+    {
+      "file": "assets/vendor/qrcode.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    },
+    {
+      "file": "assets/vendor/three.module.js",
+      "status": 200,
+      "matches": true,
+      "type": "text/javascript"
+    }
+  ],
+  "pass": true
+}

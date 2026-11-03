@@ -1,0 +1,20 @@
+export const occasions={
+ amizade:{sheet:'classic',row:0,label:'Só porque sim',material:'amizade'},
+ aniversario:{sheet:'seasonal',row:3,label:'Aniversário',material:'aniversario'},
+ aniversario_namoro:{sheet:'classic',row:3,label:'Aniversário de namoro',material:'namorados'},
+ mesversario:{sheet:'seasonal',row:3,label:'Mesversário',material:'aniversario'},
+ casamento:{sheet:'seasonal',row:0,label:'Casamento',material:'casamento'},
+ bodas:{sheet:'seasonal',row:0,label:'Bodas',material:'casamento'},
+ namorados:{sheet:'classic',row:3,label:'Dia dos Namorados',material:'namorados'},
+ maes:{sheet:'classic',row:2,label:'Dia das Mães',material:'maes'},
+ pais:{sheet:'seasonal',row:2,label:'Dia dos Pais',material:'pais'},
+ avos:{sheet:'classic',row:0,label:'Dia dos Avós',material:'amizade'},
+ natal:{sheet:'classic',row:1,label:'Natal',material:'natal'},
+ anonovo:{sheet:'seasonal',row:3,label:'Ano Novo',material:'aniversario'},
+ pascoa:{sheet:'seasonal',row:1,label:'Páscoa',material:'pascoa'},
+ formatura:{sheet:'seasonal',row:3,label:'Formatura',material:'aniversario'},
+ pedido_namoro:{sheet:'classic',row:3,label:'Pedido de namoro',material:'namorados'},
+ desculpas:{sheet:'classic',row:0,label:'Pedido de desculpas',material:'amizade'},
+ pet:{sheet:'classic',row:0,label:'Aniversário do pet',material:'aniversario'},
+ outro:{sheet:'classic',row:0,label:'Outra ocasião',material:'amizade'}
+};

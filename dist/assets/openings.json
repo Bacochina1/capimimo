@@ -1,0 +1,18 @@
+{
+  "fps": 30,
+  "frames": 90,
+  "columns": 10,
+  "rows": 9,
+  "cell": 320,
+  "variants": [
+    "natal",
+    "aniversario",
+    "casamento",
+    "familia",
+    "amor",
+    "pascoa",
+    "conquistas",
+    "pet"
+  ],
+  "method": "Fixed-anchor frame composition from illustrated parts. Eight distinct motion paths and occasion-specific mascot decorations; 720 baked frames. Layer order: box, lid, emerging letter clipped at box rim, bow, decoration."
+}

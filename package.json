@@ -1,1 +1,14 @@
-{"name":"capimimo-atelier","version":"0.1.0","private":true,"type":"module","scripts":{"dev":"python -m http.server 4177 --bind 127.0.0.1 --directory dist","check":"node --check dist/app.js && node --check dist/book.js"}}
+{
+  "name": "capimimo-atelier",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 4177 --bind 127.0.0.1 --directory dist",
+    "check": "node scripts/check.mjs",
+    "deploy:cloudflare": "wrangler deploy --config wrangler.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "4.155.0"
+  }
+}

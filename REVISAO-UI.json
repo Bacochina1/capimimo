@@ -1,0 +1,179 @@
+{
+  "status": "VERIFIED_FOR_CURRENT_UI_SCOPE",
+  "scope": "UI local e fluxos de criação/recebimento. O usuário adiou explicitamente hospedagem e configuração de pagamento.",
+  "requirements": [
+    {
+      "id": "modelos",
+      "requirement": "Doze modelos e miniaturas do próprio renderizador",
+      "status": "VERIFIED",
+      "evidence": "All twelve collection thumbnails are actual distinct model renders"
+    },
+    {
+      "id": "ocasioes",
+      "requirement": "Quatro opções de estampa nas oito ocasiões",
+      "status": "VERIFIED",
+      "evidence": "Four matching patterns for amizade"
+    },
+    {
+      "id": "variacoes",
+      "requirement": "Variações mantêm textos e páginas",
+      "status": "VERIFIED",
+      "evidence": "Variations preserve both main text and book pages"
+    },
+    {
+      "id": "paginas",
+      "requirement": "Livro com até oito páginas, reordenação e foto por página",
+      "status": "VERIFIED",
+      "evidence": "Eight-page limit is enforced without dropping content"
+    },
+    {
+      "id": "fotos",
+      "requirement": "Biblioteca de fotos recuperada ao recarregar",
+      "status": "VERIFIED",
+      "evidence": "Reload restores pages and photo bytes"
+    },
+    {
+      "id": "privacidade",
+      "requirement": "Prévia recebida não herda fotos ou páginas privadas",
+      "status": "VERIFIED",
+      "evidence": "Incoming preview never leaks local private pages or photos"
+    },
+    {
+      "id": "convites",
+      "requirement": "Lista com até 100 convites e respostas locais por família",
+      "status": "VERIFIED",
+      "evidence": "Hundred-invitation limit is enforced"
+    },
+    {
+      "id": "rsvp",
+      "requirement": "Confirmação respeita o número de pessoas de cada convite",
+      "status": "VERIFIED",
+      "evidence": "RSVP permits only allowed party size"
+    },
+    {
+      "id": "3d",
+      "requirement": "Recebimento automático em Three.js; edição simples como padrão",
+      "status": "VERIFIED",
+      "evidence": "Receiving automatically uses Three.js"
+    },
+    {
+      "id": "folhear",
+      "requirement": "Virada de página em malha Three.js",
+      "status": "VERIFIED",
+      "evidence": "Page turn animates a real Three.js leaf"
+    },
+    {
+      "id": "proporcoes",
+      "requirement": "Fotos sem achatamento entre prévia, Three.js e QR",
+      "status": "VERIFIED",
+      "evidence": "Photos retain equal X/Y scale in paper, Three.js and QR"
+    },
+    {
+      "id": "cores",
+      "requirement": "Cor altera a prévia simples",
+      "status": "VERIFIED",
+      "evidence": "Color visibly changes simple convite preview"
+    },
+    {
+      "id": "hero",
+      "requirement": "Hero com 60 quadros reais e pausa",
+      "status": "VERIFIED",
+      "evidence": "Browser visits all 60 hero frames"
+    },
+    {
+      "id": "abertura",
+      "requirement": "Abertura com 90 quadros a 30 fps",
+      "status": "VERIFIED",
+      "evidence": "90-frame 30fps opening completes"
+    },
+    {
+      "id": "acessibilidade",
+      "requirement": "Leitura simples se WebGL falhar e movimento reduzido",
+      "status": "VERIFIED",
+      "evidence": "WebGL unavailable still delivers readable gift"
+    },
+    {
+      "id": "tutorial",
+      "requirement": "Tutorial demonstrativo pós-compra",
+      "status": "VERIFIED",
+      "evidence": "Post-purchase tutorial starts"
+    },
+    {
+      "id": "copia",
+      "requirement": "Download real com capa, oito páginas e fotos",
+      "status": "VERIFIED",
+      "evidence": "Real eight-page keepsake ZIP downloaded"
+    },
+    {
+      "id": "qr",
+      "requirement": "Cartão QR gerado e decodificado",
+      "status": "VERIFIED",
+      "evidence": "Downloaded QR is machine-decodable"
+    },
+    {
+      "id": "mobile",
+      "requirement": "Volta ao campo em edição no celular",
+      "status": "VERIFIED",
+      "evidence": "Return goes to the field being edited"
+    },
+    {
+      "id": "teclado",
+      "requirement": "Escape fecha diálogos e devolve o foco",
+      "status": "VERIFIED",
+      "evidence": "Focus returns to #recipient-preview"
+    },
+    {
+      "id": "leitura",
+      "requirement": "Nomes longos não criam rolagem horizontal",
+      "status": "VERIFIED",
+      "evidence": "Long recipient name wraps without horizontal clipping"
+    },
+    {
+      "id": "fechar",
+      "requirement": "Fechar continua acessível após rolar",
+      "status": "VERIFIED",
+      "evidence": "Close remains reachable after scrolling #recipient-dialog"
+    }
+  ],
+  "visualReview": [
+    "work/final-hero-320.jpg",
+    "work/collection-real-previews-desktop.jpg",
+    "work/finish-gallery-mobile.jpg",
+    "work/multipage-desktop-editor.jpg",
+    "work/multipage-mobile-editor-320.jpg",
+    "work/multipage-mobile-review-final.jpg",
+    "work/recipient-rsvp-mobile.jpg",
+    "work/three-page-turn.jpg",
+    "work/recipient-close-after-scroll-mobile.jpg"
+  ],
+  "artwork": {
+    "occasionOptions": 32,
+    "occasions": 8,
+    "modelPreviews": 12,
+    "humanCharacters": 12,
+    "materialOptions": 3
+  },
+  "validation": "VALIDACAO-UI.json",
+  "browserChecks": 188,
+  "archiveVerification": {
+    "status": "PASS",
+    "archive": "C:\\Users\\Admin\\Documents\\Codex\\2026-11-02\\15-30-02-11-2026-tomas\\outputs\\capimimo-site\\work\\multipage-downloads-1793663120088\\capimimo-livro.zip",
+    "pages": 8,
+    "photos": 3,
+    "pngFilesDecoded": 9,
+    "zipCRC": "PASS",
+    "pngChunkCRC": "PASS",
+    "pngPixelsDecompressed": "PASS"
+  },
+  "deferredByUser": [
+    "Ativação e homologação de pagamento real Mercado Pago",
+    "Nova hospedagem e configuração pública",
+    "Integração de publicação de presentes, fotos e respostas entre aparelhos"
+  ],
+  "limitations": [
+    "Fotos, páginas e respostas desta etapa ficam no aparelho.",
+    "O QR local não constitui link de entrega publicado.",
+    "Preços e duração são proposta comercial, sem cobrança ativa."
+  ],
+  "completedAt": "2026-11-03T00:01:16.692Z"
+}

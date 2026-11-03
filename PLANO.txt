@@ -1,41 +1,21 @@
-CAPIMIMO — PÁGINA DE VENDA E PRIMEIRA EXPERIÊNCIA
+CAPIMIMO — ESTADO ATUAL EM 03/11/2026
 
-ENTREGUE NESTA VERSÃO
-Página responsiva com arte baseada nas referências do usuário.
-Coleção com 12 modelos: livros de memórias, histórias, álbum de casal, cartões de Natal, Mães, Pais, aniversário, saudade, convites de casamento, festa e formatura, cartão de Páscoa.
-Oito ocasiões para capivaras e 12 personagens humanos ilustrados, incluindo diferentes casais, famílias, amigos e formanda.
-Editor local: nome, mensagem, foto, cor da capa, ocasião, formato, personagem, data e local de convite.
-Prévia plana como padrão, com layouts próprios para livro, cartão e convite. Three.js opcional no editor e para quem recebe, com capa, lombada, camadas de papel e abertura. Cartão com personagem pop-up.
-Sem 3D nativo de CSS. Quando WebGL não está disponível, a leitura continua na prévia plana.
-Rascunho salvo no navegador; foto não enviada nem salva permanentemente.
-Experiência de recebimento: presente fechado, abertura a 30 fps, revelação da mensagem e foto, repetição, acesso à prévia do objeto.
+A versão atual e os limites de cada função estão em FUNCIONALIDADES.txt.
+A validação atual está em VALIDACAO-REFERENCIA.json.
 
-CORREÇÃO DOS SPRITES
-Os primeiros atlas gerados tinham mudanças indevidas de escala e posição. Eles não são mais reproduzidos como animações sequenciais. As personagens usam poses ilustradas estáveis.
-A abertura do presente usa quatro peças de uma mesma ilustração: caixa, tampa, laço e envelope. São montadas por código com ponto de apoio fixo e transformações suaves, depois exportadas para atlas WebP com 90 quadros de 320x320, distribuídos em 10 colunas e 9 linhas. Reprodução a 30 fps, com duração de 3 segundos. O player respeita movimento reduzido e permite repetir. A cadência efetiva depende do dispositivo.
+Interface buildless em dist/, com armazenamento local de rascunhos, mídia,
+biblioteca e respostas. Nenhuma cobrança ou publicação ativada.
+Produtos exclusivamente digitais.
 
-PRODUTO — PRÓXIMAS ETAPAS
-1. Validar direção visual e primeira experiência no celular com usuários reais.
-2. Fechar modelos e preços, limites de fotos, tempo de hospedagem e formato de música.
-3. Backend de rascunhos e presentes publicados, armazenamento de imagens, tokens de edição, exclusão de dados, compressão e tratamento de uploads.
-4. Pagamento Pix/cartão com webhook idempotente; liberação do presente somente após confirmação; estados de processamento, falha e reembolso.
-5. Link de leitura, QR Code, painel de edição e download/backup conforme plano. Não prometer permanência ilimitada sem política e estrutura compatíveis.
-6. Convites: modelo separado de presente, evento, convidados, links individuais, confirmação de presença e painel do casal.
-7. Editor de várias páginas, múltiplas fotos e áudios, templates específicos, navegação página a página e experiência final de cada formato.
-8. Medição do funil: entrada, tema, edição, prévia, checkout, pagamento, abertura e compartilhamento; consentimentos conforme uso real.
-9. Preparação comercial: atendimento, informações da empresa, termos, privacidade, reembolso e domínio.
+O HTML compartilhado mantém livro, cartão e convite em Three.js, com fontes,
+texturas, fotos e áudio incorporados. Stories possuem exportação em HTML, PNG
+e vídeo; os quadros possuem exportação A4 e impressão. Respostas e confirmações
+são devolvidas e importadas em arquivos JSON nesta etapa local.
 
-LIMITES ATUAIS
-É uma demonstração navegável, sem cobrança, publicação de presentes individuais, envio, cadastro ou confirmação de presença. A página não inventa vendas, avaliações ou clientes.
-O livro demonstra uma abertura e uma dupla de páginas, não um editor completo de álbum multipágina. Os modelos compartilham a infraestrutura e aplicam mensagens, cores, personagens e ocasiões diferentes.
-Three.js 0.160.1 incluído localmente. Arte criada com a ferramenta integrada image_gen, usando as referências enviadas. Fontes Fraunces e DM Sans carregadas do Google Fonts, com alternativas locais do sistema.
+EXECUTAR
+npm run dev
+http://127.0.0.1:4177/
 
-VALIDAÇÃO
-Testes de navegador cobrem: larguras 1440/768/390/320, escolha de modelo, filtros, personagens, personalização, foto local, rascunho, convite/casal, WebGL e fallback, abertura/repetição do presente, movimento reduzido e ausência de exceções JS. Relatórios e capturas ficam em work/ no projeto local.
-
-EXECUÇÃO LOCAL
-Na pasta deste projeto: python -m http.server 4177 --bind 127.0.0.1 --directory dist
-Abrir http://127.0.0.1:4177/
-
-ATUALIZAÇÕES DE FLUXO E PERSONALIZAÇÃO
-12 estampas próprias: quatro de Natal, quatro de aniversário e quatro de casamento; três materiais gerados: linho, algodão e kraft. Variações combinam estampa, material e cor sem apagar fotos ou palavras. Zoom para criar e receber, botão de ajustar à tela e aumento de texto. Cartão QR com três artes e download: leva texto e escolhas em um link de prévia; a foto continua no aparelho, e o acesso segue as permissões da página privada. Tutorial guiado de quatro etapas e planos de lançamento propostos de R$ 14,90 / R$ 24,90 / R$ 39,90. O fluxo pós-compra é uma demonstração sem cobrança. Adaptador Mercado Pago preparado com testes simulados; não está implantado como API. Consulte ESTRATEGIA-COMERCIAL.txt e INTEGRACAO-MERCADOPAGO.txt para ativação comercial e dependências.
+VERIFICAR
+npm run check
+Testes e capturas: work/reference-completion e work/reference-refresh.

@@ -1,0 +1,349 @@
+{
+  "pass": true,
+  "variants": 9,
+  "fps": 30,
+  "frames": 90,
+  "layerOrder": [
+    "box",
+    "lid",
+    "letter clipped to box rim",
+    "bow",
+    "decoration"
+  ],
+  "pixelChecks": {
+    "results": [
+      {
+        "family": "default",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.10701171875,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 3416,
+            "corrected": 3416,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 3153,
+            "corrected": 3153,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 3153,
+            "corrected": 3153,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "natal",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.10484619140625,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 3296,
+            "corrected": 3296,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 2285,
+            "corrected": 2285,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 2313,
+            "corrected": 2313,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "aniversario",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.08961669921875,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 3160,
+            "corrected": 3160,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 2277,
+            "corrected": 2277,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 2277,
+            "corrected": 2277,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "casamento",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.1146826171875,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 3040,
+            "corrected": 3040,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 2707,
+            "corrected": 2707,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 2703,
+            "corrected": 2703,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "familia",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.08905517578125,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 2871,
+            "corrected": 2871,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 2778,
+            "corrected": 2778,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 2797,
+            "corrected": 2797,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "amor",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.08905517578125,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 2982,
+            "corrected": 2982,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 2930,
+            "corrected": 2930,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 2939,
+            "corrected": 2939,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "pascoa",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.092734375,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 3029,
+            "corrected": 3029,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 3199,
+            "corrected": 3199,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 3185,
+            "corrected": 3185,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "conquistas",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.12266845703125,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 7,
+            "corrected": 0,
+            "ratio": 0
+          },
+          {
+            "frame": 70,
+            "covered": 3020,
+            "corrected": 3020,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 3435,
+            "corrected": 3435,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 3436,
+            "corrected": 3436,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      },
+      {
+        "family": "pet",
+        "dimensions": true,
+        "closedFrameMeanDifference": 0.11619384765625,
+        "frames": [
+          {
+            "frame": 60,
+            "covered": 0,
+            "corrected": 0,
+            "ratio": 1
+          },
+          {
+            "frame": 70,
+            "covered": 2745,
+            "corrected": 2745,
+            "ratio": 1
+          },
+          {
+            "frame": 80,
+            "covered": 3245,
+            "corrected": 3245,
+            "ratio": 1
+          },
+          {
+            "frame": 89,
+            "covered": 3249,
+            "corrected": 3249,
+            "ratio": 1
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "runtime": {
+    "checks": [
+      {
+        "name": "Live opening uses corrected final foreground-letter frame",
+        "pass": true
+      },
+      {
+        "name": "Live playback retains 30 FPS and 90-frame timing",
+        "pass": true
+      },
+      {
+        "name": "Live opening still reveals the gift",
+        "pass": true
+      },
+      {
+        "name": "Downloaded opening uses the corrected foreground-letter frame",
+        "pass": true
+      },
+      {
+        "name": "Downloaded gift still opens in Three.js",
+        "pass": true
+      },
+      {
+        "name": "Live and downloaded viewers have no script errors",
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "desktopMatchesSource": true,
+  "sha256": {
+    "gift-opening-30fps.json": "b6a613657740d263e9003ea7512cec357bab6e217aafffe97cee206ae95a36da",
+    "gift-opening-30fps.webp": "ddc0fa42a2a34473e400364949ba4d2c31e7914333a2575ca5b9ce0b3768c03a",
+    "opening-amor-30fps.webp": "b65468b46bf8d0845e0b39c4b3ffa4efecdf94a426b2f1c80424a15cebedac69",
+    "opening-aniversario-30fps.webp": "6d1d1efe4975a553a4cde3669c534b237c7c9e96e1b6f250c240c72e9dd0406a",
+    "opening-casamento-30fps.webp": "5cf154fb2ff5644662c88587441155474c9216953da4253884ceca79c4ab957b",
+    "opening-conquistas-30fps.webp": "d4046022d60fcef5a1519dce56bc7eb36f33267de2178ed65bb14040e0c81a82",
+    "opening-familia-30fps.webp": "f6aaf633a0fc280343a05ada2d35551f58cb3763b0e1e6bceb92083f9f530ce0",
+    "opening-natal-30fps.webp": "1a4e155678936ef9925fb7b312468476afa3f949bea5699c8d0f5f105ba99568",
+    "opening-pascoa-30fps.webp": "a28cf084289f2608df8467b31fe2af3bf375e90a9b9f11cf372a9a89088da734",
+    "opening-pet-30fps.webp": "f6d8d1c3853d5bed6bc07c095216479b81f7d0ff52ade4735fdc060a608cea03",
+    "openings.json": "65a7a809a78f69e10a07f8d8faa323b0261180ae63e7ca19ee9d0e3c39145f7a"
+  }
+}

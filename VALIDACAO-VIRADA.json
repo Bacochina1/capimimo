@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-03",
+  "bug": "Incoming photo replaced the old photo before the sheet turned; the animated sheet also changed automatic camera fitting.",
+  "changes": [
+    "Offscreen preparation of the destination spread, with old artwork kept intact until ready.",
+    "Independent front and back textures; readable back UV; inset left paper aligned to the turning sheet.",
+    "Commit destination spread on landing, with constant conservative camera framing during the turn.",
+    "Await completed transitions in recipient navigation; ignore repeat clicks while busy.",
+    "Cancel interrupted transitions by restoring the original whole spread; reject stale async work."
+  ],
+  "evidence": [
+    {
+      "path": "work/page-turn/transition-qa.json",
+      "pass": true,
+      "checks": 13
+    },
+    {
+      "path": "work/page-turn/reader-qa.json",
+      "pass": true,
+      "checks": 16
+    },
+    {
+      "path": "work/personality/catalog-flow-qa.json",
+      "pass": true,
+      "checks": 21
+    },
+    {
+      "path": "work/personality/themed-portable-qa.json",
+      "pass": true,
+      "checks": 22
+    }
+  ],
+  "runtimeSha256": {
+    "book.js": "b9f395daf21eb4496360bd5baa26d90e61c77de8fd9d15aad5cf350c0179232c",
+    "receiving.js": "e1aa3602adc3cb18ebe76c6e7347aeb0b9bd40de0c8a81e319c4c50f5310e85f",
+    "portable-reader.js": "ad6861372bb9b4181ff403575f5f341a938406a93a61c6b2c285496f52cc4bb6"
+  },
+  "pass": true
+}

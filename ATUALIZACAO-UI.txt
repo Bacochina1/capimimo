@@ -1,0 +1,21 @@
+CAPIMIMO — ATUALIZAÇÃO COMPLETA DA REFERÊNCIA EM 03/11/2026
+
+Consulte FUNCIONALIDADES.txt para a lista atual e onde encontrar cada função.
+Consulte VALIDACAO-REFERENCIA.json para os testes executados.
+
+Foram completados: exportação 3D independente para livro/cartão/convite;
+convites individuais, confirmação por arquivo e importação na lista;
+biblioteca com visualização/download; respostas por presente; quadros A4;
+lembrete de entrega em calendário; 18 ocasiões e tutorial de oito passos.
+Livro e Stories aceitam até 20 fotos; o livro suporta 20 páginas.
+
+Permanecem: capivara animada a 30 FPS com fotos ao redor, estampas da marca,
+Stories personalizáveis, áudio/voz/música, carta, contador, céu simbólico,
+linha do tempo, roleta, segredo, abra-quando e presente coletivo.
+
+Nenhum produto físico, pagamento, publicação ou mensagem automática foi
+ativado. Respostas e confirmações são importadas por arquivo nesta etapa.
+
+Executar: npm run dev
+Abrir: http://127.0.0.1:4177/
+Verificar: npm run check

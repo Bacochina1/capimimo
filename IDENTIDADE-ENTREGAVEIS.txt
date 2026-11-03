@@ -1,0 +1,7 @@
+ENTREGAVEIS — PAPEL & CACAU
+
+Livros, cartoes, convites, Stories, capas de QR e quadros compartilham agora molduras arredondadas, papel claro, contorno cacau, detalhes coral e mel, pequenas etiquetas e selos ilustrados. As fotos mantem a proporcao; a capivara continua opcional.
+
+A identidade acompanha as previas, PNGs, Stories e HTMLs offline. Os modelos da vitrine foram renderizados novamente. A virada de paginas e o enquadramento Three.js foram preservados e testados.
+
+Para aplicar aos materiais ja baixados, exporte uma nova versao. Nenhum pagamento ou hospedagem foi configurado nesta etapa.

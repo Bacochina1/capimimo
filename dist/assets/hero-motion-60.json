@@ -1,0 +1,11 @@
+{
+  "frames": 60,
+  "columns": 10,
+  "rows": 6,
+  "frameWidth": 320,
+  "frameHeight": 320,
+  "fps": 30,
+  "duration": 2,
+  "uniqueFrames": 60,
+  "method": "60 baked capybara frames with fixed foot anchor; high-resolution separate scenery, envelope and petals composed at matching frame phase."
+}

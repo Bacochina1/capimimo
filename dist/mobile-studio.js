@@ -1,0 +1,9 @@
+export function initMobileStudio({openContent}){
+ const atelier=document.querySelector('#atelier'),preview=document.querySelector('.preview-pane'),editor=document.querySelector('.customizer');
+ const bar=document.createElement('nav');bar.className='mobile-studio-bar';bar.hidden=true;bar.setAttribute('aria-label','Alternar entre criação e prévia');bar.innerHTML='<button type="button" class="back-to-edit">Personalizar</button><button type="button" class="show-my-preview">Ver meu mimo ↗</button>';document.body.append(bar);
+ let lastField=null;editor.addEventListener('focusin',event=>{if(event.target.matches('input,textarea,select,button'))lastField=event.target;});
+ bar.querySelector('.show-my-preview').addEventListener('click',()=>{document.activeElement?.blur();openContent();const offset=document.querySelector('.header').getBoundingClientRect().height+10;window.scrollTo({top:preview.getBoundingClientRect().top+scrollY-offset,behavior:'instant'});});
+ bar.querySelector('.back-to-edit').addEventListener('click',()=>{const target=lastField?.isConnected?lastField:editor;target.scrollIntoView({behavior:'instant',block:'center'});if(target!==editor)target.focus({preventScroll:true});});
+ new MutationObserver(()=>update()).observe(editor,{attributes:true,attributeFilter:['hidden']});let inAtelier=false;const media=matchMedia('(max-width:800px)');function update(){bar.hidden=editor.hidden||!inAtelier||!media.matches||!!document.querySelector('dialog[open]');document.body.classList.toggle('with-mobile-studio',!bar.hidden);}
+ new IntersectionObserver(entries=>{inAtelier=entries[0].isIntersecting;update();},{threshold:0}).observe(atelier);media.addEventListener('change',update);new MutationObserver(update).observe(document.body,{subtree:true,attributes:true,attributeFilter:['open']});
+}
