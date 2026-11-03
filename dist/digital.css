@@ -46,3 +46,28 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 
 /* Keep each phrase of the hero heading intact at every viewport width. */
 .hero-copy{container-type:inline-size;min-width:0}.hero h1{font-size:clamp(28px,12cqw,78px)}.hero h1 em{display:inline-block;white-space:nowrap}
+
+/* Illustrated game UI: the artwork carries the shapes, borders and lettering. */
+.capy-photo-hero{margin-bottom:52px}
+.capy-photo-hero .game-art-badge{width:260px;right:-8px;bottom:-27px;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;transform:none;min-height:44px;cursor:pointer;isolation:isolate}
+.game-art-badge picture,.game-art-badge img,.game-wedding-seal picture,.game-wedding-seal img{display:block;width:100%;height:auto}
+.game-art-badge img{transform-origin:50% 75%;animation:game-seal-idle 6s ease-in-out infinite;transition:filter .2s}
+.game-art-badge:hover img{filter:drop-shadow(0 4px 5px #754c3538)}
+.game-art-badge:focus-visible{outline:3px solid #356695;outline-offset:5px;border-radius:12px}
+.game-art-badge.is-discovered img{animation:game-seal-reveal .65s ease-out both}
+.capy-photo-hero>.fiction-note{bottom:-54px}
+.capy-photo-hero .hero-response{bottom:-80px;left:0;right:0;max-width:none;text-align:center;font-size:12px;line-height:1.5;color:#754c35}
+.wedding-art .game-wedding-seal{width:210px;right:-25px;bottom:-29px;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;transform:rotate(-5deg);pointer-events:none}
+.journey-grid article{display:flex;flex-direction:column;align-items:flex-start}
+.journey-game-art{order:-1;display:block;width:210px;height:150px;flex:none;margin:0 0 24px}
+.journey-game-art picture,.journey-game-art img{display:block;width:100%;height:100%;object-fit:contain}
+@keyframes game-seal-idle{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-5px) rotate(1deg)}}
+@keyframes game-seal-reveal{0%{transform:scale(.95)}40%{transform:scale(1.07) rotate(-3deg)}70%{transform:scale(.99) rotate(1deg)}100%{transform:scale(1)}}
+.no-motion .game-art-badge img{animation:none;transition:none}
+@media(max-width:900px){.wedding-art .game-wedding-seal{width:180px;right:-10px;bottom:-28px}.journey-game-art{width:180px;height:135px}}
+@media(max-width:600px){.capy-photo-hero{margin-bottom:64px}.capy-photo-hero .game-art-badge{width:220px;right:-4px;bottom:-38px}.capy-photo-hero>.fiction-note{bottom:-61px}.capy-photo-hero .hero-response{bottom:-88px;font-size:11px}.wedding-art{margin-bottom:45px}.wedding-art .game-wedding-seal{width:170px;right:-5px;bottom:-55px}.journey-grid article{padding:24px 0;min-height:0}.journey-game-art{width:190px;height:135px;margin-bottom:18px;align-self:center}.journey-grid p{max-width:none}}
+@media(prefers-reduced-motion:reduce){.game-art-badge img{animation:none;transition:none}}
+
+/* Keep the illustrated rosette outside the photo crop, with room for its ribbons. */
+.wedding-art{overflow:visible;background:transparent}.wedding-photo{border-radius:18px}
+@media(max-width:600px){.wedding-art{margin-bottom:80px}}
