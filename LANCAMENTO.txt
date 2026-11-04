@@ -190,3 +190,10 @@ BIBLIOTECA FOTOS E REABERTURA DA CONTA - 04/11/2026
 - Foto removida de quadro tem substituicao explicita: seletor, previa e download coincidem. Preferencia original nao se perde ao editar dedicatória ou composicao e pode ser restaurada.
 - Minha conta preserva codigo e digitacao ao reabrir. Consultas de compra dispensadas nao abrem editor nem reabrem painel com erro tardio.
 - Verificacao: biblioteca5, quadro3, conta lifecycle7 e regressao21, racesquadro5, exportacao6, restore2, 51modulos e SEO9 passaram. Contas testadas apenas com APIs locais simuladas, sem envio de email.
+
+LEITURA MOBILE TUTORIAL E DATAS DE CONVITES - 04/11/2026
+- Stories mantem fechar, som, pausa e navegacao visiveis em telas estreitas, com alvos de44px e quebra de linha quando texto cresce.
+- Tutorial move foco ao titulo visivel a cada etapa, retorna ao criador ao fechar e deixa a previa assumir o foco ao concluir.
+- Convites com datas impossiveis restauradas/importadas mostram orientacao em vez de normalizar para outro dia. Calendario so aparece com data valida; ano bissexto e fusos preservados.
+- Verificacao: header4grupos/20combinacoes, tutorial6+validacao2, loading5, data7(incluiHTMLreal), exportacao6, revisaocarta6, modulos51 e SEO9 passaram. Teste textoampliado doscontroles nao equivale a todos os modos de zoom do navegador.
+- HTMLs anteriormente baixados precisam ser gerados novamente para incorporar os ajustes de leitura/data.
