@@ -1,3 +1,4 @@
+import {AI_DAILY_CALL_LIMIT} from './ai-limits.mjs';
 import {customerSession,customerWriteAllowed} from './customer.mjs';
 import {adminSession,digest} from './admin.mjs';
 const json=(data,status=200)=>Response.json(data,{status,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','X-Content-Type-Options':'nosniff','Referrer-Policy':'no-referrer'}});
@@ -20,7 +21,7 @@ export function createWritingAPI(env,{now=()=>Math.floor(Date.now()/1000),genera
   if(!owned||purchase.draft_id!==data.draftId)throw new WritingError(404,'Compra não encontrada neste acesso.');
   if(purchase.status!=='approved'||!purchase.approved_at||purchase.approved_at+365*86400<=now())throw new WritingError(403,'Esta compra não está disponível para criar sugestões.');
   await limit(purchase.id,'purchase',30,86400);await limit(request.headers.get('cf-connecting-ip')||'local','ip',60,3600);
-  const globalKey=await digest('public-help:global:all:'+Math.floor(now()/86400));const quota=await first('INSERT INTO billing_rate_limits(key,count,expires_at) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count',globalKey,now()+172800);if(quota.count>100)throw new WritingError(429,'O limite diário de IA foi atingido. Tente novamente amanhã.');
+  const globalKey=await digest('public-help:global:all:'+Math.floor(now()/86400));const quota=await first('INSERT INTO billing_rate_limits(key,count,expires_at) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count',globalKey,now()+172800);if(quota.count>AI_DAILY_CALL_LIMIT)throw new WritingError(429,'O limite diário de IA foi atingido. Tente novamente amanhã.');
   let text;try{text=await generate({consent:data.consent,theme:data.theme,tone:data.tone,format:data.format,target:data.target,nickname:data.nickname,detail:data.detail});}catch{throw new WritingError(503,'Não foi possível gerar agora. Confira as opções e tente novamente.');}
   return json({suggestion:text});
  }
