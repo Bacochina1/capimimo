@@ -77,7 +77,16 @@ CONTAS DE COMPRADORES — 04/11/2026
 
 REVISÃO DE CONTAS, VOZ E RECEBIMENTO — 04/11/2026
 - Acesso por conta é recuperado antes de exigir nova compra; aprovação é conferida no servidor. Falha na consulta não inicia nova cobrança silenciosamente.
-- Atualizar as compras preserva links individuais criados na sessão. Sair da conta ou trocar de identidade limpa esses links da memória; não são copiados para outra conta. Recuperação dos tokens após recarregar o navegador ainda depende de arquivo de acesso local ou regeneração.
+- Atualizar as compras preserva links individuais criados na sessão. Sair da conta ou trocar de identidade limpa esses links da memória; não são copiados para outra conta. Essa limitação foi resolvida para novos convites pela recuperação criptografada descrita abaixo; convites antigos sem registro recuperável mantêm o acesso local ou a regeneração explícita.
 - Erros na confirmação individual de presença não escondem o presente público válido. Falha temporária permite repetir somente a consulta de confirmação.
 - Gravação de voz impede microfones simultâneos e encerra solicitações tardias após cancelamento, saída, importação de outro rascunho ou exportação.
 - Testes de gravação, conta, cobrança no cliente, recuperação completa no navegador, RSVP e tela cheia passaram. Download da biblioteca também conferido e já funcionava corretamente.
+
+LINKS INDIVIDUAIS RECUPERÁVEIS — 04/11/2026
+- Novos convites e links explicitamente regenerados guardam o token criptografado com AES-GCM e chave dedicada no servidor. A autorização pública continua conferindo o hash.
+- O dono autenticado pode recuperar o mesmo link em outra sessão/aparelho; outro comprador, conta expirada ou compra revogada não pode obtê-lo.
+- Listagem não regenera nem invalida convites. Legados sem token criptografado mantêm o link antigo; a interface explica quando só há recuperação local ou regeneração explícita.
+- Abrir a seção de convites carrega a lista. Trocar conta ou presente descarta respostas anteriores; listagem antiga não sobrescreve link regenerado.
+- Migração0007 aplicada à Cloudflare pessoal. GUEST_LINK_SECRET é segredo do Worker, não está no repositório nem nos relatórios. Preservar essa chave em futuros deploys; sua substituição impede recuperar tokens antigos, sem revogar links já enviados.
+- Validação:7testes específicos de criptografia/API, regressões de cobrança/admin/conta e teste completo no Chrome móvel passaram.
+- Teste real na Cloudflare aprovado: convite administrativo recuperado após sair e entrar novamente, acesso anônimo negado, resposta pública sem segredos e regeneração explícita invalidando somente o token anterior. Nenhuma cobrança. Versão e1d5edb5-0386-4f54-86d5-453809e87d8f.

@@ -2,7 +2,7 @@ const storeKey='capimimo-purchases-v1';
 const secret=bytes=>Array.from(crypto.getRandomValues(new Uint8Array(bytes)),n=>n.toString(16).padStart(2,'0')).join('');
 export function initBillingClient({getState,beforeCheckout=async()=>{}}){
  let config={mode:['localhost','127.0.0.1','[::1]'].includes(globalThis.location?.hostname)?'offline':'unavailable',checkoutReady:false},records=[];try{records=JSON.parse(localStorage.getItem(storeKey)||'[]');if(!Array.isArray(records))records=[];records=records.filter(r=>r&&typeof r==='object'&&typeof r.draftId==='string'&&typeof r.planId==='string'&&typeof r.accessKey==='string');}catch{}
- let accountRecords=[],accountIds=new Set(),accountGuestLinks=new Map(),accountSync=null,accountEpoch=0,logoutEpoch=0,account={authenticated:false};
+ let accountRecords=[],accountIds=new Set(),accountGuestLinks=new Map(),guestLinkRevisions=new Map(),accountSync=null,accountEpoch=0,logoutEpoch=0,account={authenticated:false};
  const allRecords=()=>[...records,...accountRecords.filter(r=>!records.some(local=>local.id===r.id))];
  const save=()=>{localStorage.setItem(storeKey,JSON.stringify(records));};
  const notify=()=>document.dispatchEvent(new CustomEvent('billing:change'));
@@ -33,9 +33,15 @@ export function initBillingClient({getState,beforeCheckout=async()=>{}}){
   onProgress({stage:'upload',bytes:upload.size,original:blob.size});const result=await request('/api/orders/'+record.id+'/publish',record,{method:'PUT',body:upload,headers:{'Content-Type':encoding==='gzip'?'application/gzip':'text/html; charset=utf-8','X-Gift-Encoding':encoding,'X-Gift-Format':data.format,'X-Gift-Recipient':encodeURIComponent(data.recipient||''),'X-Draft-Id':data.draftId,'X-Gift-Revision':String(record.delivery?.revision||0)}});mergeOrder(record,result);save();notify();return record.delivery;
  }
  async function adminGrant(draftId=getState().draftId,format=getState().format){await ready;try{const record=await request('/api/admin/grants',null,{method:'POST',body:{draftId,format}});const previous=records.find(r=>r.id===record.id);if(previous)Object.assign(previous,record);else records.push(record);save();notify();return previous||record;}catch(error){if(/administrador|Entre|Origem/.test(error.message)){config.admin=null;document.dispatchEvent(new CustomEvent('admin:expired'));}throw error;}}
- async function guests(record=find()){if(!record?.id)return[];return(await request('/api/orders/'+record.id+'/guests',record)).guests;}
+ async function guests(record=find()){
+  if(!record?.id)return[];const owner=account.email,epoch=logoutEpoch,revision=guestLinkRevisions.get(record.id)||0;const result=await request('/api/orders/'+record.id+'/guests',record);
+  if(epoch!==logoutEpoch||owner!==account.email||!allRecords().some(r=>r.id===record.id)||(record.sessionAuth&&!record.accessKey&&(!account.authenticated||!accountIds.has(record.id))))throw Error('Sua sessão mudou. Abra sua conta novamente.');
+  if(revision!==(guestLinkRevisions.get(record.id)||0))throw Error('Os convites mudaram. Atualize a lista para copiar o link atual.');
+  const rows=Array.isArray(result.guests)?result.guests:[];for(const guest of rows){if(typeof guest.url==='string'&&guest.url)rememberGuestLink(record,guest,owner,epoch);else if(guest.linkRecovery==='unavailable'){delete record.guestLinks?.[guest.id];delete accountGuestLinks.get(record.id)?.[guest.id];const current=accountRecords.find(r=>r.id===record.id);if(current)delete current.guestLinks?.[guest.id];}}save();return rows;
+ }
+ function advanceGuestLinks(record){guestLinkRevisions.set(record.id,(guestLinkRevisions.get(record.id)||0)+1);}
  function rememberGuestLink(record,result,owner,epoch){record.guestLinks??={};record.guestLinks[result.id]=result.url;if(owner&&account.authenticated&&account.email===owner&&epoch===logoutEpoch&&accountIds.has(record.id)){const links=accountGuestLinks.get(record.id)||{};links[result.id]=result.url;accountGuestLinks.set(record.id,links);const current=accountRecords.find(r=>r.id===record.id);if(current)current.guestLinks=links;}save();}
- async function regenerateGuestLink(guestId,record=find()){if(!record?.id)throw Error('Compra não encontrada.');const owner=account.email,epoch=logoutEpoch;const result=await request('/api/orders/'+record.id+'/guests/'+guestId+'/link',record,{method:'POST'});rememberGuestLink(record,result,owner,epoch);return result;}
+ async function regenerateGuestLink(guestId,record=find()){if(!record?.id)throw Error('Compra não encontrada.');const owner=account.email,epoch=logoutEpoch;const result=await request('/api/orders/'+record.id+'/guests/'+guestId+'/link',record,{method:'POST'});advanceGuestLinks(record);rememberGuestLink(record,result,owner,epoch);return result;}
  async function addGuest(name,allowedCount,record=find()){if(!record?.id)throw Error('Compra não encontrada.');const owner=account.email,epoch=logoutEpoch;const result=await request('/api/orders/'+record.id+'/guests',record,{method:'POST',body:{name,allowedCount}});rememberGuestLink(record,result,owner,epoch);return result;}
  function backup(){return new Blob([JSON.stringify({type:'capimimo-purchase-access',version:1,orders:records.filter(r=>r.id&&!r.isAdmin)},null,2)],{type:'application/json'});}
  async function restore(file){
