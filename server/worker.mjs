@@ -1,3 +1,4 @@
+import {createSupportAPI} from './support.mjs';
 import {createCustomerAPI} from './customer.mjs';
 import {createAdminAPI} from './admin.mjs';
 import {createBillingAPI} from './billing.mjs';
@@ -10,6 +11,7 @@ export default {async fetch(request,env){
  // Preserve purchases and browser drafts on the explicitly configured legacy host.
  // Arbitrary Host/Origin headers cannot choose the provider return address.
  const billingEnv=env.SITE_LEGACY_ORIGIN&&url.origin===env.SITE_LEGACY_ORIGIN?{...env,SITE_ORIGIN:env.SITE_LEGACY_ORIGIN,SITE_CANONICAL_ORIGIN:env.SITE_ORIGIN}:env;
+ if(path.startsWith('/api/support/'))return createSupportAPI(env)(request);
  if(path.startsWith('/api/customer/'))return createCustomerAPI(env)(request);
  if(path.startsWith('/api/admin/'))return createAdminAPI(env)(request);
  if(['/admin','/admin/','/admin.html'].includes(path)){if(primary&&url.origin!==primary.origin)return Response.redirect(primary.origin+'/admin',308);url.pathname='/admin';const asset=await env.ASSETS.fetch(new Request(url,request));const response=new Response(asset.body,asset);response.headers.set('X-Robots-Tag','noindex, nofollow, noarchive');response.headers.set('Cache-Control','no-store');response.headers.set('Referrer-Policy','no-referrer');response.headers.set('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'");return response;}
