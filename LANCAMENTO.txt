@@ -144,3 +144,10 @@ AUDIO CONSISTENTE NA CRIACAO E NO RECEBIMENTO - 04/11/2026
 - Carregamento do audio no recebimento pode ser cancelado. Fechar/reabrir outro presente ignora callbacks antigos; repetir a embalagem para o audio atual e o carregamento pendente.
 - Verificacao: 24 testes de reproducao/gravacao/exports, 4 cenarios da previa, 7 grupos de ciclo de audio com WAV real e HTML gerado, regressões do receptor e Stories passaram. 51 modulos e 9 paginas SEO validos. Revisao independente aprovada.
 - Arquivos HTML baixados anteriormente incorporam runtime antigo; para atualizar o recebimento, gere/publique nova versao do presente.
+
+FOTOS SELECIONADAS, CONVIDADOS E RESPOSTAS - 04/11/2026
+- Escolher uma entre fotos repetidas conserva identidade, enquadramento e legenda no editor, biblioteca, exportacao e recuperacao. Presentes antigos continuam com fallback por imagem.
+- Editar e-mail de convidado preserva foco e permite agir no primeiro clique. Endereco vazio/invalido bloqueia preparacao, sem usar silenciosamente o antigo.
+- Convite HTML/rascunho EML usa copia estavel dos dados e cancela se o rascunho, formato ou compra mudar durante a preparacao.
+- Importacoes simultaneas de respostas sao serializadas. Abrir o presente durante importacao atualiza o rascunho alvo; RSVP de convidado novo tambem e preservado sem sobrescrever dados alheios.
+- Verificacao: 7 cenarios browser de e-mail, 7 de importacao, 12 de exportacao individual, roundtrip de 4 formatos, recuperacao e canvas real de fotos repetidas passaram. 51 modulos e 9 paginas SEO validos; revisoes independentes realizadas. Nenhum e-mail externo ou cobranca real nesta rodada.
