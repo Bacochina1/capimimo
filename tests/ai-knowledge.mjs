@@ -20,3 +20,5 @@ test('informação sensível e suporte não contradizem os fluxos declarados',()
 });
 
 test('convites explicam envio individual apenas após publicação',()=>{const item=retrieveKnowledge('Como enviar convites para convidados?').find(x=>x.id==='convites');assert.match(item.text,/Após publicar/);assert.match(item.text,/envio individual por e-mail/);assert.match(item.text,/confirmando o endereço/);});
+
+test('dúvidas sobre fotos e áudio recuperam passos concretos de criação',()=>{for(const q of ['Como coloco minhas fotos?','Posso colocar uma canção?']){const entry=retrieveKnowledge(q).find(x=>x.id==='criacao');assert.ok(entry,q);assert.match(entry.text,/Escolher fotos/);assert.match(entry.text,/áudio/);}});
