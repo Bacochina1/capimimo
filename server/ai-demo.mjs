@@ -2,6 +2,12 @@ import {retrieveKnowledge} from './ai-knowledge.mjs';
 // Experimentos administrativos com perguntas fixas: nunca enviar dados de clientes.
 const tests={
  texto_aniversario:{task:'Escreva uma única mensagem de aniversário para amizade, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_casamento:{task:'Escreva uma única mensagem de carinho para um casal que está se casando, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes, datas ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_convite_casamento:{task:'Escreva uma única mensagem convidando alguém para um casamento, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes, datas, local ou detalhes. O texto deve ser revisado por quem cria.'},
+ texto_natal:{task:'Escreva uma única mensagem de Natal para alguém querido, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_pascoa:{task:'Escreva uma única mensagem de Páscoa para alguém querido, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_maes:{task:'Escreva uma única mensagem para o Dia das Mães, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_pais:{task:'Escreva uma única mensagem para o Dia dos Pais, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
  texto_namoro:{task:'Escreva uma única mensagem para namoro, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
  texto_familia:{task:'Escreva uma única mensagem para uma lembrança de família, com até 150 caracteres. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
  namoro:{task:'Escreva três mensagens curtas para um cartão de namoro, em tom romântico e leve.',context:'Não invente nomes ou acontecimentos. As sugestões devem ser revisadas por quem cria.'},
