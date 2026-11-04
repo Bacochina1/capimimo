@@ -261,3 +261,8 @@ ESTAMPAS, VARIACOES E QUADROS - 04/11/2026
 - Variacoes combinadas mantem estampa visivel e material escolhido; cor personalizada aplicada tambem em Stories. Material escolhido sozinho continua aplicando seu fundo.
 - Quadros de cartao/livro/convite ignoram apelidos e subtitulos ocultos de Stories. Dedicacao explicita continua prioritaria e previa coincide com PNG.
 - Verificacao: grupos4, variacoesapp4 com canvas real, printformat5 cobrindo12combinacoes, printraces5, colecao5, photofallback3, preservacao5, appearance6, printedcolor, modulos51 e SEO9. Revisao independente aprovada; sem cobrancas reais.
+RECUPERACAO DE QR E AVISOS DE AUDIO - 04/11/2026
+- QR do link publicado bloqueia download vazio/obsoleto quando biblioteca falha; mostra aviso proprio e nova tentativa sem bloquear compartilhamento do link. Trocar presente invalida resultado anterior.
+- Retry de QR conduz foco ao status e download, respeitando navegacao do usuario para outro controle.
+- Falha atrasada ao salvar audio ou trocar faixa nao substitui aviso de reset/importacao mais recente. Falha atual continua visivel.
+- Verificacao: QRbrowser6 com HTTP503 real, cloud12, audioIDB6, audioinitial6, previewowner4, recipientaudio7, sound9, purchasebinding13, QRcartao6, modulos51 e SEO9. Revisao independente aprovada; sem cobrancas ou envios reais.
