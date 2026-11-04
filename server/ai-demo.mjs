@@ -1,0 +1,11 @@
+// Experimentos administrativos com perguntas fixas: nunca enviar dados de clientes.
+const tests={
+ preco:{task:'Quanto custa criar um cartão digital e como ele é entregue?',context:'Capimimo: Um Mimo custa R$ 14,90 por pagamento único e permite cartão ou Stories. Após aprovação e publicação, compartilha-se o link e é possível baixar cópia. Produto digital, sem envio físico.'},
+ acesso:{task:'Como recuperar minha compra em outro aparelho?',context:'Compras vinculadas a uma conta podem ser acessadas em Minha conta com o mesmo e-mail. Rascunhos não publicados ficam no navegador original. Atendimento: bacochinakawai@gmail.com.'},
+ aniversario:{task:'Escreva três sugestões curtas para um cartão de aniversário de amizade, com tom alegre.',context:'Não invente nomes ou fatos pessoais. Produza textos que precisem ser revisados por quem cria o presente.'}
+};
+export async function runAiDemo(selection,key,fetcher=fetch){
+ const entry=tests[selection];if(!entry)throw new Error('Selecione um teste disponível.');if(!key)throw new Error('A chave de teste não está configurada.');
+ const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),30000);
+ try{const response=await fetcher('https://integrate.api.nvidia.com/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+key,'Content-Type':'application/json'},body:JSON.stringify({model:'nvidia/nemotron-3-ultra-550b-a55b',messages:[{role:'system',content:'Teste com dados fictícios do Capimimo. Responda em português brasileiro usando somente o contexto. Não confirme pagamentos nem peça dados pessoais. Contexto: '+entry.context},{role:'user',content:entry.task}],temperature:0.3,max_tokens:512,stream:false,chat_template_kwargs:{enable_thinking:false}}),signal:controller.signal});if(!response.ok){const error=new Error('provider');error.providerStatus=response.status;throw error;}const result=await response.json(),text=result?.choices?.[0]?.message?.content;if(typeof text!=='string'||!text.trim())throw new Error('A IA não retornou uma resposta. Tente novamente.');return text.slice(0,4000);}finally{clearTimeout(timeout);}
+}

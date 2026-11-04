@@ -12,6 +12,7 @@ function check(name,pass,detail){checks.push({name,pass:!!pass,...(detail?{detai
 async function call(handler,path,{method='GET',body,cookie='',token='',siteOrigin=origin,headers={},urlOrigin=origin}={}){const r=await handler(new Request(urlOrigin+path,{method,headers:{...(method==='GET'?{}:{Origin:siteOrigin}),...(body?{'Content-Type':'application/json'}:{}),...(cookie?{Cookie:cookie}:{}),...(token?{Authorization:'Bearer '+token}:{}),...headers},...(body?{body:typeof body==='string'?body:JSON.stringify(body)}:{})}));let data;try{data=await r.clone().json();}catch{data=await r.text();}return{status:r.status,data,cookie:r.headers.get('set-cookie')?.split(';')[0],headers:r.headers};}
 let pass=false;
 try{
+ check('Unauthenticated AI prototype is denied',(await call(api,'/api/admin/ai-demo',{method:'POST',body:{selection:'preco'}})).status===401);
  check('Unauthenticated admin grant is denied',(await call(api,'/api/admin/grants',{method:'POST',body:{draftId:'fixture-draft-a',format:'cartao'}})).status===401);
  check('Unknown and wrong-password logins are generic401',(await call(api,'/api/admin/login',{method:'POST',body:{username:'not-a-user',password}})).status===401&&(await call(api,'/api/admin/login',{method:'POST',body:{username:'owner-a',password:'wrong'}})).status===401);
  const loginA=await call(api,'/api/admin/login',{method:'POST',body:{username:'owner-a',password}}),cookieA=loginA.cookie;
