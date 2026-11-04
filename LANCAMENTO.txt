@@ -110,3 +110,10 @@ RASCUNHOS ADMINISTRATIVOS, QUADROS E QR — 04/11/2026
 - Quadro PNG/impressão usa canvas próprio e cópia da personalização, sem baixar prévia antiga durante atualização. Acesso e exportações simultâneas são tratados com recuperação dos controles.
 - QR com conteúdo além da capacidade mostra orientação para publicar e usar link compacto, sem cortar texto. Geração obsoleta ou com erro não baixa o QR anterior; explicação acompanha o destino validado.
 - Verificação: admin no Chrome móvel (3 conteúdos + vazio), 5 casos de concorrência do quadro, 2 exports A4 reais e 6 cenários de QR com vendor real passaram. Regressões de mídia, recuperação e acesso passaram; 51 módulos e 9 páginas SEO válidos.
+
+RECEBIMENTO EM CONEXÕES LENTAS — 04/11/2026
+- Stories aguardam o frame ficar pronto antes de iniciar o tempo da foto. Carregamento/erro têm aviso; navegação permanece disponível e respostas antigas não interferem em outra sessão.
+- Livro portátil bloqueia páginas/zoom/capa enquanto prepara o 3D. Mensagem e letra maior ficam utilizáveis imediatamente; falha libera leitura simples; renderer tardio é descartado após sair.
+- Reprodução de áudio pendente não volta a tocar depois de pause/stop. Chamadas concorrentes são agrupadas e áudio finalizado pode tocar novamente. Gravação/exportação preservadas.
+- Verificação: 5 cenários Stories em Chrome390x844, 4 cenários de carregamento do leitor, 9 testes de reprodução e 12 de gravação/mídia passaram. Export portátil compilado; leitor móvel e contraste passaram; 51 módulos e 9 páginas SEO válidos.
+- Runtime novo vale para prévias e novas exportações/publicações. HTML antigo contém a versão anterior e exige republicação para receber estas mudanças.
