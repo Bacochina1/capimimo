@@ -197,3 +197,10 @@ LEITURA MOBILE TUTORIAL E DATAS DE CONVITES - 04/11/2026
 - Convites com datas impossiveis restauradas/importadas mostram orientacao em vez de normalizar para outro dia. Calendario so aparece com data valida; ano bissexto e fusos preservados.
 - Verificacao: header4grupos/20combinacoes, tutorial6+validacao2, loading5, data7(incluiHTMLreal), exportacao6, revisaocarta6, modulos51 e SEO9 passaram. Teste textoampliado doscontroles nao equivale a todos os modos de zoom do navegador.
 - HTMLs anteriormente baixados precisam ser gerados novamente para incorporar os ajustes de leitura/data.
+
+EXTRAS RESTAURADOS E RECADOS COLETIVOS - 04/11/2026
+- Restaurar conteudo atualiza campos focados de carta, segredo, identidade e listas de extras; digitar normalmente preserva o cursor.
+- Convite de recado coletivo rejeita campos em branco e mantem identidade ao baixar a mesma mensagem novamente. Edicao gera nova versao.
+- Importacao valida campos, evita duplicatas, informa presente incorreto/limite e nao aplica resultado pendente sobre um rascunho restaurado.
+- Verificacao: focusedrestore12, contribuicao6 comHTMLgeradoreal, restauracao6, recipientreply6, revisaocarta6, export6, modulos51 e SEO9 passaram. Revisoes independentes aprovadas; nenhum envio externo.
+- Convites de contribuicao ja baixados precisam ser gerados novamente para receber a validacao nova.
