@@ -204,3 +204,8 @@ EXTRAS RESTAURADOS E RECADOS COLETIVOS - 04/11/2026
 - Importacao valida campos, evita duplicatas, informa presente incorreto/limite e nao aplica resultado pendente sobre um rascunho restaurado.
 - Verificacao: focusedrestore12, contribuicao6 comHTMLgeradoreal, restauracao6, recipientreply6, revisaocarta6, export6, modulos51 e SEO9 passaram. Revisoes independentes aprovadas; nenhum envio externo.
 - Convites de contribuicao ja baixados precisam ser gerados novamente para receber a validacao nova.
+
+RESTAURACAO DE AUDIO E REENVIO DE FOTOS - 04/11/2026
+- Upload de voz, gravacao e troca de modo aguardam a restauracao inicial sem apagar musica/voz previamente salvas. Reset/import invalidam operacoes antigas.
+- Upload de foto cancelado por reset/import limpa a selecao antiga ao terminar; selecionar o mesmo arquivo novamente funciona, sem limpar selecao mais nova.
+- Verificacao: audioinitial6 comIDBreal, gravação10, previaaudio4, photoretry3 comPNGreal/CDP, photoinitial3, QR6 semnovodefeito, export6, modulos51 e SEO9 passaram. Revisao independente aprovada.
