@@ -71,3 +71,20 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 /* Keep the illustrated rosette outside the photo crop, with room for its ribbons. */
 .wedding-art{overflow:visible;background:transparent}.wedding-photo{border-radius:18px}
 @media(max-width:600px){.wedding-art{margin-bottom:80px}}
+
+/* Keep the collectible badge, photo caption and motion control in separate touch areas. */
+@media(max-width:600px){
+ .capy-photo-hero{margin-bottom:136px}
+ .capy-photo-hero .game-art-badge{right:0;width:min(220px,calc(100% - 98px))}
+ .capy-photo-hero .memory-three{left:0}
+ .capy-photo-hero .hero-sprite-toggle{top:calc(100% + 8px);bottom:auto;left:0;width:84px;min-height:44px;padding:5px 0;font-size:11px;line-height:1.3;text-align:left;white-space:normal}
+ .capy-photo-hero>.fiction-note{top:calc(100% + 64px);bottom:auto;left:0;right:0;width:auto;font-size:11px;line-height:1.5;text-align:center}
+ .capy-photo-hero .hero-response{top:calc(100% + 96px);bottom:auto}
+ .wedding-copy{container-type:inline-size}
+ .wedding-copy h2{font-size:clamp(28px,10.4cqw,36px);white-space:nowrap}
+}
+
+@media(min-width:601px) and (max-width:900px){.capy-photo-hero .game-art-badge{right:0;width:min(252px,calc(100% - 120px))}}
+
+/* The illustrated steps may shrink inside intermediate-width grid columns. */
+.journey-grid article{min-width:0}.journey-game-art{max-width:100%}

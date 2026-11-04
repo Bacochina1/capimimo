@@ -10,7 +10,9 @@
     "build:seo": "python scripts/build-seo.py",
     "check:seo": "node scripts/check-seo.mjs",
     "test": "node tests/billing.mjs",
-    "test:client": "node tests/billing-client.mjs"
+    "test:client": "node tests/billing-client.mjs",
+    "test:admin": "node tests/admin.mjs",
+    "test:admin-client": "node tests/admin-client.mjs"
   },
   "devDependencies": {
     "sharp": "0.35.5",

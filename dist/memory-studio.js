@@ -52,7 +52,7 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
  }
  $('#photo').addEventListener('change',event=>{const task=preparePhotos(event);pendingPhotos.add(task);$('#photo').disabled=true;dropzone.setAttribute('aria-busy','true');task.finally(()=>{pendingPhotos.delete(task);$('#photo').disabled=!!pendingPhotos.size;dropzone.setAttribute('aria-busy',String(!!pendingPhotos.size));if(!pendingPhotos.size&&$('#upload-status').textContent.startsWith('Otimizando'))$('#upload-status').textContent='Preparação encerrada. Seu rascunho está atualizado.';}).catch(()=>{$('#upload-status').textContent='Não foi possível preparar as fotos. Tente novamente.';});});
  const loadEpoch=epoch;
- mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
+ const initialLoad=mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
  render();
  return {
   render,
@@ -60,7 +60,7 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
   reset(){epoch++;index=0;gallery=[];selected=null;restoring=false;setPhoto(null);persist();render();},
   exportMedia(){return {gallery:gallery.map(item=>({...item})),selected};},
   async importMedia(value){epoch++;restoring=false;gallery=Array.isArray(value?.gallery)?value.gallery.filter(item=>item&&typeof item.id==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(item.src)).map(item=>({...item})):[];selected=gallery.some(item=>item.id===value?.selected)?value.selected:gallery[0]?.id??null;index=0;setPhoto(gallery.find(item=>item.id===selected)?.src??null);persist();render();await queue;},
-  flush:async()=>{while(pendingPhotos.size)await Promise.all([...pendingPhotos]);await queue;},
+  flush:async()=>{await initialLoad;while(pendingPhotos.size)await Promise.all([...pendingPhotos]);await queue;},
   snapshot:()=>({gallery:gallery.map(({id,name})=>({id,name})),selected,index,pages:currentPages()})
  };
 }
