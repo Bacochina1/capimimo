@@ -28,3 +28,9 @@
 /* A prévia de Stories conserva o quadro inteiro em 9:16, sem recorte. */
 .showcase-stage.is-stories .showcase-object-mount{display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:16px}
 .showcase-stage.is-stories .showcase-story-canvas{display:block;width:auto;height:auto;max-width:100%;max-height:100%;aspect-ratio:9/16;object-fit:contain}
+
+/* O Story e seus controles precisam caber mesmo em telas baixas. */
+.showcase-stage.is-stories{height:min(590px, max(240px, calc(100svh - 200px)))}
+.showcase-stage.is-stories .showcase-object-mount{min-width:0;min-height:0;overflow:hidden}
+.showcase-stage.is-stories .showcase-story-canvas{height:100%;width:auto;min-width:0;min-height:0;max-width:100%;max-height:100%}
+@media(max-width:700px){.showcase-stage.is-stories{height:min(460px, max(240px, calc(100svh - 180px)))}}
