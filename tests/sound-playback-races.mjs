@@ -3,7 +3,7 @@ const source=fs.readFileSync(new URL('../dist/audio-studio.js',import.meta.url),
 function fixture(sound='musicbox'){
  const contexts=[],audios=[],timers=new Set();
  class Context{constructor(){this.currentTime=0;this.destination={};this.resumes=[];this.voices=[];this.closed=false;contexts.push(this);}createGain(){return{gain:{setTargetAtTime(){},setValueAtTime(){},exponentialRampToValueAtTime(){}},connect(){},disconnect(){}};}resume(){const d=deferred();this.resumes.push(d);return d.promise;}createOscillator(){const o={type:'',frequency:{},connect:()=>({connect(){}}),start(){this.playing=true;},stop(){this.playing=false;},disconnect(){}};this.voices.push(o);return o;}close(){this.closed=true;return Promise.resolve();}createMediaElementSource(){return{connect(){}};}createMediaStreamDestination(){return{stream:{context:this}};}}
- class Audio{constructor(){this.plays=[];this.paused=true;this.currentTime=0;audios.push(this);}play(){const d=deferred();this.plays.push(d);return d.promise.then(()=>{this.paused=false;});}pause(){this.paused=true;}}
+ class Audio extends EventTarget{constructor(){super();this.plays=[];this.paused=true;this.currentTime=0;audios.push(this);}play(){const d=deferred();this.plays.push(d);return d.promise.then(()=>{this.paused=false;});}pause(){this.paused=true;}}
  const context=vm.createContext({window:{AudioContext:Context},Audio,setInterval:f=>(timers.add(f),f),clearInterval:f=>timers.delete(f)});vm.runInContext(source.slice(source.indexOf('export function createSound'),source.indexOf('export function initAudioStudio')).replace('export function','function')+'this.createSound=createSound;',context);
  return{player:context.createSound({sound,audioVolume:.5},'test-audio'),contexts,audios,timers};
 }

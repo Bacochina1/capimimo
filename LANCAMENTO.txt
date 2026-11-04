@@ -137,3 +137,10 @@ PERSONALIZACAO SEM PERDER TEXTOS E EDICAO NO CELULAR - 04/11/2026
 - Personalizar volta ao ultimo campo utilizavel ou ao titulo da etapa atual, sem tentar focar controles ocultos.
 - Conferir e entregar mostra Mensagem principal e Carta separadamente. Editar carta abre a secao e traz o campo para a area visivel, entre cabecalho e barra movel.
 - Verificacao: cinco grupos de preservacao no Chrome com downloads reais de cartao/livro/convite; quatro cenarios de navegacao mobile/desktop; seis verificacoes do resumo/carta em duas alturas de celular; duas regressões do tutorial e recuperacao de compras passaram. 51 modulos e 9 paginas SEO validos. Sem cobranca real nesta rodada.
+
+AUDIO CONSISTENTE NA CRIACAO E NO RECEBIMENTO - 04/11/2026
+- Conclusao antiga de uma previa de audio nao interrompe uma previa nova nem substitui o estado apos mudar modo de som.
+- Fim natural da gravacao restaura o botao Ouvir; um toque reinicia. O comportamento vale no editor, no recebimento e no HTML portatil gerado.
+- Carregamento do audio no recebimento pode ser cancelado. Fechar/reabrir outro presente ignora callbacks antigos; repetir a embalagem para o audio atual e o carregamento pendente.
+- Verificacao: 24 testes de reproducao/gravacao/exports, 4 cenarios da previa, 7 grupos de ciclo de audio com WAV real e HTML gerado, regressões do receptor e Stories passaram. 51 modulos e 9 paginas SEO validos. Revisao independente aprovada.
+- Arquivos HTML baixados anteriormente incorporam runtime antigo; para atualizar o recebimento, gere/publique nova versao do presente.
