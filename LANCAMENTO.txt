@@ -45,7 +45,7 @@ LIMITES E ENTREGA
 - Arquivo final de até 40 MB; link por 12 meses desde a aprovação. O comprador pode guardar a cópia baixada.
 - Convites: até 100 links individuais por compra; até 10 pessoas em um convite.
 - Chave de acesso da compra fica no navegador e pode ser exportada para recuperação em outro aparelho. O link público não carrega essa chave.
-- Quem possui o link do presente pode abri-lo. Não existe promessa de senha ou colaboração simultânea. A confirmação automática de pagamento é enviada para novas compras com e-mail informado; convites não são disparados automaticamente. E-mail manual/arquivo de convite é uma função separada.
+- Quem possui o link do presente pode abri-lo. Não existe promessa de senha ou colaboração simultânea. A confirmação automática de pagamento é enviada para novas compras com e-mail informado. Após publicação, o organizador pode solicitar o envio individual do convite por e-mail, confirmando o endereço. A aceitação pelo provedor não garante entrega na caixa de entrada.
 
 REVISÃO COM TRÊS CRÍTICOS — 04/11/2026
 - Corrigidos recuperação parcial de compras, formato comprado persistente, capa dos Stories na recuperação, gravação em andamento na exportação, troca de presente e erro de rede na publicação.

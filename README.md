@@ -44,7 +44,7 @@ A publicação exige autenticação do Wrangler na conta indicada. Veja [CLOUDFL
 - `scripts/check.mjs`: verificação de sintaxe dos módulos do frontend.
 - `server/`: Worker de pedidos, confirmação no Mercado Pago, publicação R2 e RSVP persistente em D1.
 
-O Mercado Pago está em homologação, com cobrança real bloqueada por configuração. A compra fictícia foi aprovada e a entrega publicada no R2 foi aberta em outro navegador com fotos, áudio e Three.js. A conferência agendada de pedidos a cada 10 minutos recupera notificações atrasadas e reembolsos. Envio automático de e-mail não foi contratado nem configurado. Veja INTEGRACAO-MERCADOPAGO.txt para os bloqueios de lançamento.
+O checkout está configurado em produção no domínio principal. Uma compra fictícia foi aprovada em homologação e o presente de teste foi aberto com fotos, áudio e Three.js. A conferência agendada de pedidos a cada 10 minutos recupera notificações atrasadas e reembolsos. Confirmações de compra e convites individuais podem ser enviados por e-mail. Uma compra real completa, do pagamento à entrega e recuperação pela conta, ainda não foi validada.
 
 Credenciais, dependências instaladas, arquivos de trabalho e configurações locais ficam fora do Git.
 
@@ -56,4 +56,4 @@ As páginas por ocasião são geradas por `npm run build:seo` e verificadas por 
 
 Cinco auditorias cobriram compra, edição, recebimento, convites e acessibilidade em telas de 320 a 1440 px. Foram corrigidos reuso de compra, processamento de mídia antes de salvar/exportar, preservação de dedicatória, respostas no visualizador isolado, recuperação de links individuais e mensagens de sucesso.
 
-`npm test` verifica a API e a autorização. `npm run test:client` cobre seleção de compra compatível, upgrade, publicação e falhas de conexão sem liberação indevida. A aplicação continua em homologação: veja LANCAMENTO.txt antes de habilitar vendas reais.
+`npm test` verifica a API e a autorização. `npm run test:client` cobre seleção de compra compatível, upgrade, publicação e falhas de conexão sem liberação indevida. Consulte LANCAMENTO.txt para o histórico e as pendências de validação; confirme a configuração atual antes de alterar pagamentos.
