@@ -1,11 +1,11 @@
-MERCADO PAGO — HOMOLOGAÇÃO EM ANDAMENTO
-Atualizado em 03/11/2026.
+MERCADO PAGO — CONFIGURAÇÃO E VERIFICAÇÃO
+Atualizado em 04/11/2026.
 
 Aplicação Capimimo criada com autorização do titular para Checkout Pro e API de Orders. Servidor publicado na Cloudflare pessoal de Matheus Bacochina, com D1 e R2 privado. Credenciais de produção/teste e assinaturas de webhook configuradas exclusivamente como Worker Secrets; não estão no frontend ou no repositório.
 
-PAYMENT_MODE=test
-SALES_ENABLED=false
-Cobranças reais ainda não estão liberadas. Compra fictícia aprovada no provedor e reconhecida pela consulta autenticada do servidor. Publicação efetiva no R2 aberta em navegador independente com fotos, áudio e Three.js. Cobrança real continua bloqueada enquanto os dados comerciais e documentos são concluídos. O domínio https://capimimo.com.br já está conectado; o endereço workers.dev mantém os webhooks existentes.
+PAYMENT_MODE=live
+SALES_ENABLED=true
+O checkout de produção está ativo por decisão do titular. Compra fictícia em homologação foi aprovada e uma entrega de teste foi publicada. Não houve validação completa com cobrança real. O domínio https://capimimo.com.br está conectado; o endereço workers.dev mantém os webhooks existentes.
 
 Implementação ativa: server/worker.mjs, billing.mjs e mercadopago-orders.mjs.
 - POST /api/checkout: catálogo de preços no servidor e criação idempotente de Order.
@@ -20,13 +20,13 @@ Os testes locais do backend passaram, cobrindo assinatura inválida, divergênci
 
 Os adaptadores antigos server/mercadopago.mjs e product-api.mjs não são usados pelo Worker atual.
 
-Antes de liberar vendas:
+Histórico de validação e pendências:
 1. CONCLUÍDO: checkout com dados fictícios oficiais, sem cartão real.
 2. CONCLUÍDO: webhook oficial assinado recebido com sucesso e aprovação consultada na API.
 3. CONCLUÍDO: publicação R2 e abertura 3D, foto e áudio em outro navegador; convites/RSVP verificados no teste integrado isolado.
-4. Verificar recuperação da chave de compra e edição da entrega.
-5. Completar dados reais de atendimento, termos e privacidade.
-6. Só então revisar PAYMENT_MODE=live e SALES_ENABLED=true. Não realizar compra real sem autorização própria.
+4. A recuperação por conta e chave foi testada em cenários simulados; a compra real completa ainda não foi verificada.
+5. O atendimento público usa o nome e e-mail informados pelo titular; ele optou por não acrescentar endereço ou CPF na página.
+6. Não realizar cobrança real de teste sem autorização própria.
 
 Não enviar tokens ou segredos em chat, capturas, arquivos públicos ou Git.
 

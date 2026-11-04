@@ -27,4 +27,4 @@ npm run deploy:cloudflare
 
 Arquivos prontos em dist/. O repositório pessoal é https://github.com/Bacochina1/capimimo. O deploy atual é feito pelo Wrangler; conectar Workers Builds é uma etapa separada.
 
-Pagamentos permanecem em homologação (`PAYMENT_MODE=test`, `SALES_ENABLED=false`). Nome público do responsável e e-mail de suporte ainda são necessários para concluir atendimento e documentos da loja. Segredos ficam nos Worker Secrets; não envie tokens, .env, .dev.vars ou .wrangler ao Git.
+O checkout de produção está ativo (`PAYMENT_MODE=live`, `SALES_ENABLED=true`); uma compra real completa ainda não foi validada. O nome e o e-mail de suporte informados pelo titular estão publicados. Segredos ficam nos Worker Secrets; não envie tokens, .env, .dev.vars ou .wrangler ao Git.
