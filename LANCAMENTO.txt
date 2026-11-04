@@ -104,3 +104,9 @@ PREFERÊNCIAS DE QUADRO, QR E BIBLIOTECA — 04/11/2026
 - Prévia da biblioteca mantém a foto da capa ao folhear páginas internas no Three.js.
 - Download HTML bloqueia cliques duplicados antes da autorização e permite nova tentativa após recusa/erro.
 - Verificação: quatro formatos exportados, defaults legados, privacidade, recuperação nos controles móveis e biblioteca Three.js passaram. 51 módulos e 9 páginas SEO validados.
+
+RASCUNHOS ADMINISTRATIVOS, QUADROS E QR — 04/11/2026
+- Trocar de teste administrativo guarda também rascunhos contendo apenas áudio, carta ou apelido do Story. A biblioteca conserva o áudio original; rascunho vazio não gera cópia.
+- Quadro PNG/impressão usa canvas próprio e cópia da personalização, sem baixar prévia antiga durante atualização. Acesso e exportações simultâneas são tratados com recuperação dos controles.
+- QR com conteúdo além da capacidade mostra orientação para publicar e usar link compacto, sem cortar texto. Geração obsoleta ou com erro não baixa o QR anterior; explicação acompanha o destino validado.
+- Verificação: admin no Chrome móvel (3 conteúdos + vazio), 5 casos de concorrência do quadro, 2 exports A4 reais e 6 cenários de QR com vendor real passaram. Regressões de mídia, recuperação e acesso passaram; 51 módulos e 9 páginas SEO válidos.
