@@ -102,3 +102,7 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 
 /* Preview feedback and retry stay inside the editor viewport. */
 .is-stories #story-mount{display:flex;flex-direction:column;gap:8px;padding:24px;min-height:0}.is-stories .live-story-preview{flex:1;min-height:140px;height:auto}.live-story-status{flex:none;margin:0;font-size:14px;line-height:1.4;text-align:center;overflow-wrap:anywhere}.live-story-retry{flex:none;min-height:44px;padding:10px 16px;border:1px solid var(--ink,#3a1e14);border-radius:8px;background:var(--paper,#fff6ea);color:var(--ink,#3a1e14);font:inherit}.live-story-navigation{flex:none;margin-top:0}.live-story-navigation button{min-height:44px}
+
+.large-reading .experience-chapter{font-size:22px}
+
+.wheel-plans summary{font-weight:700}.wheel-plans ol{padding-left:1.6em;margin:16px 0 0}.wheel-plans li{padding-left:4px;margin:0 0 12px;overflow-wrap:anywhere}.wheel-result{font-weight:700}.experience-chapter button[aria-disabled="true"]{cursor:wait;opacity:.75}

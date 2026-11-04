@@ -270,3 +270,8 @@ RECUPERACAO COM CONTEXTO PRESERVADO - 04/11/2026
 - Abrir presente publicado, abrir compra e restaurar teste verificam contexto apos carregar e antes aplicar; troca de rascunho/formato/compra/conta invalida resultado antigo, inclusive A-B-A. Erros de operacoes abandonadas nao reaparecem.
 - Importar arquivo de acesso no painel respeita contexto e arquivo mais recente. Persistencia autorizada permanece, sem mudar selecao/status de outro rascunho. Importar primeira compra do mesmo rascunho continua selecionando a compra normalmente.
 - Verificacao: publishedcontext5 grupos/24 cenarios, panelimport6 grupos, cloud12, recoveryimport5, accountlifecycle7, recoverydismiss8, modulos51 e SEO9. Modulo/DOM reais com billing controlado; sem cobrancas ou envios reais. Revisao independente aprovada.
+LEITURA E NAVEGACAO DO PRESENTE - 04/11/2026
+- Roleta usa numeros legiveis e lista expansivel com todos os planos completos; resultado identifica numero e texto. Girar pelo teclado conserva foco e impede sorteios concorrentes.
+- Ler com letra maior amplia tambem cartas, mensagens extras e campos de resposta, no arquivo e na previa de recebimento.
+- Folhear conserva foco no controle intermediario; primeira/ultima pagina transferem para indicador acessivel. Mudanca de foco pelo usuario durante animacao e descarte de leitor sao respeitados.
+- Verificacao: wheel4 com imagens320/390 inspecionadas, pagefocus5 com Three real, extras4 nas duas larguras e contextos, openingfocus7, loading4, roundtrip6, modulos51 e SEO9. Revisao independente aprovada. Arquivos HTML antigos precisam ser gerados novamente para receber os ajustes.
