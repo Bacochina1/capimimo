@@ -165,3 +165,9 @@ RESPOSTAS DO DESTINATARIO SEM ESTADO ANTIGO - 04/11/2026
 - Respostas preparadas validas sao recuperadas quando o navegador permite armazenamento. Falha/indisponibilidade de armazenamento nao impede baixar nem promete salvamento.
 - Verificacao: 3 grupos RSVP pendente + regressao RSVP, 6 grupos de recados (incluindo runtime dos HTMLs Stories/cartao exportados), 5 testes export, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada; nenhum envio externo real.
 - Arquivos HTML antigos precisam ser gerados novamente para incorporar a correcao dos recados.
+
+CATALOGO E IDENTIDADE COMPLETA DOS MODELOS - 04/11/2026
+- Avancar/voltar no catalogo mostra a primeira capa nova e posiciona o foco no titulo, no celular e desktop. Filtros preservam foco; render antigo nao o rouba apos fechar.
+- Escolher modelo da colecao aplica arte e abertura da ocasiao, textura e acabamento corretos, removendo referencia de capa anterior. Previa e presente exportado usam a mesma identidade.
+- Fotos, paginas e textos pessoais permanecem ao trocar modelo.
+- Verificacao: 10 grupos browser de paginacao, 2 trocas de tema com export real, 5 grupos de preservacao, 5 testes exportacao, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada.
