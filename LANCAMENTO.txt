@@ -239,3 +239,9 @@ ABERTURA POR GESTO E TECLADO - 04/11/2026
 - Abrir e rever Stories pelo teclado mantem foco na slide visivel; setas seguem navegando sem capturar campos de extras ou mover foco dos controles persistentes.
 - Presente HTML transfere foco do botao de abertura para Pular e orientacao acima do objeto3D, mantendo inicio do presente visivel. Carregamento tardio nao rouba foco e leitura ampliada preserva prioridade.
 - Verificacao: storiesnavigation6, loading5, replayWAVreal, portablefocus7, portableloading4, fallbackreader, export6, modulos51 e SEO9. Revisoes independentes aprovadas. HTMLs anteriormente baixados devem ser gerados novamente para incorporar ajustes.
+
+CONVIDADOS EM LOTE E BACKUP DE RESPOSTAS - 04/11/2026
+- Inclusao em lote mantem linhas com email invalido, nome repetido, formato incorreto ou excedente ao limite de100; informa motivo e permite corrigir sem perder entradas.
+- Resposta apenas com espacos mostra erro acessivel e permite tentar novamente, sem substituir resposta valida previamente preparada.
+- Arquivo Baixar respostas guardadas agora pode ser importado pelo painel. Novo envelope versionado e backups antigos aceitos; ate100 respostas/1MB, validacao antes aplicar entradas, IDsdeduplicados e vinculoao presente preservado. Limite individual25KB mantido.
+- Verificacao: bulk4/email7, replyvalidation4/reply6inclHTMLgerado, backup7comexportreal100notas/IDB, queue7, export6, modulos51 e SEO9; revisoes independentes aprovadas. Sem envios externos.
