@@ -1,6 +1,9 @@
 import {retrieveKnowledge} from './ai-knowledge.mjs';
 // Experimentos administrativos com perguntas fixas: nunca enviar dados de clientes.
 const tests={
+ texto_aniversario:{task:'Escreva uma única mensagem de aniversário para um cartão, com até 150 caracteres e tom alegre. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_namoro:{task:'Escreva uma única mensagem para um cartão romântico, com até 150 caracteres e tom carinhoso. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
+ texto_familia:{task:'Escreva uma única mensagem para um livro de lembranças de família, com até 150 caracteres e tom acolhedor. Retorne apenas a mensagem.',context:'Não invente nomes ou acontecimentos. O texto deve ser revisado por quem cria.'},
  namoro:{task:'Escreva três mensagens curtas para um cartão de namoro, em tom romântico e leve.',context:'Não invente nomes ou acontecimentos. As sugestões devem ser revisadas por quem cria.'},
  familia:{task:'Escreva três mensagens curtas para um livro de lembranças de família, em tom acolhedor.',context:'Não invente nomes ou acontecimentos. As sugestões devem ser revisadas por quem cria.'},
  preco:{task:'Quanto custa criar um cartão digital e como ele é entregue?',context:'Capimimo: Um Mimo custa R$ 14,90 por pagamento único e permite cartão ou Stories. Após aprovação e publicação, compartilha-se o link e é possível baixar cópia. Produto digital, sem envio físico.'},
