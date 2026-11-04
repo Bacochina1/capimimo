@@ -58,3 +58,9 @@ SEGUNDA REVISÃO COM TRÊS CRÍTICOS — 04/11/2026
 - Fila de confirmação de compra com marca, tentativas, lease e isolamento do pagamento. Não envia retroativamente para compras antigas nem testes administrativos. Cron processa a fila a cada 10 minutos; não há garantia de entrega em caixa de entrada ou exactly-once em falhas após aceite do provedor.
 - Envio pelo Worker aceito pela Cloudflare em teste administrativo para bacochinakawai2@gmail.com. Nenhuma cobrança foi executada.
 - Verificações: cobrança58, cliente24, admin39, admin-client4, email8; demais suites de recuperação, interface, mídia, RSVP e fallback passaram.
+
+QUALIDADE DE PRODUTO — 04/11/2026
+- Catálogo começa com três composições sugeridas, mantém todas as30capas por ocasião/formato e permite filtrar composição e fundos claros/escuros.
+- Exemplos editoriais próprios para18ocasiões×4formatos, validados nas2160combinações do catálogo. São exemplos fictícios, não novos depoimentos de clientes nem2160artes exclusivas.
+- Recebimento ocupa100dvh, mantém controles/telacheia/RSVP e isolamento de segurança. Testes320/390/844/1440 e um presente publicado mobile PASS.
+- Regra de personalização completa apóscompra preservada enquanto proprietário decide se quer permitir prévia personalizada antes de pagar.
