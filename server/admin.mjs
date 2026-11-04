@@ -61,6 +61,14 @@ export function createAdminAPI(env,{now=()=>Math.floor(Date.now()/1000)}={}){
    await db.batch([query('UPDATE admin_users SET password_hash=?,password_changed_at=? WHERE id=?',await hashAdminPassword(password),now(),user.id),query('DELETE FROM admin_sessions WHERE admin_id=?',user.id)]);
    return json({ok:true},200,{'Set-Cookie':cookie(await session(user))});
   }
+  if(path==='/api/admin/sales'&&method==='GET'){
+   const pageText=url.searchParams.get('page')||'1',filter=url.searchParams.get('status')||'all';if(!/^[1-9]\d{0,3}$/.test(pageText)||!['all','approved','pending','failed','revoked'].includes(filter))throw new AdminError(422,'Filtro de vendas inválido.');
+   const page=Number(pageText),size=50,where="p.mode='live' AND p.grant_source='payment'",statusFilter=filter==='all'?'':' AND p.status=?',args=filter==='all'?[]:[filter];
+   const totals=await first("SELECT COUNT(*) AS orders,COALESCE(SUM(CASE WHEN status='approved' THEN 1 ELSE 0 END),0) AS approved,COALESCE(SUM(CASE WHEN status='approved' THEN amount_cents ELSE 0 END),0) AS gross_cents,COALESCE(SUM(CASE WHEN status='pending' THEN 1 ELSE 0 END),0) AS pending FROM purchases WHERE mode='live' AND grant_source='payment'");
+   const count=await first('SELECT COUNT(*) AS n FROM purchases p WHERE '+where+statusFilter,...args);
+   const rows=(await query("SELECT p.id,p.plan_id,p.status,p.amount_cents,p.created_at,p.approved_at,p.requested_format,COALESCE(u.email_normalized,NULLIF(p.email,''),'') AS buyer_email,CASE WHEN u.id IS NULL THEN 0 ELSE 1 END AS email_verified,CASE WHEN d.id IS NULL THEN 0 ELSE 1 END AS published FROM purchases p LEFT JOIN customer_users u ON u.id=p.customer_id LEFT JOIN deliveries d ON d.purchase_id=p.id WHERE "+where+statusFilter+' ORDER BY p.created_at DESC,p.id DESC LIMIT ? OFFSET ?',...args,size,(page-1)*size).all()).results;
+   return json({summary:{orders:Number(totals.orders),approved:Number(totals.approved),grossCents:Number(totals.gross_cents),pending:Number(totals.pending)},page,pageSize:size,total:Number(count.n),sales:rows.map(r=>({id:r.id,planId:r.plan_id,status:r.status,amountCents:r.amount_cents,createdAt:r.created_at,approvedAt:r.approved_at,format:r.requested_format,buyerEmail:r.buyer_email,emailVerified:!!r.email_verified,published:!!r.published}))});
+  }
   if(path==='/api/admin/gifts'&&method==='GET'){
    const rows=(await query("SELECT p.id,p.draft_id,p.mode,p.status,p.created_at,p.admin_format,d.public_id,d.recipient,d.format,d.updated_at FROM purchases p LEFT JOIN deliveries d ON d.purchase_id=p.id WHERE p.admin_id=? AND p.grant_source='admin' ORDER BY COALESCE(d.updated_at,p.created_at) DESC LIMIT 200",user.id).all()).results;
    return json({gifts:rows.map(r=>({id:r.id,draftId:r.draft_id,mode:r.mode,status:r.status,recipient:r.recipient||'',format:r.format||r.admin_format||'cartao',updatedAt:r.updated_at||r.created_at,url:r.public_id?origin+'/g/'+r.public_id:null}))});
