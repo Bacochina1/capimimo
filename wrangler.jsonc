@@ -9,6 +9,7 @@
   "compatibility_flags": ["nodejs_compat"],
   "triggers": {"crons": ["*/10 * * * *"]},
   "vars": {
+    "AI_WRITING_ENABLED": "true",
     "SITE_ORIGIN": "https://capimimo.com.br",
     "SITE_LEGACY_ORIGIN": "https://capimimo.matheus-bacochina.workers.dev",
     "PAYMENT_MODE": "live",

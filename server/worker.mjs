@@ -1,3 +1,5 @@
+import {createWritingAPI} from './ai-writing-api.mjs';
+import {generateWriting} from './writing-cloudflare.mjs';
 import {createHelpAPI} from './help.mjs';
 import {createSupportAPI} from './support.mjs';
 import {createCustomerAPI} from './customer.mjs';
@@ -12,6 +14,7 @@ export default {async fetch(request,env){
  // Preserve purchases and browser drafts on the explicitly configured legacy host.
  // Arbitrary Host/Origin headers cannot choose the provider return address.
  const billingEnv=env.SITE_LEGACY_ORIGIN&&url.origin===env.SITE_LEGACY_ORIGIN?{...env,SITE_ORIGIN:env.SITE_LEGACY_ORIGIN,SITE_CANONICAL_ORIGIN:env.SITE_ORIGIN}:env;
+ if(path.startsWith('/api/writing/'))return createWritingAPI(env,{generate:env.AI?data=>generateWriting(env,data):null})(request);
  if(path.startsWith('/api/help/'))return createHelpAPI(env)(request);
  if(path.startsWith('/api/support/'))return createSupportAPI(env)(request);
  if(path.startsWith('/api/customer/'))return createCustomerAPI(env)(request);

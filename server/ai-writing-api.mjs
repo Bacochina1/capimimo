@@ -5,7 +5,7 @@ class WritingError extends Error{constructor(status,message){super(message);this
 async function readInput(request){
  if(!request.headers.get('content-type')?.startsWith('application/json'))throw new WritingError(415,'Confira os dados enviados.');const reader=request.body?.getReader();if(!reader)throw new WritingError(400,'Confira os dados enviados.');let size=0,parts=[];try{while(true){const part=await reader.read();if(part.done)break;size+=part.value.length;if(size>4096){await reader.cancel();throw new WritingError(413,'Os dados enviados são muito grandes.');}parts.push(part.value);}}finally{reader.releaseLock();}try{const raw=new Uint8Array(size);let i=0;for(const part of parts){raw.set(part,i);i+=part.length;}const data=JSON.parse(new TextDecoder().decode(raw));if(!data||Array.isArray(data)||typeof data!=='object')throw Error();return data;}catch{throw new WritingError(400,'Confira os dados enviados.');}
 }
-// Não registrar esta rota no Worker nem habilitá-la até validar a licença e a configuração de produção da NVIDIA.
+// A rota exige acesso à compra e autorização explícita para enviar dados ao modelo.
 export function createWritingAPI(env,{now=()=>Math.floor(Date.now()/1000),generate=null}={}){
  const db=env.BILLING_DB,origin=new URL(env.SITE_CANONICAL_ORIGIN||env.SITE_ORIGIN).origin;
  const q=(sql,...args)=>db.prepare(sql).bind(...args),first=(sql,...args)=>q(sql,...args).first();
@@ -20,6 +20,7 @@ export function createWritingAPI(env,{now=()=>Math.floor(Date.now()/1000),genera
   if(!owned||purchase.draft_id!==data.draftId)throw new WritingError(404,'Compra não encontrada neste acesso.');
   if(purchase.status!=='approved'||!purchase.approved_at||purchase.approved_at+365*86400<=now())throw new WritingError(403,'Esta compra não está disponível para criar sugestões.');
   await limit(purchase.id,'purchase',30,86400);await limit(request.headers.get('cf-connecting-ip')||'local','ip',60,3600);
+  const globalKey=await digest('public-help:global:all:'+Math.floor(now()/86400));const quota=await first('INSERT INTO billing_rate_limits(key,count,expires_at) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count',globalKey,now()+172800);if(quota.count>100)throw new WritingError(429,'O limite diário de IA foi atingido. Tente novamente amanhã.');
   let text;try{text=await generate({consent:data.consent,theme:data.theme,tone:data.tone,format:data.format,target:data.target,nickname:data.nickname,detail:data.detail});}catch{throw new WritingError(503,'Não foi possível gerar agora. Confira as opções e tente novamente.');}
   return json({suggestion:text});
  }
