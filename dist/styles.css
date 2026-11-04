@@ -64,3 +64,7 @@ p{max-width:65ch}.hero-lead{font-size:18px}.section-heading>p,.journey-grid p,.w
 
 /* Reserve room for focus controls without covering the recipient’s gift. */
 .receiving-revealed .reader-three{height:clamp(360px,60vw,520px)}
+
+/* A prévia de recebimento usa toda a tela, com conteúdo centralizado. */
+.recipient-dialog{width:100vw;height:100dvh;max-width:none;max-height:100dvh;margin:0;padding:clamp(18px,3vw,36px);border-radius:0}.recipient-dialog>:not(.recipient-close){width:100%;max-width:1000px;margin-left:auto;margin-right:auto}.receiving-revealed .reader-three{height:clamp(380px,65dvh,720px)}
+@media(max-width:580px){.recipient-dialog{width:100vw;height:100dvh;max-height:100dvh;padding:18px 14px;border-radius:0}.receiving-revealed .reader-three{height:clamp(360px,65dvh,600px)}}
