@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {createServer} from 'node:http';
+import {readFile} from 'node:fs/promises';
+import {resolve,extname} from 'node:path';
+import {Browser} from 'file:///C:/Users/Admin/.agents/skills/design-taste-frontend/scripts/lib/cdp.mjs';
+const server=createServer(async(req,res)=>{try{const path=new URL(req.url,'http://local').pathname;if(path==='/'){res.setHeader('Content-Type','text/html');return res.end('<meta charset="utf-8"><section id="atelier"><div class="customizer-bottom"></div></section><div class="faq-section"></div>');}res.setHeader('Content-Type',({'.js':'text/javascript','.webp':'image/webp'})[extname(path)]||'application/octet-stream');res.end(await readFile(resolve('dist','.'+path)));}catch{res.statusCode=404;res.end();}});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await Browser.launch();
+try{
+ const page=await browser.newPage({width:390,height:844,reducedMotion:true});await page.goto('http://127.0.0.1:'+server.address().port);
+
+await page.eval(async()=>{const{createMaterials}=await import('/materials.js');window.state={occasion:'natal',texture:'algodao',pattern:'signature-0',message:'Nossa mensagem',photos:[{id:'keep',src:'photo-sentinel'}]};window.editor=createMaterials(()=>state,patch=>{Object.assign(state,patch);editor.render()});editor.render();});
+const inspect=()=>page.eval(()=>({signature:[...document.querySelectorAll('.materials-panel .signature-patterns [data-pattern]')].map(e=>e.dataset.pattern),themed:[...document.querySelectorAll('.materials-panel>.pattern-options [data-pattern]')].map(e=>e.dataset.pattern),selected:[...document.querySelectorAll('.materials-panel [data-pattern][aria-pressed=true]')].map(e=>e.dataset.pattern),pattern:state.pattern,message:state.message,photos:state.photos}));
+let snap=await inspect();assert.deepEqual(snap.signature,[0,1,2,3].map(i=>'signature-'+i));assert.deepEqual(snap.themed,[0,1,2,3].map(i=>'natal-'+i));assert.deepEqual(snap.selected,['signature-0']);console.log('PASS signature and seasonal options occupy their own groups and selected signature is represented');
+await page.eval(()=>document.querySelector('.materials-panel [data-pattern="natal-2"]').click());snap=await inspect();assert.equal(snap.pattern,'natal-2');assert.deepEqual(snap.selected,['natal-2']);await page.eval(()=>document.querySelector('.materials-panel [data-pattern="signature-3"]').click());snap=await inspect();assert.equal(snap.pattern,'signature-3');assert.deepEqual(snap.selected,['signature-3']);console.log('PASS clicking either group updates selection and pressed state');
+await page.eval(()=>{state.occasion='casamento';editor.render()});snap=await inspect();assert.deepEqual(snap.signature,[0,1,2,3].map(i=>'signature-'+i));assert.deepEqual(snap.themed,[0,1,2,3].map(i=>'casamento-'+i));assert.deepEqual(snap.selected,['signature-3']);await page.eval(()=>document.querySelector('.materials-panel [data-pattern="casamento-1"]').click());assert.deepEqual((await inspect()).selected,['casamento-1']);console.log('PASS occasion change replaces only themed options and their actions target the new occasion');
+await page.eval(()=>{document.querySelector('.generate-variations').click();document.querySelector('.variation-choice').click()});snap=await inspect();assert.match(snap.pattern,/^signature-/);assert.deepEqual(snap.selected,[snap.pattern]);assert.equal(snap.message,'Nossa mensagem');assert.deepEqual(snap.photos,[{id:'keep',src:'photo-sentinel'}]);console.log('PASS generated signature variation remains selectable without changing photos or text');assert.equal(page.consoleErrors.length,0);
+}finally{await browser.close();server.closeAllConnections();server.close();}
+process.exit(0);

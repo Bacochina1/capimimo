@@ -256,3 +256,8 @@ INTEGRIDADE DAS PREVIAS - 04/11/2026
 - Stories mostram carregamento, erro e tentar novamente quando uma ilustracao falha; resultados antigos nao sobrescrevem a previa atual. Controles e feedback cabem na viewport mobile com botao de44px.
 - Cartao e livro exportados usam destinatario visivel; apelido continua exclusivo dos Stories.
 - Verificacao: failure4, aliasHTML4, portablefocus7, publicroundtrip6, modulos51 e SEO9 passaram. Revisao independente aprovada. Arquivos HTML antigos precisam ser gerados novamente.
+ESTAMPAS, VARIACOES E QUADROS - 04/11/2026
+- Quatro assinaturas Capimimo e quatro estampas tematicas permanecem em grupos separados, com selecao acessivel ao mudar ocasiao.
+- Variacoes combinadas mantem estampa visivel e material escolhido; cor personalizada aplicada tambem em Stories. Material escolhido sozinho continua aplicando seu fundo.
+- Quadros de cartao/livro/convite ignoram apelidos e subtitulos ocultos de Stories. Dedicacao explicita continua prioritaria e previa coincide com PNG.
+- Verificacao: grupos4, variacoesapp4 com canvas real, printformat5 cobrindo12combinacoes, printraces5, colecao5, photofallback3, preservacao5, appearance6, printedcolor, modulos51 e SEO9. Revisao independente aprovada; sem cobrancas reais.
