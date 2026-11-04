@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {retrieveKnowledge} from '../server/ai-knowledge.mjs';import {BILLING_PLANS} from '../server/mercadopago-orders.mjs';
+test('recupera valores atuais e inclui regras de segurança',()=>{const entries=retrieveKnowledge('Quanto custa cartão e como entregar?');assert.ok(entries.some(x=>x.id==='preco'&&x.text.includes((BILLING_PLANS.mimo.cents/100).toFixed(2).replace('.',','))));assert.ok(entries.some(x=>x.id==='seguranca'));});
+test('recupera acesso e não inventa tópicos sem relação',()=>{assert.ok(retrieveKnowledge('Como recuperar acesso em outro aparelho?').some(x=>x.id==='acesso'));assert.deepEqual(retrieveKnowledge('xilofonexyz').map(x=>x.id),['seguranca']);});
