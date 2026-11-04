@@ -215,3 +215,10 @@ FOCO NA REABERTURA E RESTAURACAO DE STORIES - 04/11/2026
 - Decodificacao atrasada da abertura nao muda controles ao fechar, pular ou trocar a sessao do presente.
 - Campos de Stories refletem restauracao externa mesmo focados, sem deslocar cursor durante digitacao normal.
 - Verificacao: replay6, session4, cicloaudio7, storyrestore9, storyfit5, export6, modulos51 e SEO9 passaram; duas revisoes independentes aprovadas. Restore validado em fixture com editor real, sem alegar reproducao por clique comum da biblioteca.
+
+ENTREGA, RECUPERACAO E ENQUADRAMENTO INDIVIDUAL - 04/11/2026
+- Composicoes colagem, filme, diptico e galeria respeitam enquadramento individual das fotos secundarias, incluindo imagens repetidas e alternativas por falha de carregamento.
+- Recuperar compra descarta consultas antigas apos fechar, cancelar ou reabrir; callback do editor verifica cancelamento depois de aguardar midia inicial, antes de substituir o rascunho.
+- Confirmacao de presenca no arquivo portatil rejeita nomes so com espacos e permite corrigir/repetir; nome e ID de convidado personalizado preservados.
+- Verificacao: secondaryfit4, storyfit5, storyrestore9, recoverydismiss8, recoveryguidance3, recoverypending3, clouddelivery12, RSVPnome3, leitorportatil/mobile e loading4, export6, modulos51, SEO9; revisoes independentes aprovadas.
+- Testes de recuperacao usam billing simulado, sem cobrancas/envios reais. Arquivos HTML previamente baixados devem ser gerados novamente para incorporar validacao nova.
