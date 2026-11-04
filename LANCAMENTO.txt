@@ -227,3 +227,9 @@ IMPORTACAO DE ACESSO E PREVIA DO QUADRO - 04/11/2026
 - Importacao atrasada do arquivo de acesso preserva o acesso autorizado sem alterar uma janela reaberta ou cancelar a recuperacao mais recente. Limpeza do campo respeita a selecao mais nova e permite repetir arquivo apos erro.
 - Previa do quadro limpa imagem anterior e avisa quando foto atual nao carrega. Selecionar foto valida recupera a previa; falhas atrasadas nao apagam resultado novo nem substituem status de exportacao.
 - Verificacao: importlifecycle5, recoverydismiss8, guidance3, recoverypending3, clouddelivery12, previewfailure3, exportraces5, photofallback3, modulos51 e SEO9 passaram; revisoes independentes aprovadas. Testes de compra com servicos locais simulados.
+
+LEGIBILIDADE DE STORIES E LEMBRETE RESTAURADO - 04/11/2026
+- Polaroid e Filme reservam mais espaco para dedicatorias e legendas completas, ate cinco linhas; fotos, titulo e remetente ficam separados e alinhamento escolhido e preservado.
+- Nos exemplos testados de180 caracteres, fonte passou de17.5/18.5 para39/41.5 pixels no canvas1080; isso nao garante tamanho identico para qualquer texto arbitrario.
+- Campos de quadro e entrega atualizam ao restaurar conteudo mesmo focados; digitacao normal preserva cursor. Lembrete exportado usa data e anotacao restauradas.
+- Verificacao: legendas8 comPNGsinspecionados, secondaryfit4, storyfit5, deliveryrestore4 comICSreal, previewfailure3, exportraces5, export6, modulos51 e SEO9; revisoes independentes aprovadas.
