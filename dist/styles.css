@@ -61,3 +61,6 @@ p{max-width:65ch}.hero-lead{font-size:18px}.section-heading>p,.journey-grid p,.w
 .audio-studio .audio-playback-settings .audio-loop-label input[type=checkbox]{display:inline-block;box-sizing:border-box;width:20px;min-width:20px;max-width:20px;height:20px;flex:0 0 20px;margin:0;padding:0;border:0;border-radius:0;accent-color:#a03e49}
 
 .free-design-editor .ornament-original-colors{display:block;width:100%;min-height:44px;padding:10px 12px;margin:12px 0;border:1px solid #cbb7a4;border-radius:8px;background:#fffdf8;color:#3a1e14;font:700 14px/1.4 Nunito,Arial;white-space:normal}
+
+/* Reserve room for focus controls without covering the recipient’s gift. */
+.receiving-revealed .reader-three{height:clamp(360px,60vw,520px)}
