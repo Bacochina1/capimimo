@@ -151,3 +151,10 @@ FOTOS SELECIONADAS, CONVIDADOS E RESPOSTAS - 04/11/2026
 - Convite HTML/rascunho EML usa copia estavel dos dados e cancela se o rascunho, formato ou compra mudar durante a preparacao.
 - Importacoes simultaneas de respostas sao serializadas. Abrir o presente durante importacao atualiza o rascunho alvo; RSVP de convidado novo tambem e preservado sem sobrescrever dados alheios.
 - Verificacao: 7 cenarios browser de e-mail, 7 de importacao, 12 de exportacao individual, roundtrip de 4 formatos, recuperacao e canvas real de fotos repetidas passaram. 51 modulos e 9 paginas SEO validos; revisoes independentes realizadas. Nenhum e-mail externo ou cobranca real nesta rodada.
+
+PAGINAS DO LIVRO E GALERIA SEM PERDAS - 04/11/2026
+- Cada pagina conserva photoId na exportacao e recuperacao. Fotos repetidas nao trocam o vinculo; arquivos antigos mantem fallback por imagem.
+- Enquadramento, duracao, reordenacao, escolha da capa e exclusao preservam foco utilizavel no teclado.
+- Importar/resetar com legenda focada atualiza os controles, mesmo com IDs repetidos, sem editar objetos antigos.
+- Upload iniciado enquanto a galeria salva carrega aguarda a recuperacao e acrescenta fotos. Reset ou importacao cancela upload antigo, sem ressuscitar conteudo.
+- Verificacao: 8 grupos de foco/galeria, 3 de upload/IndexedDB, 3 de identidade por pagina com export real, 7 testes de exportacao/midia, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada. Sem cobranca/envio externo.
