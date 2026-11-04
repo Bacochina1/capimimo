@@ -23,3 +23,12 @@ await test('network rejection during purchase validation is visible and publicat
  const f=fixture(t);await Promise.resolve();f.fail('Sem conexão. Tente novamente.');await assert.doesNotReject(()=>f.$('.cloud-publish').fire('click'));assert.equal(f.$('.cloud-status').textContent,'Sem conexão. Tente novamente.');assert.equal(f.$('.cloud-publish').disabled,false);assert.deepEqual(f.published,[]);
  f.fail(null);await f.$('.cloud-publish').fire('click');assert.deepEqual(f.published,['draft-a']);assert.match(f.$('.cloud-status').textContent,/Seu mimo está publicado/);assert.equal(f.$('.cloud-publish').disabled,false);
 });
+
+await test('session-only purchases direct recovery to account and never export an empty backup',async t=>{
+ const f=fixture(t);await Promise.resolve();f.records.push({id:'account-order',draftId:'draft-a',mode:'live',planId:'mimo',status:'approved',sessionAuth:true});f.api.render();
+ assert.equal(f.$('.cloud-save-access').hidden,true);assert.match(f.$('.cloud-access-description').textContent,/Minha conta/);
+ await assert.doesNotReject(()=>f.$('.cloud-save-access').fire('click'));assert.match(f.$('.cloud-status').textContent,/Minha conta/);
+ f.records[0].accessKey='a'.repeat(64);f.api.render();assert.equal(f.$('.cloud-save-access').hidden,true,'account-linked local bearer also uses account recovery');
+ f.records[0].sessionAuth=false;f.api.render();assert.equal(f.$('.cloud-save-access').hidden,false);assert.match(f.$('.cloud-access-description').textContent,/arquivo de acesso/);
+ f.records[0].isAdmin=true;f.api.render();assert.equal(f.$('.cloud-save-access').hidden,true);
+});

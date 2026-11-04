@@ -2,7 +2,7 @@ import {DatabaseSync} from 'node:sqlite';
 import {readFileSync} from 'node:fs';
 import {createAdminAPI,hashAdminPassword,digest} from '../server/admin.mjs';
 import {createBillingAPI} from '../server/billing.mjs';
-const sql=new DatabaseSync(':memory:');for(const f of ['0001_billing.sql','0002_reconciliation.sql','0003_admin.sql','0004_requested_format.sql','0005_email_outbox.sql'])sql.exec(readFileSync('server/billing-migrations/'+f,'utf8'));
+const sql=new DatabaseSync(':memory:');for(const f of ['0001_billing.sql','0002_reconciliation.sql','0003_admin.sql','0004_requested_format.sql','0005_email_outbox.sql','0006_customer_accounts.sql'])sql.exec(readFileSync('server/billing-migrations/'+f,'utf8'));
 const db={prepare(text){const q=sql.prepare(text);let args=[];return{bind(...v){args=v;return this;},async first(){return q.get(...args)||null;},async all(){return{results:q.all(...args)};},async run(){return{meta:{changes:q.run(...args).changes}};}};},async batch(statements){sql.exec('BEGIN');try{const out=[];for(const q of statements)out.push(await q.run());sql.exec('COMMIT');return out;}catch(e){sql.exec('ROLLBACK');throw e;}}};
 let time=1793740000;const origin='https://admin-fixture.capimimo.test',objects=new Map(),env={SITE_ORIGIN:origin,BILLING_DB:db,PAYMENT_MODE:'test',SALES_ENABLED:'false',GIFTS_BUCKET:{async put(key,bytes,meta){objects.set(key,{body:new Uint8Array(bytes),httpMetadata:meta.httpMetadata});},async get(key){return objects.get(key)||null;},async delete(key){objects.delete(key);}}};
 const now=()=>time,api=createAdminAPI(env,{now}),billing=createBillingAPI(env,{now,fetchImpl:async()=>{throw Error('Network is forbidden in this audit');}}),checks=[];

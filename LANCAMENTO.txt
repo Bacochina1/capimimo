@@ -36,7 +36,7 @@ DOMÍNIO CONECTADO
 
 PENDÊNCIAS DECLARADAS
 - Nome Matheus Bacochina e contato bacochinakawai@gmail.com publicados conforme autorização. Endereço público ainda não informado.
-- Login e recuperação por e-mail para compradores ainda não implementados. A recuperação atual depende do arquivo de acesso da compra. Confirmações automáticas de novas compras com e-mail informado estão integradas à fila do servidor.
+- Login de compradores por código de e-mail implementado. Compras novas feitas com sessão verificada são vinculadas à conta; compras antigas exigem a chave de acesso para vinculação. Rascunhos não publicados continuam locais. Confirmações automáticas de compra usam a fila do servidor.
 - Textos de atendimento e funcionamento publicados; documentos jurídicos completos ainda precisam ser concluídos.
 - Não houve teste com cobrança real: criação de pedidos reais foi validada, aprovação/estorno foram verificados em testes automatizados e homologação anterior. Não afirmar ausência total de bugs.
 
@@ -64,3 +64,13 @@ QUALIDADE DE PRODUTO — 04/11/2026
 - Exemplos editoriais próprios para18ocasiões×4formatos, validados nas2160combinações do catálogo. São exemplos fictícios, não novos depoimentos de clientes nem2160artes exclusivas.
 - Recebimento ocupa100dvh, mantém controles/telacheia/RSVP e isolamento de segurança. Testes320/390/844/1440 e um presente publicado mobile PASS.
 - Regra de personalização completa apóscompra preservada enquanto proprietário decide se quer permitir prévia personalizada antes de pagar.
+
+CONTAS DE COMPRADORES — 04/11/2026
+- Código de oito dígitos, validade de dez minutos, limites de tentativas, sessão protegida e saída com revogação no servidor.
+- Recuperação de presentes publicados em outro aparelho, vinculação explícita de compras anteriores e painel responsivo com botões de pelo menos44px.
+- Corrigidas respostas tardias de checkout, vinculação e carregamento da conta após logout. Backups de acesso já exportados continuam válidos; sair da conta não revoga esses arquivos.
+- Testes: backend customer10, segurança backend6, cliente11 e interface20 passaram, além das regressões de compra, admin, e-mail e recuperação.
+- Validação de código válido feita em testes locais; confirmação humana de login com código recebido em produção ainda pendente.
+- Fluxo completo no navegador: recuperar compra de cartão no mesmo rascunho corrige formato incompatível e preserva mensagem. Pedidos pendentes, expirados e cancelados têm orientação própria.
+- Produção: migração0006 aplicada, envio de código aceito pelo provedor e lista de compras sem sessão negada com401. Painel conferido no Chrome em390e1440px.
+- Cabeçalho móvel agrupa os atalhos sem reduzir os alvos de toque. Arquivo de recuperação só é oferecido quando há chave local utilizável.
