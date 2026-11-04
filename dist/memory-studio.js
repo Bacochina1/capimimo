@@ -55,7 +55,7 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
  const initialLoad=mediaStore('get').then(saved=>{if(epoch!==loadEpoch||isIncoming())return;if(saved&&Array.isArray(saved.gallery)){gallery=saved.gallery.filter(photo=>photo&&typeof photo.id==='string'&&typeof photo.name==='string'&&/^data:image\/(?:jpeg|png|webp);base64,/.test(photo.src));selected=gallery.some(photo=>photo.id===saved.selected)?saved.selected:gallery[0]?.id??null;setPhoto(gallery.find(photo=>photo.id===selected)?.src??null);}}).catch(()=>{}).finally(()=>{restoring=false;render();});
  render();
  return {
-  render,
+  render,ready:initialLoad,hasPendingMedia:()=>restoring||pendingPhotos.size>0,
   decorate(data){const chapters=data.format==='livro'?currentPages():[];const pages=[{title:data.format==='cartao'?'Sua dedicatória':data.format==='convite'?'Seu convite':'Nossa história.',message:data.message,photo:data.photo},...chapters.map(page=>({title:page.title||'Uma lembrança nossa.',message:page.message,photo:gallery.find(photo=>photo.id===page.photoId)?.src??null}))];const active=data.format==='livro'?pages[Math.min(index,pages.length-1)]:null;return {...data,coverPhoto:data.photo,...(active?{message:active.message,photo:active.photo,pageTitle:active.title}:{}),pages,activePage:index,photos:includedPhotos().map(photo=>({id:photo.id,src:photo.src,name:photo.name,caption:photo.caption||'',fit:photo.fit||'',duration:photo.duration||0}))};},
   reset(){epoch++;index=0;gallery=[];selected=null;restoring=false;setPhoto(null);persist();render();},
   exportMedia(){return {gallery:gallery.map(item=>({...item})),selected};},

@@ -90,3 +90,10 @@ LINKS INDIVIDUAIS RECUPERÁVEIS — 04/11/2026
 - Migração0007 aplicada à Cloudflare pessoal. GUEST_LINK_SECRET é segredo do Worker, não está no repositório nem nos relatórios. Preservar essa chave em futuros deploys; sua substituição impede recuperar tokens antigos, sem revogar links já enviados.
 - Validação:7testes específicos de criptografia/API, regressões de cobrança/admin/conta e teste completo no Chrome móvel passaram.
 - Teste real na Cloudflare aprovado: convite administrativo recuperado após sair e entrar novamente, acesso anônimo negado, resposta pública sem segredos e regeneração explícita invalidando somente o token anterior. Nenhuma cobrança. Versão e1d5edb5-0386-4f54-86d5-453809e87d8f.
+
+REVISÃO DE CONTEÚDO E EXPORTAÇÃO — 04/11/2026
+- Recuperação de presentes aguarda as mídias e pede confirmação antes de substituir mensagens, páginas, fotos ou áudio. Cancelar preserva o rascunho, inclusive durante carregamento.
+- Exportações bloqueiam cliques repetidos antes da autorização e liberam os controles após recusa ou erro.
+- ZIP de Stories usa as composições reais: capa, cada foto e encerramento em 1080 × 1920. Fotos originais preservam bytes e extensão correta.
+- Texto impresso de cartões e convites preserva as cores da arte no Three.js. Livros mantêm acabamento físico. Aplica-se às prévias e novas exportações; presentes HTML antigos precisam ser republicados.
+- Verificação: 20 testes unitários, 15 de autorização, 6 de Stories, 3 de recuperação durante carregamento, recuperação de conta/convites e leitor móvel passaram. Contraste medido no cartão: 4,56:1. 50 módulos e 9 páginas SEO validados.
