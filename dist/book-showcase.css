@@ -17,3 +17,10 @@
 @media(max-width:700px){.book-showcase .showcase-formats{grid-row:3;margin:0;gap:6px}.showcase-formats button{font-size:13px;padding:10px 7px}.book-showcase-art{grid-row:4}.book-showcase-intro{grid-row:5}.showcase-finishes{grid-row:6}.showcase-material-name{grid-row:7}.showcase-features{grid-row:8}.book-showcase-copy>.showcase-create{grid-row:9}.showcase-catalog{grid-row:10}.book-showcase-copy>small{grid-row:11}.book-showcase h2{font-size:clamp(34px,9.5vw,46px)}.book-showcase .showcase-view-controls button{font-size:12px}.showcase-stage.is-stories{height:460px}.book-showcase-art{overflow:visible}}
 
 .book-showcase,.book-showcase-copy{container-type:inline-size}.book-showcase h2{font-size:clamp(28px,10.3cqw,70px)}.book-showcase h2>span{white-space:nowrap}
+
+/* Leave a separate row for 3D focus controls. */
+.showcase-stage:not(.is-stories) .showcase-object-mount{bottom:62px}
+.showcase-stage:not(.is-stories) .object-focus-tools{bottom:-48px}
+.showcase-stage:not(.is-stories){background:#f2f0ec}
+
+@media(max-width:360px){.showcase-stage:not(.is-stories) .showcase-object-mount{bottom:104px}.showcase-stage:not(.is-stories) .object-focus-tools{bottom:-90px}}
