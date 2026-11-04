@@ -33,7 +33,7 @@ export function initReceiving({getData,onReply,onStories}){
  async function prepareReader(){
   const ownSession=session;$('#reader-view').hidden=false;readerStatus.textContent='Seu mimo está ganhando forma…';threeMount.hidden=false;$('#reader-paper').hidden=true;
   try{
-   if(!reader3D){if(!ready3D)ready3D=import('./book.js').then(({createBook})=>createBook(threeMount,readerData())).then(value=>{reader3D=value;return value;}).finally(()=>{ready3D=null;});await ready3D;}
+   if(!reader3D){if(!ready3D)ready3D=import('./book.js').then(({createBook})=>createBook(threeMount,readerData(),{onOpenChange:value=>{contentOpen=value;$('#receive-book').setAttribute('aria-expanded',String(value));$('#receive-book').firstChild.textContent=value?'Ver capa ':readerData().format==='livro'?'Abrir meu livro ':readerData().format==='convite'?'Abrir meu convite ':'Abrir meu cartão ';}})).then(value=>{reader3D=value;return value;}).finally(()=>{ready3D=null;});await ready3D;}
    if(ownSession!==session||!dialog.open)return;
    in3D=true;metrics.renderer='three';reader3D.set(readerData());reader3D.open(contentOpen);reader3D.motion(getData().motionPaused);reader3D.zoom(readerZoom);readerStatus.textContent='Seu mimo se abre aqui. Use os botões para ampliar.';
   }catch{

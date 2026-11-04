@@ -9,7 +9,7 @@ const imageCache=new Map();
 function image(src){if(!imageCache.has(src))imageCache.set(src,new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=src;}));return imageCache.get(src);}
 const wrap=drawWrapped;
 function rounded(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
-export async function createBook(mount,initial){
+export async function createBook(mount,initial,{onOpenChange}={}){
  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor(0x000000,0);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;mount.appendChild(renderer.domElement);
  const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(38,1,.1,100);camera.position.set(0,.25,5.45);camera.lookAt(0,0,0);
  scene.add(new THREE.HemisphereLight(0xffffff,0xc3a98e,.85));const light=new THREE.DirectionalLight(0xfff7ec,1.7);light.position.set(-3,5,6);scene.add(light);const rim=new THREE.DirectionalLight(0xc8dff5,.4);rim.position.set(3,1,-2);scene.add(rim);
@@ -76,7 +76,7 @@ export async function createBook(mount,initial){
  }
  function focusElement(kind='message'){if(turnActive||turnPreparing)return;
   if(kind==='reset'){focusPoint=null;focusLabel='';dirty=true;schedule();return;}
-  if(kind==='message'&&current<.8){current=target=1;presentation.begin(true,1);hinge.rotation.y=-Math.PI;group.updateMatrixWorld(true);}const mesh=kind==='photo'&&current>.8?cover:pages;mesh.updateWorldMatrix(true,false);const point=mesh.localToWorld(new THREE.Vector3(0,kind==='message'?.25:0,kind==='photo'&&current>.8?-.04:.09));focusPoint=group.worldToLocal(point);focusLabel=kind;presentation.reset();dirty=true;schedule();
+  if(kind==='message'&&(target!==1||current<.8)){const changed=target!==1;current=target=1;presentation.begin(true,1);hinge.rotation.y=-Math.PI;group.updateMatrixWorld(true);if(changed)onOpenChange?.(true);}const mesh=kind==='photo'&&current>.8?cover:pages;mesh.updateWorldMatrix(true,false);const point=mesh.localToWorld(new THREE.Vector3(0,kind==='message'?.25:0,kind==='photo'&&current>.8?-.04:.09));focusPoint=group.worldToLocal(point);focusLabel=kind;presentation.reset();dirty=true;schedule();
  }
  function tapDown(event){tap={x:event.clientX,y:event.clientY};}
  function tapUp(event){if(!tap||Math.hypot(event.clientX-tap.x,event.clientY-tap.y)>7){tap=null;return;}tap=null;const rect=renderer.domElement.getBoundingClientRect();raycaster.setFromCamera(new THREE.Vector2((event.clientX-rect.left)/rect.width*2-1,-(event.clientY-rect.top)/rect.height*2+1),camera);const hit=raycaster.intersectObjects([cover,pages],false)[0];if(hit){focusPoint=group.worldToLocal(hit.point.clone());focusLabel=hit.object===pages?'message':'photo';dirty=true;schedule();}}
