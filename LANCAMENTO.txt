@@ -178,3 +178,9 @@ INTERACOES DE LEITURA E PERSONALIZACAO - 04/11/2026
 - Escolher cor valida pela paleta, seletor ou restauracao limpa o aviso anterior de HEX invalido, preservando texto ainda em edicao.
 - Verificacao: 4 grupos Three real, 8 paginas, 6 cores, 3 identidade de foto, 5 exportacao, 8 carregamento/sessao, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada.
 - Arquivos HTML baixados anteriormente precisam ser gerados novamente para incluir a correcao 3D.
+
+STORIES E COMPOSICOES DOS QUADROS - 04/11/2026
+- Stories imersivos respeitam Foto inteira e o enquadramento individual. A foto inteira ocupa area propria acima da legenda, sem ser escondida pelo texto.
+- Quadros combinam colecao com editorial, moldura de lembranca ou fotografia em destaque. Da colecao preserva o desenho original de cada modelo; arte, cores, foto e dedicatoria permanecem.
+- Cancelar video interrompe espera durante preparo de imagens e audio, libera controles e impede gravacao tardia. Erros tardios do gravador sao tratados.
+- Verificacao: Stories5, composicoes5, cancelamento10, exportacao6, autorizacao15, corridas de quadro5, 51 modulos e SEO9 passaram. Revisoes independentes aprovadas; testes de cancelamento usam gravador instrumentado.
