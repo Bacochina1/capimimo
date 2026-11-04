@@ -1,6 +1,7 @@
 import {guestLinkVaultReady,sealGuestToken,openGuestToken} from './guest-link-vault.mjs';
 import {customerSession,customerWriteAllowed} from './customer.mjs';
 import {enqueuePurchaseEmail,drainPurchaseEmails} from './email-outbox.mjs';
+import {brandedEmail} from './email-template.mjs';
 import {adminSession} from './admin.mjs';
 import {BILLING_PLANS,createOrdersAdapter,verifyOrderSignature,mpOrderId} from './mercadopago-orders.mjs';
 const YEAR=365*86400,MAX_ARCHIVE=40*1024*1024;
@@ -60,8 +61,8 @@ export function createBillingAPI(env,{fetchImpl=fetch,now=()=>Math.floor(Date.no
    try{const mp=await adapterFor(mode).create({id:row.id,planId:row.plan_id,email:row.email});await run('UPDATE purchases SET mp_id=?,mp_user_id=?,checkout_url=?,lease_until=NULL WHERE id=?',mp.id,mp.userId,mp.url,row.id);}catch{await run('UPDATE purchases SET lease_until=NULL WHERE id=?',row.id);throw new BillingError(502,'Não foi possível abrir o Mercado Pago. Tente novamente.');}
    row=await first('SELECT * FROM purchases WHERE id=?',row.id);row.sessionAuth=!!customer&&row.customer_id===customer.id;return json(orderState(row),201);
   }
-  let match=path.match(/^\/api\/orders\/([a-f0-9]{32})(?:\/(sync|publish|guests)(?:\/([a-f0-9]{32})\/link)?)?$/);
-  if(match){const id=match[1],action=match[2],guestId=match[3];if(guestId&&action!=='guests')throw new BillingError(404,'Não encontrado.');let row=await owned(id,request);
+  let match=path.match(/^\/api\/orders\/([a-f0-9]{32})(?:\/(sync|publish|guests)(?:\/([a-f0-9]{32})\/(link|email))?)?$/);
+  if(match){const id=match[1],action=match[2],guestId=match[3],guestAction=match[4];if(guestId&&action!=='guests')throw new BillingError(404,'Não encontrado.');let row=await owned(id,request);
    if(!action&&method==='GET')return json(orderState(row,await first('SELECT * FROM deliveries WHERE purchase_id=?',id)));
    if(action==='sync'&&method==='POST'){await limit(request,'sync',120);if(row.mp_id)await reconcile(row);row=await owned(id,request);return json(orderState(row,await first('SELECT * FROM deliveries WHERE purchase_id=?',id)));}
    if(action==='publish'&&method==='PUT'){
@@ -74,6 +75,22 @@ export function createBillingAPI(env,{fetchImpl=fetch,now=()=>Math.floor(Date.no
    }
    if(action==='guests'){
     row=await paid(id,request);if(row.plan_id!=='celebrar')throw new BillingError(403,'Este plano não inclui convidados.');const delivery=await first('SELECT * FROM deliveries WHERE purchase_id=?',id);if(!delivery)throw new BillingError(409,'Publique o convite primeiro.');if(delivery.format!=='convite')throw new BillingError(403,'A lista de convidados pertence a um convite.');
+    if(guestId&&guestAction==='email'){
+     if(method!=='POST')throw new BillingError(405,'Use POST para enviar o convite.');
+     const input=await readJSON(request),email=typeof input.email==='string'?input.email.trim():'';
+     if(input.confirm!==true||email.length>254||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))throw new BillingError(422,'Confirme o envio e confira o e-mail do convidado.');
+     if(!env.EMAIL)throw new BillingError(503,'O envio por e-mail está indisponível. Copie o link e envie manualmente.');
+     const guest=await first('SELECT id,name,access_hash,access_encrypted FROM delivery_guests WHERE id=? AND delivery_id=?',guestId,delivery.id);
+     if(!guest)throw new BillingError(404,'Convite não encontrado.');
+     const token=await openGuestToken(env.GUEST_LINK_SECRET,guest.access_encrypted,delivery.id,guest.id);
+     if(!token||await hash(token)!==guest.access_hash)throw new BillingError(409,'Não foi possível recuperar este link. Gere um novo link antes de enviar.');
+     for(const [scope,max,seconds] of [['invite-order:'+id,120,86400],['invite-guest:'+id+':'+guestId,3,3600]]){const slot=Math.floor(now()/seconds),key=await hash(scope+':'+slot);const count=await first('INSERT INTO billing_rate_limits(key,count,expires_at) VALUES(?,1,?) ON CONFLICT(key) DO UPDATE SET count=count+1 RETURNING count',key,now()+seconds*2);if(count.count>max)throw new BillingError(429,'Limite de envios atingido. Aguarde e tente novamente.');}
+     const url=origin+'/g/'+delivery.public_id+'?convidado='+guestId+'#responder='+token;
+     const content=brandedEmail({name:guest.name,title:'Você recebeu um convite.',message:(delivery.recipient||'Alguém especial')+' preparou um convite digital para você. Abra para conferir os detalhes e responder.',note:'Este convite foi enviado a pedido de quem organizou a celebração. Se você não o esperava, ignore esta mensagem.',button:'Abrir meu convite',url});
+     let sent;try{sent=await env.EMAIL.send({from:{email:'avisos@capimimo.com.br',name:'Capimimo'},to:email,replyTo:'bacochinakawai@gmail.com',subject:'Você recebeu um convite · Capimimo',...content});}catch{throw new BillingError(502,'Não foi possível confirmar o envio. Confira com a pessoa antes de tentar novamente ou compartilhe o link.');}
+     if(!sent?.messageId)throw new BillingError(502,'Não foi possível confirmar o envio. Confira com a pessoa antes de tentar novamente ou compartilhe o link.');
+     return json({accepted:true});
+    }
     if(guestId){
      if(method!=='POST')throw new BillingError(405,'Use POST para gerar um novo link.');
      await limit(request,'guest-link:'+id,120);
