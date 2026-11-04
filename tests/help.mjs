@@ -6,3 +6,8 @@ test('rejeita origem externa e limita solicitações por IP',async t=>{const f=f
 test('falha do modelo mantém atendimento humano disponível',async t=>{const f=fixture(t);f.env.AI.run=async()=>{throw Error('fixture outage')};assert.equal((await f.call('Qual o preço?')).data.handoff,true);});
 
 test('entende perguntas gerais e erros comuns sem divulgar dados privados',async t=>{const f=fixture(t);for(const q of ['como funciona?','como funcina?','quero saber o que voces fazem']){const r=await f.call(q);assert.equal(r.data.handoff,false,q);}assert.equal(f.calls(),3);assert.match(f.body().messages[0].content,/presente.*digital/i);});
+
+test('responde como funciona mesmo quando a IA está indisponível',async t=>{const f=fixture(t);f.env.AI.run=async()=>{throw Error('outage')};for(const q of ['como funciona?','Como funcina?','Como funciona o site?']){const {data}=await f.call(q);assert.equal(data.handoff,false,q);assert.match(data.answer,/digital/);assert.match(data.answer,/não há envio físico/);}assert.equal((await f.call('Preciso de reembolso')).data.handoff,true);});
+test('resposta básica permanece disponível sem binding da IA',async t=>{const f=fixture(t);f.env.AI=null;const {data}=await f.call('Como funciona o Capimimo?');assert.equal(data.handoff,false);assert.match(data.answer,/digital/);});
+
+test('limite de IA não impede resposta básica',async t=>{const f=fixture(t);for(let i=0;i<12;i++)await f.call('Qual o preço?');const {data}=await f.call('como funciona?');assert.equal(data.handoff,false);assert.match(data.answer,/presente é digital/);assert.equal(f.calls(),12);});
