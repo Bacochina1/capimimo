@@ -1,3 +1,5 @@
+import {brandedEmail} from './email-template.mjs';
+import {emailAttachments} from './email-assets.mjs';
 const COOKIE='__Host-capimimo_admin',LIFETIME=8*3600,ITERATIONS=100000;
 const enc=new TextEncoder();
 export const randomHex=(n=32)=>Array.from(crypto.getRandomValues(new Uint8Array(n)),b=>b.toString(16).padStart(2,'0')).join('');
@@ -45,6 +47,11 @@ export function createAdminAPI(env,{now=()=>Math.floor(Date.now()/1000)}={}){
   const user=await adminSession(request,env,now());
   if(path==='/api/admin/session'&&method==='GET')return json(user?{authenticated:true,username:user.username}:{authenticated:false});
   if(!user)throw new AdminError(401,'Entre na conta de administrador para continuar.');
+  if(path==='/api/admin/email-test'&&method==='POST'){
+   await limit(request,'email-test',3,3600);if(!env.EMAIL)throw new AdminError(503,'Envio de e-mail indisponível.');
+   const result=await env.EMAIL.send({from:{email:'avisos@capimimo.com.br',name:'Capimimo'},to:'bacochinakawai2@gmail.com',replyTo:'bacochinakawai@gmail.com',subject:'Confirmação de envio do Capimimo',...brandedEmail({name:'Matheus',title:'Seu Capimimo está conectado.',message:'Este teste verifica o envio pelo próprio aplicativo, com a identidade visual do Capimimo.',note:'Mensagem de teste administrativo. Não representa compra, cobrança ou confirmação de pagamento.'}),attachments:emailAttachments});
+   return json({ok:!!result?.messageId});
+  }
   if(path==='/api/admin/password'&&method==='POST'){
    await limit(request,'password',8);const data=await input(request),password=data.newPassword;
    if(typeof password!=='string'||password.length<16||password.length>128)throw new AdminError(422,'Use uma senha ou frase de 16 a 128 caracteres.');

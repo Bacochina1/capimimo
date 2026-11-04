@@ -29,7 +29,7 @@ async function fixture(t,records,state,{hostname="capimimo.test",configResponse}
   throw Error('Unexpected fixture request: '+method+' '+path);
  };
  const client=initBillingClient({getState:()=>state});await client.ready;
- return {client,calls,events,storage};
+ return {client,calls,events,storage,orders};
 }
 
 await test('older Historia remains usable for a book when a newer Mimo shares the draft',async t=>{
@@ -118,4 +118,38 @@ await test('failed restore leaves existing valid purchase unchanged',async t=>{
  const {client,storage}=await fixture(t,[historia],{draftId:historia.draftId,format:'livro'});const before=storage.get(storeKey);
  await assert.rejects(client.restore(new Blob(['null'])),/inválido/);assert.equal(storage.get(storeKey),before);
  await assert.rejects(client.restore(new Blob([JSON.stringify({type:'capimimo-purchase-access',orders:[{id:'c'.repeat(32),accessKey:'d'.repeat(64)}]})])),/Não foi possível recuperar/);assert.equal(storage.get(storeKey),before);
+});
+
+await test('expired purchase is not offered and requires explicit plan choice without charging',async t=>{
+ const ended={...historia,expired:true,expiresAt:Math.floor(Date.now()/1000)-1};
+ const {client,calls,events}=await fixture(t,[ended],{draftId:ended.draftId,format:'livro'});
+ assert.equal(client.find(),undefined);assert.equal(await client.requirePurchase('livro'),false);
+ assert.equal(calls.some(c=>c.path==='/api/checkout'),false);
+ const event=events.find(e=>e.type==='billing:required');assert.equal(event.detail.expired,true);assert.match(event.detail.message,/12 meses/);
+ assert.equal(client.list()[0].expired,true);
+});
+await test('explicit checkout creates new order rather than reusing expired entitlement',async t=>{
+ const ended={...historia,expired:true,expiresAt:Math.floor(Date.now()/1000)-1};
+ const {client,calls}=await fixture(t,[ended],{draftId:ended.draftId,format:'livro'});
+ assert.equal((await client.checkout('historia')).id,'new-history');assert.equal(calls.filter(c=>c.path==='/api/checkout').length,1);
+});
+await test('fresh server expiry blocks a previously cached approved purchase',async t=>{
+ const {client,calls,events,orders}=await fixture(t,[historia],{draftId:historia.draftId,format:'livro'});
+ orders.set(historia.id,{...historia,expired:true,expiresAt:Math.floor(Date.now()/1000)-1});
+ assert.equal(await client.requirePurchase('livro'),false);assert.equal(client.find(),undefined);
+ assert.equal(events.find(e=>e.type==='billing:required').detail.expired,true);assert.equal(calls.some(c=>c.path==='/api/checkout'),false);
+});
+await test('explicit checkout refreshes cached approval and never reuses it after server expiry',async t=>{
+ const {client,calls,orders}=await fixture(t,[historia],{draftId:historia.draftId,format:'livro'});
+ orders.set(historia.id,{...historia,expired:true,expiresAt:Math.floor(Date.now()/1000)-1});
+ assert.equal((await client.checkout('historia')).id,'new-history');assert.equal(calls.filter(c=>c.path==='/api/checkout').length,1);
+});
+await test('elapsed expiry timestamp is not ignored when old cache lacks expired flag',async t=>{
+ const ended={...historia,expiresAt:Math.floor(Date.now()/1000)-1};const {client}=await fixture(t,[ended],{draftId:ended.draftId,format:'livro'});assert.equal(client.find(),undefined);
+});
+
+await test('newly expired newer order falls back to another valid approved purchase',async t=>{
+ const newer={...historia,id:'history-new',createdAt:3};const {client,calls,orders}=await fixture(t,[historia,newer],{draftId:historia.draftId,format:'livro'});
+ orders.set(newer.id,{...newer,expired:true,expiresAt:Math.floor(Date.now()/1000)-1});
+ assert.equal(await client.requirePurchase('livro'),true);assert.equal(client.find().id,historia.id);assert.equal(calls.some(c=>c.path==='/api/checkout'),false);
 });

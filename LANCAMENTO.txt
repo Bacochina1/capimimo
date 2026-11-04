@@ -36,7 +36,7 @@ DOMÍNIO CONECTADO
 
 PENDÊNCIAS DECLARADAS
 - Nome Matheus Bacochina e contato bacochinakawai@gmail.com publicados conforme autorização. Endereço público ainda não informado.
-- Login e recuperação por e-mail para compradores e notificações automáticas de compra não implementados. A recuperação atual depende do arquivo de acesso da compra.
+- Login e recuperação por e-mail para compradores ainda não implementados. A recuperação atual depende do arquivo de acesso da compra. Confirmações automáticas de novas compras com e-mail informado estão integradas à fila do servidor.
 - Textos de atendimento e funcionamento publicados; documentos jurídicos completos ainda precisam ser concluídos.
 - Não houve teste com cobrança real: criação de pedidos reais foi validada, aprovação/estorno foram verificados em testes automatizados e homologação anterior. Não afirmar ausência total de bugs.
 
@@ -45,9 +45,16 @@ LIMITES E ENTREGA
 - Arquivo final de até 40 MB; link por 12 meses desde a aprovação. O comprador pode guardar a cópia baixada.
 - Convites: até 100 links individuais por compra; até 10 pessoas em um convite.
 - Chave de acesso da compra fica no navegador e pode ser exportada para recuperação em outro aparelho. O link público não carrega essa chave.
-- Quem possui o link do presente pode abri-lo. Não existe promessa de senha, colaboração simultânea ou envio automático de e-mail. E-mail manual/arquivo de convite é uma função separada.
+- Quem possui o link do presente pode abri-lo. Não existe promessa de senha ou colaboração simultânea. A confirmação automática de pagamento é enviada para novas compras com e-mail informado; convites não são disparados automaticamente. E-mail manual/arquivo de convite é uma função separada.
 
 REVISÃO COM TRÊS CRÍTICOS — 04/11/2026
 - Corrigidos recuperação parcial de compras, formato comprado persistente, capa dos Stories na recuperação, gravação em andamento na exportação, troca de presente e erro de rede na publicação.
 - Pós-compra destaca guardar acesso antes do tutorial; cópias sem compra não exibem confirmação; alvos de recuperação têm 44 px.
 - Cobrança: 54 verificações; cliente: 18; admin: 39; admin cliente: 4; mídia: 2; publicação: 2; checkpoint no navegador: 8. Sintaxe, SEO, domínio e aviso de acesso passaram.
+
+SEGUNDA REVISÃO COM TRÊS CRÍTICOS — 04/11/2026
+- Corrigida recuperação de compra pendente em outro aparelho, expiração do acesso, corrida de revogação de convite e recusa RSVP com campo oculto inválido.
+- Fallback sem WebGL acompanha fotos por página e oferece galeria em cartão/convite.
+- Fila de confirmação de compra com marca, tentativas, lease e isolamento do pagamento. Não envia retroativamente para compras antigas nem testes administrativos. Cron processa a fila a cada 10 minutos; não há garantia de entrega em caixa de entrada ou exactly-once em falhas após aceite do provedor.
+- Envio pelo Worker aceito pela Cloudflare em teste administrativo para bacochinakawai2@gmail.com. Nenhuma cobrança foi executada.
+- Verificações: cobrança58, cliente24, admin39, admin-client4, email8; demais suites de recuperação, interface, mídia, RSVP e fallback passaram.

@@ -1,0 +1,38 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {DatabaseSync} from 'node:sqlite';import {readFileSync,readdirSync} from 'node:fs';import {enqueuePurchaseEmail,drainPurchaseEmails} from '../server/email-outbox.mjs';
+function fixture(t){const sql=new DatabaseSync(':memory:');for(const f of readdirSync('server/billing-migrations').sort())sql.exec(readFileSync('server/billing-migrations/'+f,'utf8'));t.after(()=>sql.close());const DB={prepare(text){return{bind(...params){return{async run(){const r=sql.prepare(text).run(...params);return{meta:{changes:Number(r.changes)}};},async first(){return sql.prepare(text).get(...params)||null;},async all(){return{results:sql.prepare(text).all(...params)};}};}};}};const messages=[],env={BILLING_DB:DB,EMAIL:{async send(message){messages.push(message);return{messageId:'provider-id'};}}};const row={id:'a'.repeat(32),email:'owner@example.test',mode:'live',status:'approved',amount_cents:1490,email_notifications:1};sql.prepare("INSERT INTO purchases(id,access_hash,idempotency_hash,draft_id,plan_id,amount_cents,mode,email,status,created_at,approved_at,email_notifications) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)").run(row.id,'private-access-hash','unique','draft','mimo',1490,'live',row.email,'approved',1,1,1);return{env,row,sql,messages};}
+await test('confirmation is queued once, uses branded inline artwork and exposes no access key',async t=>{const {env,row,messages,sql}=fixture(t);await enqueuePurchaseEmail(env,row,10);await enqueuePurchaseEmail(env,row,10);assert.equal(sql.prepare('SELECT COUNT(*) n FROM email_outbox').get().n,1);assert.deepEqual(await drainPurchaseEmails(env,{now:10}),{sent:1,failed:0});assert.equal(messages.length,1);assert.equal(messages[0].from.email,'avisos@capimimo.com.br');assert.equal(messages[0].attachments.length,2);assert.match(messages[0].html,/cid:capimimo-icon/);assert.doesNotMatch(JSON.stringify(messages[0]),/private-access-hash|a{32}/);assert.match(messages[0].text,/14,90/);await drainPurchaseEmails(env,{now:100});assert.equal(messages.length,1);});
+await test('test, admin, unpaid and old purchases never queue',async t=>{const {env,row,sql}=fixture(t);for(const patch of [{mode:'test'},{grant_source:'admin'},{status:'pending'},{email_notifications:0},{email:''}])assert.equal(await enqueuePurchaseEmail(env,{...row,...patch},10),false);assert.equal(sql.prepare('SELECT COUNT(*) n FROM email_outbox').get().n,0);});
+await test('failed send retries later without changing payment or duplicating after success',async t=>{const {env,row,sql,messages}=fixture(t);await enqueuePurchaseEmail(env,row,10);const send=env.EMAIL.send;env.EMAIL.send=async()=>{throw Error('temporary');};assert.equal((await drainPurchaseEmails(env,{now:10})).failed,1);assert.equal(sql.prepare('SELECT status FROM purchases').get().status,'approved');env.EMAIL.send=send;await drainPurchaseEmails(env,{now:11});assert.equal(messages.length,0);assert.equal((await drainPurchaseEmails(env,{now:100})).sent,1);await drainPurchaseEmails(env,{now:200});assert.equal(messages.length,1);});
+await test('concurrent drain claims only one send and revoked purchase is skipped',async t=>{const {env,row,sql,messages}=fixture(t);await enqueuePurchaseEmail(env,row,10);await Promise.all([drainPurchaseEmails(env,{now:10}),drainPurchaseEmails(env,{now:10})]);assert.equal(messages.length,1);sql.exec('UPDATE email_outbox SET sent_at=NULL,lease_until=0');sql.exec("UPDATE purchases SET status='revoked'");await drainPurchaseEmails(env,{now:20});assert.equal(messages.length,1);});
+import {createBillingAPI} from '../server/billing.mjs';
+import {createAdminAPI} from '../server/admin.mjs';
+await test('stale concurrent claim cannot bypass retry backoff or maximum attempts',async t=>{
+ const {env,row,sql}=fixture(t);await enqueuePurchaseEmail(env,row,10);sql.exec('UPDATE email_outbox SET attempts=7');
+ const original=env.BILLING_DB;let selects=0,release;const firstFinished=new Promise(resolve=>release=resolve);let sends=0;
+ env.EMAIL.send=async()=>{sends++;throw Error('temporary');};
+ env.BILLING_DB={prepare(text){const statement=original.prepare(text);return{bind(...args){const bound=statement.bind(...args);return{...bound,async all(){const result=await bound.all();if(text.startsWith('SELECT * FROM email_outbox')&&++selects===2)await firstFinished;return result;}};}};}};
+ const first=drainPurchaseEmails(env,{now:10});const second=drainPurchaseEmails(env,{now:10});await first;release();await second;
+ assert.equal(sends,1);const job=sql.prepare('SELECT * FROM email_outbox').get();assert.equal(job.attempts,8);assert.ok(job.next_attempt_at>10);
+});
+await test('lost process lease is recoverable but a live lease cannot be stolen',async t=>{
+ const {env,row,sql,messages}=fixture(t);await enqueuePurchaseEmail(env,row,10);sql.exec("UPDATE email_outbox SET lease_token='crashed-worker',lease_until=300");
+ await drainPurchaseEmails(env,{now:299});assert.equal(messages.length,0);
+ await drainPurchaseEmails(env,{now:300});assert.equal(messages.length,1);assert.equal(sql.prepare('SELECT attempts FROM email_outbox').get().attempts,1);
+});
+await test('payment approval succeeds when email queue insertion fails and sync retries idempotently',async t=>{
+ const {env,row,sql,messages}=fixture(t);const token='b'.repeat(64),hash=Buffer.from(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token))).toString('hex');
+ sql.prepare("UPDATE purchases SET access_hash=?,mp_id='ORD00000000000000000000000000',mp_user_id='fixture-user',status='pending',approved_at=NULL WHERE id=?").run(hash,row.id);
+ env.SITE_ORIGIN='https://capimimo.test';env.PAYMENT_MODE='live';
+ const original=env.BILLING_DB;let failQueue=true;
+ env.BILLING_DB={prepare(text){if(failQueue&&text.startsWith('INSERT OR IGNORE INTO email_outbox'))throw Error('fixture queue outage');return original.prepare(text);}};
+ const api=createBillingAPI(env,{now:()=>100,adapterFactory:()=>({read:async()=>({}),assess:()=>({matches:true,approved:true,revoked:false,failed:false,updated:100000})})});
+ const sync=()=>api(new Request(env.SITE_ORIGIN+'/api/orders/'+row.id+'/sync',{method:'POST',headers:{Origin:env.SITE_ORIGIN,Authorization:'Bearer '+token,'Content-Type':'application/json'},body:'{}'}));
+ const first=await sync();assert.equal(first.status,200);assert.equal((await first.json()).status,'approved');assert.equal(sql.prepare('SELECT approved_at FROM purchases').get().approved_at,100);assert.equal(messages.length,0);
+ failQueue=false;assert.equal((await sync()).status,200);assert.equal((await sync()).status,200);assert.equal(sql.prepare('SELECT COUNT(*) n FROM email_outbox').get().n,1);assert.equal(messages.length,0,'payment path must not await mail provider');
+ await drainPurchaseEmails(env,{now:100});assert.equal(messages.length,1);assert.equal(sql.prepare('SELECT approved_at FROM purchases').get().approved_at,100);
+});
+await test('admin email endpoint cannot be used anonymously or cross-origin',async t=>{
+ const {env,messages}=fixture(t);env.SITE_ORIGIN='https://capimimo.test';const api=createAdminAPI(env,{now:()=>100});
+ const call=origin=>api(new Request(env.SITE_ORIGIN+'/api/admin/email-test',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({to:'arbitrary@example.test'})}));
+ assert.equal((await call(env.SITE_ORIGIN)).status,401);assert.equal((await call('https://attacker.test')).status,403);assert.equal(messages.length,0);
+});

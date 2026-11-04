@@ -18,6 +18,7 @@
   },
   "d1_databases": [{"binding":"BILLING_DB","database_name":"capimimo-payments","database_id":"056612c0-b8a6-4b44-9f1f-097a6926d19f","migrations_dir":"server/billing-migrations"}],
   "r2_buckets": [{"binding":"GIFTS_BUCKET","bucket_name":"capimimo-gifts"}],
+  "send_email": [{"name":"EMAIL","allowed_sender_addresses":["avisos@capimimo.com.br"]}],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",

@@ -6,3 +6,5 @@
 
 /* The host page already names the recipient and provides the download. */
 .embedded .portable-brand,.embedded .portable-intro h1,.embedded .portable-intro>p:first-child,.embedded .portable-note{display:none}.embedded .portable-reader{padding:12px}.embedded .portable-top{justify-content:flex-end}.embedded .portable-intro{margin:6px 0}.embedded .portable-from:empty{display:none}
+
+.portable-fallback-gallery{display:grid;gap:16px}.portable-fallback-gallery figure{margin:0;min-width:0}.portable-fallback-gallery figcaption{margin-top:8px;text-align:center;overflow-wrap:anywhere}.portable-fallback-gallery img{height:auto;max-width:100%;object-fit:contain}
