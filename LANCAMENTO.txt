@@ -74,3 +74,10 @@ CONTAS DE COMPRADORES — 04/11/2026
 - Fluxo completo no navegador: recuperar compra de cartão no mesmo rascunho corrige formato incompatível e preserva mensagem. Pedidos pendentes, expirados e cancelados têm orientação própria.
 - Produção: migração0006 aplicada, envio de código aceito pelo provedor e lista de compras sem sessão negada com401. Painel conferido no Chrome em390e1440px.
 - Cabeçalho móvel agrupa os atalhos sem reduzir os alvos de toque. Arquivo de recuperação só é oferecido quando há chave local utilizável.
+
+REVISÃO DE CONTAS, VOZ E RECEBIMENTO — 04/11/2026
+- Acesso por conta é recuperado antes de exigir nova compra; aprovação é conferida no servidor. Falha na consulta não inicia nova cobrança silenciosamente.
+- Atualizar as compras preserva links individuais criados na sessão. Sair da conta ou trocar de identidade limpa esses links da memória; não são copiados para outra conta. Recuperação dos tokens após recarregar o navegador ainda depende de arquivo de acesso local ou regeneração.
+- Erros na confirmação individual de presença não escondem o presente público válido. Falha temporária permite repetir somente a consulta de confirmação.
+- Gravação de voz impede microfones simultâneos e encerra solicitações tardias após cancelamento, saída, importação de outro rascunho ou exportação.
+- Testes de gravação, conta, cobrança no cliente, recuperação completa no navegador, RSVP e tela cheia passaram. Download da biblioteca também conferido e já funcionava corretamente.

@@ -11,7 +11,7 @@ const mimo={...historia,id:'mimo-new',planId:'mimo',createdAt:2,accessKey:'fixtu
 async function fixture(t,records,state,{hostname="capimimo.test",configResponse}={}){
  const globals=new Map(['fetch','localStorage','document','location'].map(key=>[key,Object.getOwnPropertyDescriptor(globalThis,key)]));
  t.after(()=>{for(const [key,descriptor] of globals)descriptor?Object.defineProperty(globalThis,key,descriptor):delete globalThis[key];});
- Object.defineProperty(globalThis,'location',{configurable:true,value:{hostname}});
+ Object.defineProperty(globalThis,'location',{configurable:true,value:{hostname,origin:'https://'+hostname}});
  const storage=new Map([[storeKey,JSON.stringify(records)]]),calls=[],events=[];
  const orders=new Map(records.filter(record=>record&&record.id).map(record=>[record.id,structuredClone(record)]));
  Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,String(value))}});
@@ -20,6 +20,7 @@ async function fixture(t,records,state,{hostname="capimimo.test",configResponse}
   const method=options.method||'GET';calls.push({path,method,...options});
   if(path==='/api/billing/config'&&configResponse)return configResponse();
   if(path==='/api/billing/config')return Response.json({mode:'test',checkoutReady:true,plans:BILLING_PLANS,maxArchiveBytes:40*1024*1024});
+  if(path==='/api/customer/session')return Response.json({authenticated:false});
   if(path==='/api/checkout'&&method==='POST')return Response.json({id:'new-history',status:'pending',requestedFormat:null});
   const match=String(path).match(/^\/api\/orders\/([^/]+)(\/publish)?$/);
   if(match&&orders.has(match[1])){
@@ -31,6 +32,18 @@ async function fixture(t,records,state,{hostname="capimimo.test",configResponse}
  const client=initBillingClient({getState:()=>state});await client.ready;
  return {client,calls,events,storage,orders};
 }
+
+await test('legacy host preserves guest checkout without asking canonical-only customer API',async t=>{
+ const {client,calls}=await fixture(t,[],{draftId:'legacy-draft',format:'cartao'},{hostname:'capimimo.matheus-bacochina.workers.dev',configResponse:()=>Response.json({mode:'test',checkoutReady:true,plans:BILLING_PLANS,customerAccountOrigin:'https://capimimo.com.br'})});
+ assert.equal(await client.requirePurchase('cartao'),false);
+ assert.equal((await client.checkout('mimo')).id,'new-history');
+ assert.equal(calls.some(c=>c.path.startsWith('/api/customer/')),false);
+ assert.equal(calls.filter(c=>c.path==='/api/checkout').length,1);
+});
+await test('canonical host still checks customer session before a new checkout',async t=>{
+ const {client,calls}=await fixture(t,[],{draftId:'canonical-draft',format:'cartao'},{hostname:'capimimo.com.br',configResponse:()=>Response.json({mode:'test',checkoutReady:true,plans:BILLING_PLANS,customerAccountOrigin:'https://capimimo.com.br'})});
+ await client.checkout('mimo');assert.ok(calls.some(c=>c.path==='/api/customer/session'));
+});
 
 await test('older Historia remains usable for a book when a newer Mimo shares the draft',async t=>{
  const {client,calls}=await fixture(t,[historia,mimo],{draftId:historia.draftId,format:'livro'});
