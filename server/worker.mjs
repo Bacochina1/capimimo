@@ -29,6 +29,7 @@ export default {async fetch(request,env){
  // present.html here would leak its redirect and discard the gift's URL.
  if(privateGift)url.pathname='/present';
  const response=await env.ASSETS.fetch(new Request(url,request));
+ if(response.status===404)return notFound();
  const isHTML=(response.headers.get('Content-Type')||'').includes('text/html');
  // Assets are configured as an SPA. Do not return its homepage for missing URLs.
  if(isHTML&&!publicPages.has(path)&&!privateGift&&!['/present','/present.html'].includes(path))return notFound();
