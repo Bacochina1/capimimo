@@ -131,3 +131,9 @@ RECUPERACAO E COMPRA CORRETA EM EDICAO - 04/11/2026
 - Biblioteca autoriza o download pela compra do presente salvo. Identificador privado da compra nao entra no presente publico.
 - Checkout e publicacao interrompem continuacoes antigas quando o usuario troca rascunho, formato, compra ou sai da conta durante o carregamento. Planos e formatos do checkout tambem sao conferidos.
 - Verificacao: 95 testes de cliente, concorrencia, conta e exportacao passaram; fluxos de recuperacao e aprovacao em Chrome movel passaram; 51 modulos e 9 paginas SEO validos. Revisao adversarial independente: 13/13 passaram. Sem cobranca real nesta rodada.
+
+PERSONALIZACAO SEM PERDER TEXTOS E EDICAO NO CELULAR - 04/11/2026
+- Trocar ocasiao, capa ou modelo preserva titulo autoral, legenda da foto e encerramento. Composicao e cores novas continuam aplicadas. A opcao explicita de substituir textos permanece disponivel.
+- Personalizar volta ao ultimo campo utilizavel ou ao titulo da etapa atual, sem tentar focar controles ocultos.
+- Conferir e entregar mostra Mensagem principal e Carta separadamente. Editar carta abre a secao e traz o campo para a area visivel, entre cabecalho e barra movel.
+- Verificacao: cinco grupos de preservacao no Chrome com downloads reais de cartao/livro/convite; quatro cenarios de navegacao mobile/desktop; seis verificacoes do resumo/carta em duas alturas de celular; duas regressões do tutorial e recuperacao de compras passaram. 51 modulos e 9 paginas SEO validos. Sem cobranca real nesta rodada.
