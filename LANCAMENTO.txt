@@ -275,3 +275,8 @@ LEITURA E NAVEGACAO DO PRESENTE - 04/11/2026
 - Ler com letra maior amplia tambem cartas, mensagens extras e campos de resposta, no arquivo e na previa de recebimento.
 - Folhear conserva foco no controle intermediario; primeira/ultima pagina transferem para indicador acessivel. Mudanca de foco pelo usuario durante animacao e descarte de leitor sao respeitados.
 - Verificacao: wheel4 com imagens320/390 inspecionadas, pagefocus5 com Three real, extras4 nas duas larguras e contextos, openingfocus7, loading4, roundtrip6, modulos51 e SEO9. Revisao independente aprovada. Arquivos HTML antigos precisam ser gerados novamente para receber os ajustes.
+RESPOSTAS E CONFIRMACAO ACESSIVEIS - 04/11/2026
+- Preparar novamente o mesmo recado preserva identidade e evita duplicacao ao importar respostas; edicao real cria nova resposta.
+- Pergunta secreta rejeita respostas vazias, limpa avisos antigos ao editar e mantem normalizacao de acentos.
+- Envio de RSVP preserva foco pelo status durante carregamento e devolve ao controle original sem roubar foco de quem voltou ao presente.
+- Verificacao: replyidempotence3, secret5, replyvalidation4, recipientreply6, RSVPpending3, RSVPfocus4, modulos51 e SEO9. Revisao independente aprovada; teste de compra real ainda pendente.
