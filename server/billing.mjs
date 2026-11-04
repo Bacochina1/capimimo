@@ -110,7 +110,12 @@ export function createBillingAPI(env,{fetchImpl=fetch,now=()=>Math.floor(Date.no
   }
   throw new BillingError(404,'Página não encontrada.');
  }
- const handler=async request=>{try{return await dispatch(request);}catch(e){if(e instanceof BillingError)return json({error:e.message},e.status);return json({error:'Não foi possível concluir agora. Tente novamente.'},502);}};
+ const handler=async request=>{try{return await dispatch(request);}catch(e){
+  // An iframe cannot inspect HTTP status across its sandbox boundary. Signal
+  // failures to its parent so recipients can retry immediately instead of
+  // seeing an error document until the readiness timeout expires.
+  if(request.method==='GET'&&/^\/api\/presents\/[a-f0-9]{32}\/content$/.test(new URL(request.url).pathname))return new Response('<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Presente indisponível</title><body><p>Não foi possível abrir agora. Tente novamente.</p><script>parent.postMessage({type:"capimimo:error"},"*")</script></body></html>',{status:e instanceof BillingError?e.status:502,headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Robots-Tag':'noindex','Content-Security-Policy':"sandbox allow-scripts; default-src 'none'; script-src 'unsafe-inline'; frame-ancestors 'self'"}});
+  if(e instanceof BillingError)return json({error:e.message},e.status);return json({error:'Não foi possível concluir agora. Tente novamente.'},502);}};
  // Internal scheduled recovery only; there is no HTTP endpoint for this operation.
  handler.reconcileBatch=async()=>{
   const rows=(await query("SELECT * FROM purchases WHERE mp_id IS NOT NULL AND status IN ('pending','approved') AND last_synced_at<? AND ((status='pending' AND created_at>?) OR (status='approved' AND approved_at>?)) ORDER BY last_synced_at LIMIT 10",now()-600,now()-2*86400,now()-YEAR).all()).results;
