@@ -18,3 +18,5 @@ test('informação sensível e suporte não contradizem os fluxos declarados',()
  assert.ok(entries.some(entry=>entry.id==='reembolso'&&entry.text.includes('bacochinakawai@gmail.com')));
  assert.ok(entries.some(entry=>entry.id==='seguranca'&&/Nunca peça códigos/.test(entry.text)));
 });
+
+test('convites explicam envio individual apenas após publicação',()=>{const item=retrieveKnowledge('Como enviar convites para convidados?').find(x=>x.id==='convites');assert.match(item.text,/Após publicar/);assert.match(item.text,/envio individual por e-mail/);assert.match(item.text,/confirmando o endereço/);});
