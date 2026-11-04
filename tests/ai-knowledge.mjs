@@ -15,7 +15,7 @@ test('consulta é normalizada, limitada e desconhecidos não geram fatos',()=>{
 test('informação sensível e suporte não contradizem os fluxos declarados',()=>{
  const entries=retrieveKnowledge('Como apagar minhas fotos privadas e pedir reembolso?');
  assert.ok(entries.some(entry=>entry.id==='privacidade'&&/Quem tiver o link/.test(entry.text)));
- assert.ok(entries.some(entry=>entry.id==='reembolso'&&entry.text.includes('bacochinakawai@gmail.com')));
+ assert.ok(entries.some(entry=>entry.id==='reembolso'&&entry.text.includes('atendimento no site')));
  assert.ok(entries.some(entry=>entry.id==='seguranca'&&/Nunca peça códigos/.test(entry.text)));
 });
 
