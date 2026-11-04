@@ -245,3 +245,9 @@ CONVIDADOS EM LOTE E BACKUP DE RESPOSTAS - 04/11/2026
 - Resposta apenas com espacos mostra erro acessivel e permite tentar novamente, sem substituir resposta valida previamente preparada.
 - Arquivo Baixar respostas guardadas agora pode ser importado pelo painel. Novo envelope versionado e backups antigos aceitos; ate100 respostas/1MB, validacao antes aplicar entradas, IDsdeduplicados e vinculoao presente preservado. Limite individual25KB mantido.
 - Verificacao: bulk4/email7, replyvalidation4/reply6inclHTMLgerado, backup7comexportreal100notas/IDB, queue7, export6, modulos51 e SEO9; revisoes independentes aprovadas. Sem envios externos.
+
+CONTINUIDADE ENTRE RASCUNHOS - 04/11/2026
+- Campos temporarios de novos convidados ficam separados por rascunho durante a sessao: nome, email, quantidade, lote e avisos voltam ao retornar ao convite correspondente. Novo convite comeca vazio, sem inserir pessoas do anterior.
+- Rascunhos legados semID usam identidade do estado para isolar compositor e acoes de linhas antigas.
+- Titulo e mensagem de pagina refletem atualizacao externa mesmo focados, sem mover cursor na propria digitacao. Teste decontrato render externo; nao implica falha no clique normal da biblioteca.
+- Verificacao: guestcomposer4/bulk4/email7, pagefields2/pagesfocus8/pagephoto3, modulos51 e SEO9 passaram; revisoes independentes aprovadas.

@@ -27,7 +27,7 @@ export function initMemoryStudio({getState,onChange,getPhoto,setPhoto,openConten
   ['Primeira página',...pages.map((page,i)=>page.title||'Página '+(i+2))].forEach((title,i)=>{const button=make('button','page-tab');button.type='button';button.dataset.pageIndex=String(i);button.setAttribute('aria-pressed',String(i===index));button.append(make('span','page-number',String(i+1)),make('span','page-tab-title',title));button.addEventListener('click',()=>selectPage(i));tabs.append(button);});
   if(Number.isInteger(focused)&&document.activeElement===document.body)tabs.querySelector('[data-page-index="'+Math.min(focused,pages.length)+'"]')?.focus({preventScroll:true});
   pagesPanel.querySelector('.page-edit').hidden=index===0;pagesPanel.querySelector('.first-page-help').hidden=index!==0;
-  const current=pages[index-1];for(const [id,key] of [['page-title','title'],['page-message','message']])if(document.activeElement!==$('#'+id))$('#'+id).value=current?.[key]??'';
+  const current=pages[index-1];for(const [id,key] of [['page-title','title'],['page-message','message']])if($('#'+id).value!==(current?.[key]??''))$('#'+id).value=current?.[key]??'';
   $('#page-count').textContent=(current?.message.length??0)+'/180';
   const picker=$('#page-photo');picker.replaceChildren(new Option('Usar a ilustração',''));gallery.forEach(photo=>picker.add(new Option(photo.name,photo.id)));picker.value=current?.photoId??'';
   pagesPanel.querySelector('.page-earlier').disabled=index<=1;pagesPanel.querySelector('.page-later').disabled=index>=pages.length;
