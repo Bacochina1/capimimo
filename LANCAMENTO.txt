@@ -124,3 +124,10 @@ REABERTURA DE PRÉVIAS E TUTORIAL — 04/11/2026
 - Tutorial revela e foca o nome obrigatório mesmo quando o usuário mudou para outra etapa do editor.
 - Verificação: WAV real no Chrome (voz/música/replay/reabertura), 4 cenários de prévia com Three.js controlado e fallback, 2 de tutorial, 5 de carregamento Stories, biblioteca e 9 testes de áudio passaram. 51 módulos e 9 páginas SEO válidos.
 - Novas exportações Stories incorporam o replay corrigido; arquivos HTML antigos precisam ser republicados.
+
+RECUPERACAO E COMPRA CORRETA EM EDICAO - 04/11/2026
+- Recuperar compra oferece entrada em Minha conta. Compras vinculadas ao e-mail recebem orientacao adequada; arquivo de acesso continua disponivel para compras sem login.
+- Recuperar e publicar preserva a compra exata. Consultar outra compra nao permite sobrescrever o presente errado. Cancelar recuperacao conserva o rascunho; duplicar remove o vinculo da compra original.
+- Biblioteca autoriza o download pela compra do presente salvo. Identificador privado da compra nao entra no presente publico.
+- Checkout e publicacao interrompem continuacoes antigas quando o usuario troca rascunho, formato, compra ou sai da conta durante o carregamento. Planos e formatos do checkout tambem sao conferidos.
+- Verificacao: 95 testes de cliente, concorrencia, conta e exportacao passaram; fluxos de recuperacao e aprovacao em Chrome movel passaram; 51 modulos e 9 paginas SEO validos. Revisao adversarial independente: 13/13 passaram. Sem cobranca real nesta rodada.
