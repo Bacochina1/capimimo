@@ -222,3 +222,8 @@ ENTREGA, RECUPERACAO E ENQUADRAMENTO INDIVIDUAL - 04/11/2026
 - Confirmacao de presenca no arquivo portatil rejeita nomes so com espacos e permite corrigir/repetir; nome e ID de convidado personalizado preservados.
 - Verificacao: secondaryfit4, storyfit5, storyrestore9, recoverydismiss8, recoveryguidance3, recoverypending3, clouddelivery12, RSVPnome3, leitorportatil/mobile e loading4, export6, modulos51, SEO9; revisoes independentes aprovadas.
 - Testes de recuperacao usam billing simulado, sem cobrancas/envios reais. Arquivos HTML previamente baixados devem ser gerados novamente para incorporar validacao nova.
+
+IMPORTACAO DE ACESSO E PREVIA DO QUADRO - 04/11/2026
+- Importacao atrasada do arquivo de acesso preserva o acesso autorizado sem alterar uma janela reaberta ou cancelar a recuperacao mais recente. Limpeza do campo respeita a selecao mais nova e permite repetir arquivo apos erro.
+- Previa do quadro limpa imagem anterior e avisa quando foto atual nao carrega. Selecionar foto valida recupera a previa; falhas atrasadas nao apagam resultado novo nem substituem status de exportacao.
+- Verificacao: importlifecycle5, recoverydismiss8, guidance3, recoverypending3, clouddelivery12, previewfailure3, exportraces5, photofallback3, modulos51 e SEO9 passaram; revisoes independentes aprovadas. Testes de compra com servicos locais simulados.
