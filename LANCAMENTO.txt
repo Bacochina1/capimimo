@@ -266,3 +266,7 @@ RECUPERACAO DE QR E AVISOS DE AUDIO - 04/11/2026
 - Retry de QR conduz foco ao status e download, respeitando navegacao do usuario para outro controle.
 - Falha atrasada ao salvar audio ou trocar faixa nao substitui aviso de reset/importacao mais recente. Falha atual continua visivel.
 - Verificacao: QRbrowser6 com HTTP503 real, cloud12, audioIDB6, audioinitial6, previewowner4, recipientaudio7, sound9, purchasebinding13, QRcartao6, modulos51 e SEO9. Revisao independente aprovada; sem cobrancas ou envios reais.
+RECUPERACAO COM CONTEXTO PRESERVADO - 04/11/2026
+- Abrir presente publicado, abrir compra e restaurar teste verificam contexto apos carregar e antes aplicar; troca de rascunho/formato/compra/conta invalida resultado antigo, inclusive A-B-A. Erros de operacoes abandonadas nao reaparecem.
+- Importar arquivo de acesso no painel respeita contexto e arquivo mais recente. Persistencia autorizada permanece, sem mudar selecao/status de outro rascunho. Importar primeira compra do mesmo rascunho continua selecionando a compra normalmente.
+- Verificacao: publishedcontext5 grupos/24 cenarios, panelimport6 grupos, cloud12, recoveryimport5, accountlifecycle7, recoverydismiss8, modulos51 e SEO9. Modulo/DOM reais com billing controlado; sem cobrancas ou envios reais. Revisao independente aprovada.
