@@ -90,3 +90,5 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 .journey-grid article{min-width:0}.journey-game-art{max-width:100%}
 
 .footer .purchase-details{grid-column:1/-1;flex-basis:100%;width:100%;min-width:0;font-size:14px;line-height:1.6}.purchase-details summary{cursor:pointer;padding:12px 0;min-height:44px}.purchase-details p{margin:12px 0;max-width:75ch;overflow-wrap:anywhere}.footer>small{overflow-wrap:anywhere}
+
+.announcement .header-library-button{min-height:44px;padding:10px;touch-action:manipulation}.checkout-access-checkpoint{margin-top:18px;padding:18px;border:1px solid #b79980;border-radius:12px;background:#fff6e9}.checkout-access-checkpoint h3{margin:0 0 12px;font-size:22px;line-height:1.2}.checkout-access-checkpoint p{font-size:15px;line-height:1.6;margin:12px 0}.checkout-access-checkpoint button{width:100%;min-height:44px;white-space:normal}.checkout-access-checkpoint small{display:block;margin-top:12px;line-height:1.5}.checkout-access-checkpoint[hidden]{display:none}

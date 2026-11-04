@@ -13,14 +13,14 @@ async function fixture(t,records,state,{hostname="capimimo.test",configResponse}
  t.after(()=>{for(const [key,descriptor] of globals)descriptor?Object.defineProperty(globalThis,key,descriptor):delete globalThis[key];});
  Object.defineProperty(globalThis,'location',{configurable:true,value:{hostname}});
  const storage=new Map([[storeKey,JSON.stringify(records)]]),calls=[],events=[];
- const orders=new Map(records.map(record=>[record.id,structuredClone(record)]));
+ const orders=new Map(records.filter(record=>record&&record.id).map(record=>[record.id,structuredClone(record)]));
  Object.defineProperty(globalThis,'localStorage',{configurable:true,value:{getItem:key=>storage.get(key)??null,setItem:(key,value)=>storage.set(key,String(value))}});
  Object.defineProperty(globalThis,'document',{configurable:true,value:{dispatchEvent:event=>{events.push(event);return true;}}});
  globalThis.fetch=async(path,options={})=>{
   const method=options.method||'GET';calls.push({path,method,...options});
   if(path==='/api/billing/config'&&configResponse)return configResponse();
   if(path==='/api/billing/config')return Response.json({mode:'test',checkoutReady:true,plans:BILLING_PLANS,maxArchiveBytes:40*1024*1024});
-  if(path==='/api/checkout'&&method==='POST')return Response.json({id:'new-history',status:'pending'});
+  if(path==='/api/checkout'&&method==='POST')return Response.json({id:'new-history',status:'pending',requestedFormat:null});
   const match=String(path).match(/^\/api\/orders\/([^/]+)(\/publish)?$/);
   if(match&&orders.has(match[1])){
    if(!match[2]&&method==='GET')return Response.json(orders.get(match[1]));
@@ -94,4 +94,28 @@ for(const hostname of ['localhost','127.0.0.1','[::1]'])await test('loopback '+h
  assert.equal(client.config.mode,'offline');
  assert.equal(await client.requirePurchase('cartao'),true);
  assert.equal(events.some(event=>event.type==='billing:unavailable'),false);
+});
+
+await test('backup excludes admin grants and checkout attempts without an order',async t=>{
+ const {client}=await fixture(t,[historia,{...mimo,isAdmin:true},{...mimo,id:undefined}],{draftId:historia.draftId,format:'livro'});
+ const data=JSON.parse(await client.backup().text());assert.deepEqual(data.orders.map(r=>r.id),[historia.id]);
+});
+await test('mixed backup recovers valid paid order after inaccessible and malformed entries',async t=>{
+ const paid={...historia,id:'a'.repeat(32),accessKey:'b'.repeat(64),requestedFormat:null};
+ const {client,storage}=await fixture(t,[paid],{draftId:paid.draftId,format:'cartao'});
+ const orders=[null,{id:'c'.repeat(32),accessKey:'d'.repeat(64)}, {...paid,requestedFormat:'cartao'}, {...paid,requestedFormat:'cartao'}];
+ const restored=await client.restore(new Blob([JSON.stringify({type:'capimimo-purchase-access',orders})]));
+ assert.equal(restored.length,1);assert.equal(restored.skipped,2);assert.equal(restored[0].requestedFormat,'cartao');assert.equal(JSON.parse(storage.get(storeKey)).length,1);
+});
+await test('restore accepts a legitimate multi-invitation backup larger than 256KB',async t=>{
+ const paid={...historia,id:'a'.repeat(32),accessKey:'b'.repeat(64),guestLinks:Object.fromEntries(Array.from({length:100},(_,i)=>['guest-'+i,'https://capimimo.test/g/'+('a'.repeat(3000))]))};
+ const {client}=await fixture(t,[paid],{draftId:paid.draftId,format:'livro'});const file=client.backup();assert.ok(file.size>256*1024);assert.equal((await client.restore(file)).length,1);
+});
+await test('malformed local entries do not break valid purchase lookup',async t=>{
+ const {client}=await fixture(t,[null,42,{},historia],{draftId:historia.draftId,format:'livro'});assert.equal(client.find().id,historia.id);
+});
+await test('failed restore leaves existing valid purchase unchanged',async t=>{
+ const {client,storage}=await fixture(t,[historia],{draftId:historia.draftId,format:'livro'});const before=storage.get(storeKey);
+ await assert.rejects(client.restore(new Blob(['null'])),/inválido/);assert.equal(storage.get(storeKey),before);
+ await assert.rejects(client.restore(new Blob([JSON.stringify({type:'capimimo-purchase-access',orders:[{id:'c'.repeat(32),accessKey:'d'.repeat(64)}]})])),/Não foi possível recuperar/);assert.equal(storage.get(storeKey),before);
 });
