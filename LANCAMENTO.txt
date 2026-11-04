@@ -158,3 +158,10 @@ PAGINAS DO LIVRO E GALERIA SEM PERDAS - 04/11/2026
 - Importar/resetar com legenda focada atualiza os controles, mesmo com IDs repetidos, sem editar objetos antigos.
 - Upload iniciado enquanto a galeria salva carrega aguarda a recuperacao e acrescenta fotos. Reset ou importacao cancela upload antigo, sem ressuscitar conteudo.
 - Verificacao: 8 grupos de foco/galeria, 3 de upload/IndexedDB, 3 de identidade por pagina com export real, 7 testes de exportacao/midia, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada. Sem cobranca/envio externo.
+
+RESPOSTAS DO DESTINATARIO SEM ESTADO ANTIGO - 04/11/2026
+- Confirmacao de presenca bloqueia campos durante envio, impede requisicoes duplicadas e preserva a escolha enviada ao concluir ou falhar. Falha permite nova tentativa com quantidade coerente.
+- Editar um recado invalida o download anterior e orienta preparar a versao atual. Download revalida o texto; nova versao recebe novo identificador.
+- Respostas preparadas validas sao recuperadas quando o navegador permite armazenamento. Falha/indisponibilidade de armazenamento nao impede baixar nem promete salvamento.
+- Verificacao: 3 grupos RSVP pendente + regressao RSVP, 6 grupos de recados (incluindo runtime dos HTMLs Stories/cartao exportados), 5 testes export, 51 modulos e 9 paginas SEO passaram. Revisao independente aprovada; nenhum envio externo real.
+- Arquivos HTML antigos precisam ser gerados novamente para incorporar a correcao dos recados.
