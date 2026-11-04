@@ -21,6 +21,7 @@ for(const url of urls){
  if(url.pathname!=='/'){assert.ok(html.includes('/?ocasiao='));assert.ok(html.includes('Fotografia ilustrativa'));}
 }
 assert.ok(read('robots.txt').includes('Sitemap: '+origin+'/sitemap.xml'));
+const llms=read('llms.txt');for(const url of urls)assert.ok(llms.includes('('+url.href+')'),'llms.txt missing '+url.href);assert.ok(!/\/g\/[a-f0-9]{32}/.test(llms));
 assert.ok(read('present.html').includes('noindex,nofollow'));
 // Emulate Cloudflare's SPA fallback to verify real 404s and private-route headers.
 const env={ASSETS:{fetch:async request=>{const path=new URL(request.url).pathname;if(path==='/present.html')return Response.redirect(origin+'/present',301);const type=/\.(css|js|webp)$/.test(path)?'application/octet-stream':'text/html';return new Response('fixture',{headers:{'Content-Type':type}});}}};
