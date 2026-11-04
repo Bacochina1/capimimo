@@ -117,3 +117,10 @@ RECEBIMENTO EM CONEXÕES LENTAS — 04/11/2026
 - Reprodução de áudio pendente não volta a tocar depois de pause/stop. Chamadas concorrentes são agrupadas e áudio finalizado pode tocar novamente. Gravação/exportação preservadas.
 - Verificação: 5 cenários Stories em Chrome390x844, 4 cenários de carregamento do leitor, 9 testes de reprodução e 12 de gravação/mídia passaram. Export portátil compilado; leitor móvel e contraste passaram; 51 módulos e 9 páginas SEO válidos.
 - Runtime novo vale para prévias e novas exportações/publicações. HTML antigo contém a versão anterior e exige republicação para receber estas mudanças.
+
+REABERTURA DE PRÉVIAS E TUTORIAL — 04/11/2026
+- Ver de novo nos Stories reinicia voz/música do início e mantém a opção de silêncio/repetição. Callbacks antigos não alteram uma nova reprodução.
+- Fechar e reabrir rapidamente não deixa eventos de fechamento anteriores interromperem Stories ou prévias de livros/cartões/convites. Cleanup da prévia é idempotente.
+- Tutorial revela e foca o nome obrigatório mesmo quando o usuário mudou para outra etapa do editor.
+- Verificação: WAV real no Chrome (voz/música/replay/reabertura), 4 cenários de prévia com Three.js controlado e fallback, 2 de tutorial, 5 de carregamento Stories, biblioteca e 9 testes de áudio passaram. 51 módulos e 9 páginas SEO válidos.
+- Novas exportações Stories incorporam o replay corrigido; arquivos HTML antigos precisam ser republicados.
