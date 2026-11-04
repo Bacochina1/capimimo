@@ -20,3 +20,12 @@ Direção comum: uma única fotografia horizontal 3:2, cena brasileira cotidiana
 | photo-life-pet.webp | Mulher sentada no chão de casa acariciando um cão caramelo mais velho. |
 
 As fotos foram distribuídas por ocasião no catálogo e nos modelos. As 12 miniaturas da coleção são renderizadas com os dados atuais e Three.js, para corresponder à prévia aberta. Fotos antigas permanecem disponíveis para compatibilidade com exemplos e arquivos já compartilhados.
+
+## Exemplos jovens para ocasiões românticas
+
+Duas novas imagens criadas com o gerador integrado, também otimizadas para WebP em até 1200 × 800 pixels. Direção: foto casual de celular, pessoas fictícias de 22–24 anos, textura de pele natural, roupa cotidiana e enquadramento espontâneo, sem acabamento publicitário.
+
+- `dist/assets/photo-young-couple-park.webp`: casal brasileiro de 22 anos no gramado de um parque, compartilhando uma risada; camiseta clara, sobrecamisa azul e regata coral.
+- `dist/assets/photo-young-couple-city.webp`: casal brasileiro de 23–24 anos caminhando numa rua de bairro com sorvetes; camiseta creme e camiseta cinza.
+
+Namorados, aniversário e pedido de namoro usam esse conjunto jovem. Bodas e avós mantêm imagens adequadas às respectivas ocasiões.

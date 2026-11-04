@@ -2,3 +2,18 @@
 @media(max-width:900px){.book-showcase{gap:30px}.showcase-stage{height:520px}.book-showcase-intro{font-size:16px}.showcase-finishes{gap:8px}.showcase-finishes button{width:42px;height:42px}}
 @media(max-width:700px){.book-showcase{grid-template-columns:1fr;padding-top:60px;padding-bottom:60px;gap:32px}.book-showcase h2{font-size:46px}.book-showcase-art{grid-row:2;border-radius:140px 140px 10px 10px}.showcase-stage{height:490px;border-radius:130px 130px 8px 8px}.book-showcase-copy>.button{max-width:none}.showcase-finishes button{width:44px;height:44px}.showcase-stage .object-focus-tools button{font-size:11px;padding:7px 8px}.showcase-view-controls button{font-size:11px;padding:8px}.book-showcase-intro{max-width:none}}
 @media(max-width:700px){.book-showcase{scroll-margin-top:80px;padding-top:30px;row-gap:16px}.book-showcase-copy{display:contents}.book-showcase-label{grid-row:1;margin:0}.book-showcase h2{grid-row:2;margin:0 0 6px}.book-showcase-art{grid-row:3;width:100%;box-sizing:border-box}.showcase-stage{height:390px}.book-showcase-intro{grid-row:4;margin:6px 0;font-size:16px}.showcase-finishes{grid-row:5}.showcase-material-name{grid-row:6;margin:0}.showcase-features{grid-row:7;margin:4px 0}.book-showcase-copy>.showcase-create{grid-row:8}.showcase-catalog{grid-row:9;padding:7px 0}.book-showcase-copy>small{grid-row:10}.book-showcase .showcase-view-controls{gap:6px}.showcase-view-controls button{font-size:10px}}
+/* Final-product examples share the real gift renderers. */
+.showcase-formats{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.showcase-formats button{min-height:46px;flex:1;padding:10px 13px;border:1px solid #c7b299;border-radius:24px;background:transparent;font:800 14px Nunito,Arial;color:#563e2e}
+.showcase-formats button[aria-pressed=true]{background:#412e24;color:#fff8ee;border-color:#412e24}
+.showcase-object-mount{position:absolute;inset:0;min-width:0;min-height:0}
+.showcase-object-mount>canvas{display:block;width:100%;height:100%}
+.showcase-stage.is-stories{border-radius:24px;background:#f7eee3}
+.showcase-stage.is-stories .showcase-object-mount{padding:16px}
+.showcase-story-canvas{object-fit:contain}
+.showcase-loading{z-index:3;pointer-events:none;padding:10px;background:#fff8eee8}
+.showcase-page-count{display:block;text-align:center;color:#715c4c;font:800 13px Nunito,Arial;margin:12px 0 0}
+.showcase-view-controls button{font-size:12px;min-height:46px}
+@media(max-width:700px){.book-showcase .showcase-formats{grid-row:3;margin:0;gap:6px}.showcase-formats button{font-size:13px;padding:10px 7px}.book-showcase-art{grid-row:4}.book-showcase-intro{grid-row:5}.showcase-finishes{grid-row:6}.showcase-material-name{grid-row:7}.showcase-features{grid-row:8}.book-showcase-copy>.showcase-create{grid-row:9}.showcase-catalog{grid-row:10}.book-showcase-copy>small{grid-row:11}.book-showcase h2{font-size:clamp(34px,9.5vw,46px)}.book-showcase .showcase-view-controls button{font-size:12px}.showcase-stage.is-stories{height:460px}.book-showcase-art{overflow:visible}}
+
+.book-showcase,.book-showcase-copy{container-type:inline-size}.book-showcase h2{font-size:clamp(28px,10.3cqw,70px)}.book-showcase h2>span{white-space:nowrap}
