@@ -11,8 +11,8 @@
   "vars": {
     "SITE_ORIGIN": "https://capimimo.com.br",
     "SITE_LEGACY_ORIGIN": "https://capimimo.matheus-bacochina.workers.dev",
-    "PAYMENT_MODE": "test",
-    "SALES_ENABLED": "false",
+    "PAYMENT_MODE": "live",
+    "SALES_ENABLED": "true",
     "MERCADOPAGO_APPLICATION_ID": "7351693003774090",
     "MERCADOPAGO_TEST_APPLICATION_ID": "2530084871450339"
   },

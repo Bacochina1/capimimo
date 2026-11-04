@@ -1,8 +1,11 @@
 CAPIMIMO — SITUAÇÃO DE LANÇAMENTO
-03/11/2026
+04/11/2026
 
-LIBERAÇÃO COMERCIAL: PENDENTE. Não afirmar que está 100% disponível para vendas reais.
-PAYMENT_MODE=test; SALES_ENABLED=false.
+CHECKOUT DE PRODUÇÃO ATIVO por autorização do proprietário.
+PAYMENT_MODE=live; SALES_ENABLED=true.
+Em 04/11 os três planos criaram pedidos reais pendentes com valores corretos. Nenhuma cobrança real foi executada.
+Admin: https://capimimo.com.br/admin; usuário matheus; senha no arquivo privado Capimimo-admin-acesso.txt na Área de Trabalho.
+Login, criação gratuita, publicação e abertura após logout passaram no domínio principal.
 
 REVISÃO COM CINCO AUDITORIAS
 - Compra: reutiliza compra aprovada compatível sem induzir outra compra; falha de conexão não libera exportação no domínio público.
@@ -31,9 +34,11 @@ DOMÍNIO CONECTADO
 - SITE_ORIGIN, canonical, sitemap e robots atualizados. Endereço workers.dev e webhooks antigos continuam operacionais.
 - Alguns resolvedores podem manter cache DNS negativo da configuração anterior durante a propagação.
 
-FALTA PARA ABERTURA COMERCIAL
-1. O proprietário informar nome do responsável e e-mail público de suporte para completar atendimento, termos e privacidade. Dados pessoais informados no chat não foram divulgados no site.
-2. Com os documentos concluídos, revisar a configuração e habilitar PAYMENT_MODE=live e SALES_ENABLED=true. Nenhuma compra real deve ser feita automaticamente como teste.
+PENDÊNCIAS DECLARADAS
+- Nome Matheus Bacochina e contato bacochinakawai@gmail.com publicados conforme autorização. Endereço público ainda não informado.
+- Login e recuperação por e-mail para compradores e notificações automáticas de compra não implementados. A recuperação atual depende do arquivo de acesso da compra.
+- Textos de atendimento e funcionamento publicados; documentos jurídicos completos ainda precisam ser concluídos.
+- Não houve teste com cobrança real: criação de pedidos reais foi validada, aprovação/estorno foram verificados em testes automatizados e homologação anterior. Não afirmar ausência total de bugs.
 
 LIMITES E ENTREGA
 - Um pagamento por presente/ocasião. Planos Um Mimo R$14,90; Uma História R$24,90; Celebrar Juntos R$39,90.

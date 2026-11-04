@@ -88,3 +88,5 @@ button,input,select,textarea{font:inherit}button,a,input,select,textarea,summary
 
 /* The illustrated steps may shrink inside intermediate-width grid columns. */
 .journey-grid article{min-width:0}.journey-game-art{max-width:100%}
+
+.footer .purchase-details{grid-column:1/-1;flex-basis:100%;width:100%;min-width:0;font-size:14px;line-height:1.6}.purchase-details summary{cursor:pointer;padding:12px 0;min-height:44px}.purchase-details p{margin:12px 0;max-width:75ch;overflow-wrap:anywhere}.footer>small{overflow-wrap:anywhere}
