@@ -184,3 +184,9 @@ STORIES E COMPOSICOES DOS QUADROS - 04/11/2026
 - Quadros combinam colecao com editorial, moldura de lembranca ou fotografia em destaque. Da colecao preserva o desenho original de cada modelo; arte, cores, foto e dedicatoria permanecem.
 - Cancelar video interrompe espera durante preparo de imagens e audio, libera controles e impede gravacao tardia. Erros tardios do gravador sao tratados.
 - Verificacao: Stories5, composicoes5, cancelamento10, exportacao6, autorizacao15, corridas de quadro5, 51 modulos e SEO9 passaram. Revisoes independentes aprovadas; testes de cancelamento usam gravador instrumentado.
+
+BIBLIOTECA FOTOS E REABERTURA DA CONTA - 04/11/2026
+- Biblioteca usa a capa selecionada e ignora resultados ou erros de leituras antigas ao fechar/reabrir, sem duplicar presentes.
+- Foto removida de quadro tem substituicao explicita: seletor, previa e download coincidem. Preferencia original nao se perde ao editar dedicatória ou composicao e pode ser restaurada.
+- Minha conta preserva codigo e digitacao ao reabrir. Consultas de compra dispensadas nao abrem editor nem reabrem painel com erro tardio.
+- Verificacao: biblioteca5, quadro3, conta lifecycle7 e regressao21, racesquadro5, exportacao6, restore2, 51modulos e SEO9 passaram. Contas testadas apenas com APIs locais simuladas, sem envio de email.
