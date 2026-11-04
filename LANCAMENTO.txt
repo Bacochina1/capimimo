@@ -251,3 +251,8 @@ CONTINUIDADE ENTRE RASCUNHOS - 04/11/2026
 - Rascunhos legados semID usam identidade do estado para isolar compositor e acoes de linhas antigas.
 - Titulo e mensagem de pagina refletem atualizacao externa mesmo focados, sem mover cursor na propria digitacao. Teste decontrato render externo; nao implica falha no clique normal da biblioteca.
 - Verificacao: guestcomposer4/bulk4/email7, pagefields2/pagesfocus8/pagephoto3, modulos51 e SEO9 passaram; revisoes independentes aprovadas.
+
+INTEGRIDADE DAS PREVIAS - 04/11/2026
+- Stories mostram carregamento, erro e tentar novamente quando uma ilustracao falha; resultados antigos nao sobrescrevem a previa atual. Controles e feedback cabem na viewport mobile com botao de44px.
+- Cartao e livro exportados usam destinatario visivel; apelido continua exclusivo dos Stories.
+- Verificacao: failure4, aliasHTML4, portablefocus7, publicroundtrip6, modulos51 e SEO9 passaram. Revisao independente aprovada. Arquivos HTML antigos precisam ser gerados novamente.
