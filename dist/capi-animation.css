@@ -1,0 +1,22 @@
+/* Capivara de carregamento e abertura de carta. Sprite 4 × 2, oito quadros. */
+.capi-loader,.capi-letter-sprite{display:block;flex:none;background-image:url("assets/capi-letter-sprite.webp");background-repeat:no-repeat;background-size:400% 200%;background-position:0 0;aspect-ratio:1}
+.capi-loader{width:76px;height:76px;animation:capi-loading-frames 1.35s steps(1,end) infinite}
+@keyframes capi-loading-frames{0%,70%,100%{background-position:0 0}76%{background-position:33.3333% 0}82%{background-position:66.6667% 0}88%{background-position:33.3333% 0}}
+.capi-letter-sprite{width:min(190px,65vw);height:auto;margin:0 auto}
+.personal-letter>summary{border-radius:20px;padding:16px 20px;background:var(--letter-bg,#f8eee0);color:var(--letter-ink,#674536)}
+.personal-letter .capi-letter-label{font:800 11px/1.4 Nunito,Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.personal-letter[data-letter-theme=amizade]{--letter-bg:#e5f1ef;--letter-ink:#315c5b}
+.personal-letter[data-letter-theme=familia]{--letter-bg:#fff0c9;--letter-ink:#715322}
+.personal-letter[data-letter-theme=natal]{--letter-bg:#e5f0e8;--letter-ink:#315648}
+.personal-letter[data-letter-theme=pascoa]{--letter-bg:#f1e8f5;--letter-ink:#62486f}
+.personal-letter[data-letter-theme=festa]{--letter-bg:#fff0d0;--letter-ink:#78512c}
+.personal-letter[data-letter-theme=casamento]{--letter-bg:#e9edf5;--letter-ink:#445776}
+.personal-letter[data-letter-theme=amor]{--letter-bg:#fae7e8;--letter-ink:#8b4454}
+.personal-letter[open] .capi-letter-sprite{animation:capi-letter-open 960ms steps(1,end) both}
+@keyframes capi-letter-open{0%{background-position:0 0}12.5%{background-position:33.3333% 0}25%{background-position:66.6667% 0}37.5%{background-position:100% 0}50%{background-position:0 100%}62.5%{background-position:33.3333% 100%}75%{background-position:66.6667% 100%}87.5%,100%{background-position:100% 100%}}
+.gift-stage.has-error .capi-loader{animation:none}
+.no-motion .capi-loader,.no-motion .personal-letter[open] .capi-letter-sprite{animation:none}
+.no-motion .personal-letter[open] .capi-letter-sprite{background-position:100% 100%}
+@media(prefers-reduced-motion:reduce){.capi-loader,.personal-letter[open] .capi-letter-sprite{animation:none}.personal-letter[open] .capi-letter-sprite{background-position:100% 100%}}
+
+.stories-load-status:not([hidden]){display:flex;align-items:center;justify-content:center;gap:8px}.stories-load-status .capi-loader{width:38px;height:38px}
